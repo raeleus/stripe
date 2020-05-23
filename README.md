@@ -4,7 +4,7 @@ A collection of custom Scene2D widgets and utilities for libGDX.
 
 ## About
 
-Stripe is a companion to Skin Composer, the renowned UI Skin editor and visual layout utility. This library provides new Scene2D widgets, the capability of loading FreeType fonts from JSON, and the Scene Composer Stage Builder. Please see the wiki for documentation. 
+Stripe is a companion to [Skin Composer](https://github.com/raeleus/skin-composer), the renowned UI Skin editor and visual layout utility. This library provides new Scene2D widgets, the capability of loading FreeType fonts from JSON, and the Scene Composer Stage Builder. Please see the wiki for documentation. 
 
 ## How to Include in your Project
 
