@@ -128,3 +128,6 @@ Thumbs.db
 *.jar
 *.zip
 *.gif
+
+## custom
+/design/
