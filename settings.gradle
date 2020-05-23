@@ -1,0 +1,2 @@
+include 'test', 'stripe'
+rootProject.name = 'stripe'
