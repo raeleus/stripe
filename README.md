@@ -25,7 +25,7 @@ Add the dependency to your core project:
 ```groovy
 dependencies {
     ...
-    compile 'com.ray3k.stripe:stripe:0.0.1-SNAPSHOT'
+    implementation 'com.github.raeleus:stripe:master-SNAPSHOT'
 }
 ```
 If you are using the FreeType Skin Loader, ensure that you have FreeType implemented in your project. Please refer to the [libGDX wiki](https://github.com/libgdx/libgdx/wiki/Dependency-management-with-Gradle#freetypefont-gradle).
@@ -38,7 +38,7 @@ project(":html") {
 
     dependencies {
         ...
-        compile 'com.ray3k.stripe:stripe:0.0.1-SNAPSHOT:sources'
+        implementation 'com.github.raeleus:stripe:master-SNAPSHOT:sources'
     }
 }
 ```
