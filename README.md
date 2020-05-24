@@ -54,5 +54,5 @@ If you are using FreeType on HTML5, please follow the instructions to activate [
 Stripe meets a variety of needs, so its implementation is dependent on what utilities you plan to use. Please refer to the wiki:
 
 [Stripe Widgets](https://github.com/raeleus/stripe/wiki/Stripe-Widgets)  
-[FreeType Skin Loader](https://github.com/raeleus/stripe/wiki/FreeType-Skin-Loader)  
+[FreeType Skin Loader](https://github.com/raeleus/skin-composer/wiki/Creating-FreeType-Fonts#using-a-custom-serializer)  
 [Scene Composer Stage Builder](https://github.com/raeleus/stripe/wiki/Scene-Composer-Stage-Builder)
