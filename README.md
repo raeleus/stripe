@@ -55,4 +55,4 @@ Stripe meets a variety of needs, so its implementation is dependent on what util
 
 [Stripe Widgets](https://github.com/raeleus/stripe/wiki/Stripe-Widgets)  
 [FreeType Skin Loader](https://github.com/raeleus/skin-composer/wiki/Creating-FreeType-Fonts#using-a-custom-serializer)  
-[Scene Composer Stage Builder](https://github.com/raeleus/stripe/wiki/Scene-Composer-Stage-Builder)
+[Scene Composer Stage Builder](https://github.com/raeleus/skin-composer/wiki/Scene-Composer)
