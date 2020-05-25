@@ -33,27 +33,48 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 
 /**
- *
- * @author Raymond
+ * A sublass of {@link Skin} that includes a serializer for FreeType fonts from JSON. These JSON's are typically exported by
+ * Skin Composer. See the
+ * <a href="https://github.com/raeleus/skin-composer/wiki/Creating-FreeType-Fonts#using-a-custom-serializer">Skin Composer documentation</a>.
+ * If you are using Asset Manager, use {@link FreeTypeSkinLoader}
  */
 public class FreeTypeSkin extends Skin {
-
+    /** Creates an empty skin. */
     public FreeTypeSkin() {
     }
-
+    
+    /** Creates a skin containing the resources in the specified skin JSON file. If a file in the same directory with a ".atlas"
+     * extension exists, it is loaded as a {@link TextureAtlas} and the texture regions added to the skin. The atlas is
+     * automatically disposed when the skin is disposed.
+     * @param  skinFile The JSON file to be read.
+     */
     public FreeTypeSkin(FileHandle skinFile) {
         super(skinFile);
+        
     }
-
+    
+    /** Creates a skin containing the resources in the specified skin JSON file and the texture regions from the specified atlas.
+     * The atlas is automatically disposed when the skin is disposed.
+     * @param skinFile The JSON file to be read.
+     * @param atlas The texture atlas to be associated with the {@link Skin}.
+     */
     public FreeTypeSkin(FileHandle skinFile, TextureAtlas atlas) {
         super(skinFile, atlas);
     }
-
+    
+    /** Creates a skin containing the texture regions from the specified atlas. The atlas is automatically disposed when the skin
+     * is disposed.
+     * @param atlas The texture atlas to be associated with the {@link Skin}.
+     */
     public FreeTypeSkin(TextureAtlas atlas) {
         super(atlas);
     }
-
-    //Override json loader to process FreeType fonts from skin JSON
+    
+    /**
+     * Overrides the default JSON loader to process FreeType fonts from a Skin JSON.
+     * @param skinFile The JSON file to be processed.
+     * @return The {@link Json} used to read the file.
+     */
     @Override
     protected Json getJsonLoader(final FileHandle skinFile) {
         Json json = super.getJsonLoader(skinFile);
