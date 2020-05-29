@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Disableable;
 import com.badlogic.gdx.utils.Align;
 import com.ray3k.stripe.PopTable.PopTableStyle;
-import com.ray3k.stripe.PopTable.TableHiddenListener;
+import com.ray3k.stripe.PopTable.TableShowHideListener;
 
 public class PopTableClickListener extends ClickListener {
     protected PopTable popTable;
@@ -38,7 +38,7 @@ public class PopTableClickListener extends ClickListener {
         popTable.setHideOnUnfocus(true);
         this.edge = edge;
         this.align = align;
-        popTable.addListener(new TableHiddenListener() {
+        popTable.addListener(new TableShowHideListener() {
             @Override
             public void tableShown(Event event) {
                 PopTableClickListener.this.tableShown(event);

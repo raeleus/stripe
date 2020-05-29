@@ -234,7 +234,7 @@ public class PopTable extends Table {
     
     }
     
-    public static abstract class TableHiddenListener implements EventListener {
+    public static abstract class TableShowHideListener implements EventListener {
         @Override
         public boolean handle(Event event) {
             if (event instanceof TableHiddenEvent) {

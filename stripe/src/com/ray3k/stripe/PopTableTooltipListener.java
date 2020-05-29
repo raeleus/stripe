@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Disableable;
 import com.badlogic.gdx.utils.Align;
 import com.ray3k.stripe.PopTable.PopTableStyle;
-import com.ray3k.stripe.PopTable.TableHiddenListener;
+import com.ray3k.stripe.PopTable.TableShowHideListener;
 
 public class PopTableTooltipListener extends InputListener {
     protected PopTable popTable;
@@ -27,7 +27,7 @@ public class PopTableTooltipListener extends InputListener {
         popTable.setHideOnUnfocus(false);
         popTable.setTouchable(Touchable.disabled);
         this.align = align;
-        popTable.addListener(new TableHiddenListener() {
+        popTable.addListener(new TableShowHideListener() {
             @Override
             public void tableShown(Event event) {
                 PopTableTooltipListener.this.tableShown(event);
