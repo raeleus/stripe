@@ -129,9 +129,9 @@ public class SceneComposerStageBuilder {
     /**
      * Loads widgets from the provided JSON file. The widgets are dependent on a properly defined skin with styles that
      * correlate to the ones defined in Scene Composer.
-     * @param skin
-     * @param jsonFile
-     * @return
+     * @param skin The skin to construct the widgets from
+     * @param jsonFile The JSON file to load the layout from.
+     * @return An array of tables containing the layout.
      */
     public Array<Table> build(Skin skin, FileHandle jsonFile) {
         ProtoRootGroup rootActor = json.fromJson(ProtoRootGroup.class, jsonFile);
@@ -147,10 +147,10 @@ public class SceneComposerStageBuilder {
     /**
      * Loads widgets from the provided JSON file and adds them to the supplied Stage. The widgets are dependent on a
      * properly defined skin with styles that correlate to the ones defined in Scene Composer.
-     * @param stage
-     * @param skin
-     * @param jsonFile
-     * @return
+     * @param stage The stage to add the layout to.
+     * @param skin The skin to construct the widgets from
+     * @param jsonFile The JSON file to load the layout from.
+     * @return An array of tables containing the layout.
      */
     public Array<Table> build(Stage stage, Skin skin, FileHandle jsonFile) {
         Array<Table> tables = build(skin, jsonFile);
