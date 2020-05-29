@@ -29,7 +29,7 @@ class ProtoTextField extends ProtoActor {
     public String name;
     public ProtoStyle style;
     public String text;
-    public char passwordCharacter = '•';
+    public char passwordCharacter = '\u2022';//•
     public boolean passwordMode;
     public int alignment = Align.center;
     public boolean disabled;
