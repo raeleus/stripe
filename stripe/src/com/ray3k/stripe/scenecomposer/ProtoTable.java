@@ -16,4 +16,5 @@ public class ProtoTable extends ProtoActor implements SimMultipleChildren {
     public float padBottom;
     public int alignment = Align.center;
     public boolean fillParent;
+    public boolean paddingEnabled;
 }

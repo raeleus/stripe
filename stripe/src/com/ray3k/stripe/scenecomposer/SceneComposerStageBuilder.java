@@ -194,7 +194,7 @@ public class SceneComposerStageBuilder {
                 table.setColor(skin.getColor(protoTable.color.name));
             }
             
-            table.pad(protoTable.padTop, protoTable.padLeft, protoTable.padBottom, protoTable.padRight);
+            if (protoTable.paddingEnabled) table.pad(protoTable.padTop, protoTable.padLeft, protoTable.padBottom, protoTable.padRight);
             
             table.align(protoTable.alignment);
             
