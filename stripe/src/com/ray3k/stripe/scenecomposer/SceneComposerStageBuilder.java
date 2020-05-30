@@ -48,6 +48,9 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.JsonWriter;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * A class used to generate Scene2D widgets exported to JSON by Scene Composer. Scene Composer is a module from Skin
  * Composer that allows users to lay out a Scene2D stage visually.
@@ -160,6 +163,19 @@ public class SceneComposerStageBuilder {
         return tables;
     }
     
+    private String convertEscapedCharacters(String string) {
+        string = string.replace("\\n", "\n")
+                .replace("\\t", "\t")
+                .replace("\\r", "\r");
+        String result = string;
+        Pattern pattern = Pattern.compile("(\\\\u[\\d,a-f,A-F]{4})");
+        Matcher matcher = pattern.matcher(string);
+        while (matcher.find()) {
+            result = result.replaceFirst("(\\\\u[\\d,a-f,A-F]{4})", new String(Character.toChars(Integer.parseInt(matcher.group().substring(2), 16))));
+        }
+        return result;
+    }
+    
     private Actor createPreviewWidget(ProtoActor protoActor, Skin skin) {
         Actor actor = null;
         
@@ -225,7 +241,7 @@ public class SceneComposerStageBuilder {
             ProtoTextButton protoTextButton = (ProtoTextButton) protoActor;
             if (protoTextButton.style != null) {
                 TextButtonStyle style = skin.get(protoTextButton.style.name, TextButtonStyle.class);
-                TextButton textButton = new TextButton(protoTextButton.text == null ? "" : protoTextButton.text, style);
+                TextButton textButton = new TextButton(protoTextButton.text == null ? "" : convertEscapedCharacters(protoTextButton.text), style);
                 textButton.setName(protoTextButton.name);
                 textButton.setChecked(protoTextButton.checked);
                 textButton.setDisabled(protoTextButton.disabled);
@@ -277,7 +293,7 @@ public class SceneComposerStageBuilder {
             ProtoImageTextButton protoImageTextButton = (ProtoImageTextButton) protoActor;
             if (protoImageTextButton.style != null) {
                 ImageTextButtonStyle style = skin.get(protoImageTextButton.style.name, ImageTextButtonStyle.class);
-                ImageTextButton imageTextButton = new ImageTextButton(protoImageTextButton.text == null ? "" : protoImageTextButton.text, style);
+                ImageTextButton imageTextButton = new ImageTextButton(protoImageTextButton.text == null ? "" : convertEscapedCharacters(protoImageTextButton.text), style);
                 imageTextButton.setName(protoImageTextButton.name);
                 imageTextButton.setChecked(protoImageTextButton.checked);
                 imageTextButton.setDisabled(protoImageTextButton.disabled);
@@ -296,7 +312,7 @@ public class SceneComposerStageBuilder {
             ProtoCheckBox protoCheckBox = (ProtoCheckBox) protoActor;
             if (protoCheckBox.style != null) {
                 CheckBoxStyle style = skin.get(protoCheckBox.style.name, CheckBoxStyle.class);
-                CheckBox checkBox = new CheckBox(protoCheckBox.text == null ? "" : protoCheckBox.text, style);
+                CheckBox checkBox = new CheckBox(protoCheckBox.text == null ? "" : convertEscapedCharacters(protoCheckBox.text), style);
                 checkBox.setName(protoCheckBox.name);
                 checkBox.setChecked(protoCheckBox.checked);
                 checkBox.setDisabled(protoCheckBox.disabled);
@@ -322,7 +338,7 @@ public class SceneComposerStageBuilder {
             ProtoLabel protoLabel = (ProtoLabel) protoActor;
             if (protoLabel.style != null) {
                 LabelStyle style = skin.get(protoLabel.style.name, LabelStyle.class);
-                Label label = new Label(protoLabel.text == null ? "" : protoLabel.text, style);
+                Label label = new Label(protoLabel.text == null ? "" : convertEscapedCharacters(protoLabel.text), style);
                 label.setName(protoLabel.name);
                 label.setAlignment(protoLabel.textAlignment);
                 if (protoLabel.ellipsis) {
@@ -336,9 +352,13 @@ public class SceneComposerStageBuilder {
             ProtoList protoList = (ProtoList) protoActor;
             if (protoList.style != null) {
                 ListStyle style = skin.get(protoList.style.name, ListStyle.class);
-                List list = new List<String>(style);
+                List<String> list = new List<String>(style);
                 list.setName(protoList.name);
-                list.setItems(protoList.list);
+                Array<String> newList = new Array<String>();
+                for (String item : protoList.list) {
+                    newList.add(convertEscapedCharacters(item));
+                }
+                list.setItems(newList);
                 actor = list;
             }
         } else if (protoActor instanceof ProtoProgressBar) {
@@ -359,11 +379,15 @@ public class SceneComposerStageBuilder {
             ProtoSelectBox proto = (ProtoSelectBox) protoActor;
             if (proto.list.size > 0 && proto.style != null) {
                 SelectBoxStyle style = skin.get(proto.style.name, SelectBoxStyle.class);
-                SelectBox selectBox = new SelectBox<String>(style);
+                SelectBox<String> selectBox = new SelectBox<String>(style);
                 selectBox.setName(proto.name);
                 selectBox.setDisabled(proto.disabled);
                 selectBox.setMaxListCount(proto.maxListCount);
-                selectBox.setItems(proto.list);
+                Array<String> newList = new Array<String>();
+                for (String item : proto.list) {
+                    newList.add(convertEscapedCharacters(item));
+                }
+                selectBox.setItems(newList);
                 selectBox.setAlignment(proto.alignment);
                 selectBox.setSelectedIndex(proto.selected);
                 selectBox.setScrollingDisabled(proto.scrollingDisabled);
@@ -387,7 +411,7 @@ public class SceneComposerStageBuilder {
             ProtoTextField proto = (ProtoTextField) protoActor;
             if (proto.style != null) {
                 TextFieldStyle style = skin.get(proto.style.name, TextFieldStyle.class);
-                TextField textField = new TextField(proto.text == null ? "" : proto.text, style);
+                TextField textField = new TextField(proto.text == null ? "" : convertEscapedCharacters(proto.text), style);
                 textField.setName(proto.name);
                 textField.setPasswordCharacter(proto.passwordCharacter);
                 textField.setPasswordMode(proto.passwordMode);
@@ -408,7 +432,7 @@ public class SceneComposerStageBuilder {
             ProtoTextArea proto = (ProtoTextArea) protoActor;
             if (proto.style != null) {
                 TextFieldStyle style = skin.get(proto.style.name, TextFieldStyle.class);
-                TextArea textArea = new TextArea(proto.text == null ? "" : proto.text, style);
+                TextArea textArea = new TextArea(proto.text == null ? "" : convertEscapedCharacters(proto.text), style);
                 textArea.setName(proto.name);
                 textArea.setPasswordCharacter(proto.passwordCharacter);
                 textArea.setPasswordMode(proto.passwordMode);
