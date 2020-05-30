@@ -141,7 +141,7 @@ public class SceneComposerStageBuilder {
     
         Array<Table> tables = new Array<Table>();
         for (ProtoActor proto : rootActor.children) {
-            tables.add((Table) createPreviewWidget(proto, skin));
+            tables.add((Table) createWidget(proto, skin));
         }
         
         return tables;
@@ -176,7 +176,7 @@ public class SceneComposerStageBuilder {
         return result.replace("\\\\", "\\");
     }
     
-    private Actor createPreviewWidget(ProtoActor protoActor, Skin skin) {
+    private Actor createWidget(ProtoActor protoActor, Skin skin) {
         Actor actor = null;
         
         if (protoActor instanceof ProtoTable) {
@@ -207,7 +207,7 @@ public class SceneComposerStageBuilder {
                     row = protoCell.row;
                 }
                 
-                Actor child = createPreviewWidget(protoCell.child, skin);
+                Actor child = createWidget(protoCell.child, skin);
                 Cell cell = table.add(child).fill(protoCell.fillX, protoCell.fillY).expand(protoCell.expandX, protoCell.expandY);
                 cell.pad(protoCell.padTop, protoCell.padLeft, protoCell.padBottom, protoCell.padRight);
                 cell.space(protoCell.spaceTop, protoCell.spaceLeft, protoCell.spaceBottom, protoCell.spaceRight);
@@ -476,7 +476,7 @@ public class SceneComposerStageBuilder {
             container.padRight(proto.padRight);
             container.padTop(proto.padTop);
             container.padBottom(proto.padBottom);
-            if (proto.child != null) container.setActor(createPreviewWidget(proto.child, skin));
+            if (proto.child != null) container.setActor(createWidget(proto.child, skin));
             actor = container;
         } else if (protoActor instanceof ProtoHorizontalGroup) {
             ProtoHorizontalGroup proto = (ProtoHorizontalGroup) protoActor;
@@ -494,7 +494,7 @@ public class SceneComposerStageBuilder {
             horizontalGroup.wrap(proto.wrap);
             horizontalGroup.wrapSpace(proto.wrapSpace);
             for (ProtoActor child : proto.children) {
-                Actor widget = createPreviewWidget(child, skin);
+                Actor widget = createWidget(child, skin);
                 if ( widget != null) {
                     horizontalGroup.addActor(widget);
                 }
@@ -505,7 +505,7 @@ public class SceneComposerStageBuilder {
             ProtoScrollPane proto = (ProtoScrollPane) protoActor;
             if (proto.style != null) {
                 ScrollPaneStyle style = skin.get(proto.style.name, ScrollPaneStyle.class);
-                ScrollPane scrollPane = new ScrollPane(createPreviewWidget(proto.child, skin), style);
+                ScrollPane scrollPane = new ScrollPane(createWidget(proto.child, skin), style);
                 scrollPane.setName(proto.name);
                 scrollPane.setFadeScrollBars(proto.fadeScrollBars);
                 scrollPane.setClamp(proto.clamp);
@@ -528,14 +528,15 @@ public class SceneComposerStageBuilder {
             Stack stack = new Stack();
             stack.setName(proto.name);
             for (ProtoActor child : proto.children) {
-                stack.add(createPreviewWidget(child, skin));
+                stack.add(createWidget(child, skin));
             }
             actor = stack;
         } else if (protoActor instanceof ProtoSplitPane) {
             ProtoSplitPane proto = (ProtoSplitPane) protoActor;
             if (proto.style != null) {
                 SplitPaneStyle style = skin.get(proto.style.name, SplitPaneStyle.class);
-                SplitPane splitPane = new SplitPane(createPreviewWidget(proto.childFirst, skin), createPreviewWidget(proto.childSecond, skin), proto.vertical, style);
+                SplitPane splitPane = new SplitPane(
+                        createWidget(proto.childFirst, skin), createWidget(proto.childSecond, skin), proto.vertical, style);
                 splitPane.setName(proto.name);
                 splitPane.setSplitAmount(proto.split);
                 splitPane.setMinSplitAmount(proto.splitMin);
@@ -576,7 +577,7 @@ public class SceneComposerStageBuilder {
             verticalGroup.wrap(proto.wrap);
             verticalGroup.wrapSpace(proto.wrapSpace);
             for (ProtoActor child : proto.children) {
-                Actor widget = createPreviewWidget(child, skin);
+                Actor widget = createWidget(child, skin);
                 if (widget != null) verticalGroup.addActor(widget);
             }
             
@@ -588,7 +589,7 @@ public class SceneComposerStageBuilder {
     private Tree.Node createPreviewNode(ProtoNode protoNode, Skin skin) {
         if (protoNode.actor != null) {
             GenericNode node = new GenericNode();
-            Actor actor = createPreviewWidget(protoNode.actor, skin);
+            Actor actor = createWidget(protoNode.actor, skin);
             if (actor == null) return null;
             node.setActor(actor);
             if (protoNode.icon != null) node.setIcon(skin.getDrawable(protoNode.icon.name));
