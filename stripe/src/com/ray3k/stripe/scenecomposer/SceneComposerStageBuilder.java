@@ -337,6 +337,7 @@ public class SceneComposerStageBuilder {
             ProtoImage protoImage = (ProtoImage) protoActor;
             if (protoImage.drawable != null) {
                 Image image = new Image(skin.getDrawable(protoImage.drawable.name));
+                image.setName(protoImage.name);
                 image.setTouchable(protoImage.touchable);
                 image.setScaling(protoImage.scaling);
                 actor = image;
@@ -469,6 +470,7 @@ public class SceneComposerStageBuilder {
             if (proto.style != null) {
                 TouchpadStyle style = skin.get(proto.style.name, TouchpadStyle.class);
                 Touchpad touchPad = new Touchpad(proto.deadZone, style);
+                touchPad.setName(proto.name);
                 touchPad.setTouchable(proto.touchable);
                 touchPad.setResetOnTouchUp(proto.resetOnTouchUp);
                 actor = touchPad;
@@ -476,6 +478,7 @@ public class SceneComposerStageBuilder {
         } else if (protoActor instanceof ProtoContainer) {
             ProtoContainer proto = (ProtoContainer) protoActor;
             Container container = new Container();
+            container.setName(proto.name);
             container.setTouchable(proto.touchable);
             container.align(proto.alignment);
             if (proto.background != null) {
@@ -497,6 +500,7 @@ public class SceneComposerStageBuilder {
         } else if (protoActor instanceof ProtoHorizontalGroup) {
             ProtoHorizontalGroup proto = (ProtoHorizontalGroup) protoActor;
             HorizontalGroup horizontalGroup = new HorizontalGroup();
+            horizontalGroup.setName(proto.name);
             horizontalGroup.setTouchable(proto.touchable);
             horizontalGroup.align(proto.alignment);
             horizontalGroup.expand(proto.expand);
@@ -585,6 +589,7 @@ public class SceneComposerStageBuilder {
         } else if (protoActor instanceof ProtoVerticalGroup) {
             ProtoVerticalGroup proto = (ProtoVerticalGroup) protoActor;
             VerticalGroup verticalGroup = new VerticalGroup();
+            verticalGroup.setName(proto.name);
             verticalGroup.setTouchable(proto.touchable);
             verticalGroup.align(proto.alignment);
             verticalGroup.expand(proto.expand);
