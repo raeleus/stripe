@@ -1,5 +1,7 @@
 package com.ray3k.stripe.scenecomposer;
 
+import com.badlogic.gdx.scenes.scene2d.Touchable;
+
 public class ProtoScrollPane extends ProtoActor implements SimSingleChild {
     public String name;
     public ProtoStyle style;
@@ -24,4 +26,5 @@ public class ProtoScrollPane extends ProtoActor implements SimSingleChild {
     public boolean scrollingDisabledY;
     public boolean smoothScrolling = true;
     public boolean variableSizeKnobs = true;
+    public Touchable touchable = Touchable.enabled;
 }

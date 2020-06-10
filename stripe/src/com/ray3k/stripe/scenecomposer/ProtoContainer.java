@@ -23,6 +23,7 @@
  ******************************************************************************/
 package com.ray3k.stripe.scenecomposer;
 
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 
 class ProtoContainer extends ProtoActor implements SimSingleChild {
@@ -42,4 +43,5 @@ class ProtoContainer extends ProtoActor implements SimSingleChild {
     public float padTop;
     public float padBottom;
     public ProtoActor child;
+    public Touchable touchable = Touchable.enabled;
 }

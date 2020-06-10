@@ -23,6 +23,7 @@
  ******************************************************************************/
 package com.ray3k.stripe.scenecomposer;
 
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 
 class ProtoLabel extends ProtoActor {
@@ -34,4 +35,5 @@ class ProtoLabel extends ProtoActor {
     public String ellipsisString = "...";
     public boolean wrap;
     public ProtoColor color;
+    public Touchable touchable = Touchable.enabled;
 }

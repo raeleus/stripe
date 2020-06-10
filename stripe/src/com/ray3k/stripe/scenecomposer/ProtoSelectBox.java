@@ -1,5 +1,6 @@
 package com.ray3k.stripe.scenecomposer;
 
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 
@@ -12,4 +13,5 @@ public class ProtoSelectBox extends ProtoActor {
     public int alignment = Align.center;
     public int selected;
     public boolean scrollingDisabled;
+    public Touchable touchable = Touchable.enabled;
 }

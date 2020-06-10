@@ -1,5 +1,6 @@
 package com.ray3k.stripe.scenecomposer;
 
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 
 public class ProtoSplitPane extends ProtoActor implements SimMultipleChildren {
@@ -11,5 +12,6 @@ public class ProtoSplitPane extends ProtoActor implements SimMultipleChildren {
     public float split = .5f;
     public float splitMin;
     public float splitMax = 1;
+    public Touchable touchable = Touchable.enabled;
     public transient Array<ProtoActor> tempChildren = new Array<ProtoActor>();
 }

@@ -1,5 +1,6 @@
 package com.ray3k.stripe.scenecomposer;
 
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 
@@ -17,4 +18,5 @@ public class ProtoTable extends ProtoActor implements SimMultipleChildren {
     public int alignment = Align.center;
     public boolean fillParent;
     public boolean paddingEnabled;
+    public Touchable touchable = Touchable.childrenOnly;
 }

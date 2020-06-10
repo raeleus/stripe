@@ -23,6 +23,7 @@
  ******************************************************************************/
 package com.ray3k.stripe.scenecomposer;
 
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 
@@ -40,5 +41,6 @@ class ProtoHorizontalGroup extends ProtoActor implements SimMultipleChildren {
     public float space;
     public boolean wrap;
     public float wrapSpace;
+    public Touchable touchable = Touchable.enabled;
     public Array<ProtoActor> children = new Array<ProtoActor>();
 }

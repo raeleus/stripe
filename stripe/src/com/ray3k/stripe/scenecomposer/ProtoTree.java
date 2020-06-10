@@ -23,6 +23,7 @@
  ******************************************************************************/
 package com.ray3k.stripe.scenecomposer;
 
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 
 class ProtoTree extends ProtoActor implements SimMultipleChildren {
@@ -35,4 +36,5 @@ class ProtoTree extends ProtoActor implements SimMultipleChildren {
     public float iconSpaceRight = 2;
     public float indentSpacing;
     public float ySpacing = 4;
+    public Touchable touchable = Touchable.enabled;
 }

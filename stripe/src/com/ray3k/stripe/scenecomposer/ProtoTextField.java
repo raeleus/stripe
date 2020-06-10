@@ -23,6 +23,7 @@
  ******************************************************************************/
 package com.ray3k.stripe.scenecomposer;
 
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 
 class ProtoTextField extends ProtoActor {
@@ -40,4 +41,5 @@ class ProtoTextField extends ProtoActor {
     public boolean focusTraversal = true;
     public int maxLength;
     public String messageText;
+    public Touchable touchable = Touchable.enabled;
 }
