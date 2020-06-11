@@ -37,4 +37,5 @@ class ProtoTree extends ProtoActor implements SimMultipleChildren {
     public float indentSpacing;
     public float ySpacing = 4;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

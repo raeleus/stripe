@@ -186,7 +186,7 @@ public class SceneComposerStageBuilder {
             
             table.setName(protoTable.name);
             table.setTouchable(protoTable.touchable);
-            table.setVisible(protoTable.);
+            table.setVisible(protoTable.visible);
             
             if (protoTable.background != null) {
                 table.setBackground(skin.getDrawable(protoTable.background.name));
@@ -246,6 +246,7 @@ public class SceneComposerStageBuilder {
                 TextButton textButton = new TextButton(protoTextButton.text == null ? "" : convertEscapedCharacters(protoTextButton.text), style);
                 textButton.setName(protoTextButton.name);
                 textButton.setTouchable(protoTextButton.touchable);
+                textButton.setVisible(protoTextButton.visible);
                 textButton.setChecked(protoTextButton.checked);
                 textButton.setDisabled(protoTextButton.disabled);
                 if (protoTextButton.color != null) {
@@ -266,6 +267,7 @@ public class SceneComposerStageBuilder {
                 Button button = new Button(style);
                 button.setName(protoButton.name);
                 button.setTouchable(protoButton.touchable);
+                button.setVisible(protoButton.visible);
                 button.setChecked(protoButton.checked);
                 button.setDisabled(protoButton.disabled);
                 if (protoButton.color != null) {
@@ -281,6 +283,7 @@ public class SceneComposerStageBuilder {
                 ImageButton imageButton = new ImageButton(style);
                 imageButton.setName(protoImageButton.name);
                 imageButton.setTouchable(protoImageButton.touchable);
+                imageButton.setVisible(protoImageButton.visible);
                 imageButton.setChecked(protoImageButton.checked);
                 imageButton.setDisabled(protoImageButton.disabled);
                 if (protoImageButton.color != null) {
@@ -301,6 +304,7 @@ public class SceneComposerStageBuilder {
                 ImageTextButton imageTextButton = new ImageTextButton(protoImageTextButton.text == null ? "" : convertEscapedCharacters(protoImageTextButton.text), style);
                 imageTextButton.setName(protoImageTextButton.name);
                 imageTextButton.setTouchable(protoImageTextButton.touchable);
+                imageTextButton.setVisible(protoImageTextButton.visible);
                 imageTextButton.setChecked(protoImageTextButton.checked);
                 imageTextButton.setDisabled(protoImageTextButton.disabled);
                 if (protoImageTextButton.color != null) {
@@ -321,6 +325,7 @@ public class SceneComposerStageBuilder {
                 CheckBox checkBox = new CheckBox(protoCheckBox.text == null ? "" : convertEscapedCharacters(protoCheckBox.text), style);
                 checkBox.setName(protoCheckBox.name);
                 checkBox.setTouchable(protoCheckBox.touchable);
+                checkBox.setVisible(protoCheckBox.visible);
                 checkBox.setChecked(protoCheckBox.checked);
                 checkBox.setDisabled(protoCheckBox.disabled);
                 if (protoCheckBox.color != null) {
@@ -340,6 +345,7 @@ public class SceneComposerStageBuilder {
                 Image image = new Image(skin.getDrawable(protoImage.drawable.name));
                 image.setName(protoImage.name);
                 image.setTouchable(protoImage.touchable);
+                image.setVisible(protoImage.visible);
                 image.setScaling(protoImage.scaling);
                 actor = image;
             }
@@ -350,6 +356,7 @@ public class SceneComposerStageBuilder {
                 Label label = new Label(protoLabel.text == null ? "" : convertEscapedCharacters(protoLabel.text), style);
                 label.setName(protoLabel.name);
                 label.setTouchable(protoLabel.touchable);
+                label.setVisible(protoLabel.visible);
                 label.setAlignment(protoLabel.textAlignment);
                 if (protoLabel.ellipsis) {
                     label.setEllipsis(protoLabel.ellipsisString);
@@ -365,6 +372,7 @@ public class SceneComposerStageBuilder {
                 List<String> list = new List<String>(style);
                 list.setName(protoList.name);
                 list.setTouchable(protoList.touchable);
+                list.setVisible(protoList.visible);
                 Array<String> newList = new Array<String>();
                 for (String item : protoList.list) {
                     newList.add(convertEscapedCharacters(item));
@@ -379,6 +387,7 @@ public class SceneComposerStageBuilder {
                 ProgressBar progressBar = new ProgressBar(proto.minimum, proto.maximum, proto.increment, proto.vertical, style);
                 progressBar.setName(proto.name);
                 progressBar.setTouchable(proto.touchable);
+                progressBar.setVisible(proto.visible);
                 progressBar.setDisabled(proto.disabled);
                 progressBar.setValue(proto.value);
                 progressBar.setAnimateDuration(proto.animationDuration);
@@ -394,6 +403,7 @@ public class SceneComposerStageBuilder {
                 SelectBox<String> selectBox = new SelectBox<String>(style);
                 selectBox.setName(proto.name);
                 selectBox.setTouchable(proto.touchable);
+                selectBox.setVisible(proto.visible);
                 selectBox.setDisabled(proto.disabled);
                 selectBox.setMaxListCount(proto.maxListCount);
                 Array<String> newList = new Array<String>();
@@ -413,6 +423,7 @@ public class SceneComposerStageBuilder {
                 Slider slider = new Slider(proto.minimum, proto.maximum, proto.increment, proto.vertical, style);
                 slider.setName(proto.name);
                 slider.setTouchable(proto.touchable);
+                slider.setVisible(proto.visible);
                 slider.setDisabled(proto.disabled);
                 slider.setValue(proto.value);
                 slider.setAnimateDuration(proto.animationDuration);
@@ -428,6 +439,7 @@ public class SceneComposerStageBuilder {
                 TextField textField = new TextField(proto.text == null ? "" : convertEscapedCharacters(proto.text), style);
                 textField.setName(proto.name);
                 textField.setTouchable(proto.touchable);
+                textField.setVisible(proto.visible);
                 textField.setPasswordCharacter(proto.passwordCharacter);
                 textField.setPasswordMode(proto.passwordMode);
                 textField.setAlignment(proto.alignment);
@@ -450,6 +462,7 @@ public class SceneComposerStageBuilder {
                 TextArea textArea = new TextArea(proto.text == null ? "" : convertEscapedCharacters(proto.text), style);
                 textArea.setName(proto.name);
                 textArea.setTouchable(proto.touchable);
+                textArea.setVisible(proto.visible);
                 textArea.setPasswordCharacter(proto.passwordCharacter);
                 textArea.setPasswordMode(proto.passwordMode);
                 textArea.setAlignment(proto.alignment);
@@ -473,6 +486,7 @@ public class SceneComposerStageBuilder {
                 Touchpad touchPad = new Touchpad(proto.deadZone, style);
                 touchPad.setName(proto.name);
                 touchPad.setTouchable(proto.touchable);
+                touchPad.setVisible(proto.visible);
                 touchPad.setResetOnTouchUp(proto.resetOnTouchUp);
                 actor = touchPad;
             }
@@ -481,6 +495,7 @@ public class SceneComposerStageBuilder {
             Container container = new Container();
             container.setName(proto.name);
             container.setTouchable(proto.touchable);
+            container.setVisible(proto.visible);
             container.align(proto.alignment);
             if (proto.background != null) {
                 container.setBackground(skin.getDrawable(proto.background.name));
@@ -503,6 +518,7 @@ public class SceneComposerStageBuilder {
             HorizontalGroup horizontalGroup = new HorizontalGroup();
             horizontalGroup.setName(proto.name);
             horizontalGroup.setTouchable(proto.touchable);
+            horizontalGroup.setVisible(proto.visible);
             horizontalGroup.align(proto.alignment);
             horizontalGroup.expand(proto.expand);
             horizontalGroup.fill(proto.fill ? 1f : 0f);
@@ -530,6 +546,7 @@ public class SceneComposerStageBuilder {
                 ScrollPane scrollPane = new ScrollPane(createWidget(proto.child, skin), style);
                 scrollPane.setName(proto.name);
                 scrollPane.setTouchable(proto.touchable);
+                scrollPane.setVisible(proto.visible);
                 scrollPane.setFadeScrollBars(proto.fadeScrollBars);
                 scrollPane.setClamp(proto.clamp);
                 scrollPane.setFlickScroll(proto.flickScroll);
@@ -551,6 +568,7 @@ public class SceneComposerStageBuilder {
             Stack stack = new Stack();
             stack.setName(proto.name);
             stack.setTouchable(proto.touchable);
+            stack.setVisible(proto.visible);
             for (ProtoActor child : proto.children) {
                 stack.add(createWidget(child, skin));
             }
@@ -563,6 +581,7 @@ public class SceneComposerStageBuilder {
                         createWidget(proto.childFirst, skin), createWidget(proto.childSecond, skin), proto.vertical, style);
                 splitPane.setName(proto.name);
                 splitPane.setTouchable(proto.touchable);
+                splitPane.setVisible(proto.visible);
                 splitPane.setSplitAmount(proto.split);
                 splitPane.setMinSplitAmount(proto.splitMin);
                 splitPane.setMaxSplitAmount(proto.splitMax);
@@ -575,6 +594,7 @@ public class SceneComposerStageBuilder {
                 Tree tree = new Tree(style);
                 tree.setName(proto.name);
                 tree.setTouchable(proto.touchable);
+                tree.setVisible(proto.visible);
                 tree.setPadding(proto.padLeft, proto.padRight);
                 tree.setIconSpacing(proto.iconSpaceLeft, proto.iconSpaceRight);
                 tree.setIndentSpacing(proto.indentSpacing);
@@ -592,6 +612,7 @@ public class SceneComposerStageBuilder {
             VerticalGroup verticalGroup = new VerticalGroup();
             verticalGroup.setName(proto.name);
             verticalGroup.setTouchable(proto.touchable);
+            verticalGroup.setVisible(proto.visible);
             verticalGroup.align(proto.alignment);
             verticalGroup.expand(proto.expand);
             verticalGroup.fill(proto.fill ? 1f : 0f);

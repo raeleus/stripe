@@ -31,4 +31,5 @@ class ProtoTouchPad extends ProtoActor {
     public float deadZone;
     public boolean resetOnTouchUp = true;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

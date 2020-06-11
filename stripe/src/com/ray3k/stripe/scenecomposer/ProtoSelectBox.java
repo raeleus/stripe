@@ -14,4 +14,5 @@ public class ProtoSelectBox extends ProtoActor {
     public int selected;
     public boolean scrollingDisabled;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

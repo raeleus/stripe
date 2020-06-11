@@ -13,5 +13,6 @@ public class ProtoSplitPane extends ProtoActor implements SimMultipleChildren {
     public float splitMin;
     public float splitMax = 1;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
     public transient Array<ProtoActor> tempChildren = new Array<ProtoActor>();
 }

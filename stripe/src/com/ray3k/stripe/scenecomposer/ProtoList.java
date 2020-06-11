@@ -7,5 +7,6 @@ public class ProtoList extends ProtoActor {
     public String name;
     public ProtoStyle style;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
     public Array<String> list = new Array<String>();
 }

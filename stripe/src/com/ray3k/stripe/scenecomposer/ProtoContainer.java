@@ -44,4 +44,5 @@ class ProtoContainer extends ProtoActor implements SimSingleChild {
     public float padBottom;
     public ProtoActor child;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

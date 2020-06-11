@@ -42,5 +42,6 @@ class ProtoVerticalGroup extends ProtoActor implements SimMultipleChildren {
     public boolean wrap;
     public float wrapSpace;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
     public Array<ProtoActor> children = new Array<ProtoActor>();
 }

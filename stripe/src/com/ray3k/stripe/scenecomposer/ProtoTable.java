@@ -19,4 +19,5 @@ public class ProtoTable extends ProtoActor implements SimMultipleChildren {
     public boolean fillParent;
     public boolean paddingEnabled;
     public Touchable touchable = Touchable.childrenOnly;
+    public boolean visible = true;
 }

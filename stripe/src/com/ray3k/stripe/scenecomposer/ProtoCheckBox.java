@@ -37,4 +37,5 @@ class ProtoCheckBox extends ProtoActor {
     public float padBottom;
     public boolean checked;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

@@ -36,4 +36,5 @@ class ProtoLabel extends ProtoActor {
     public boolean wrap;
     public ProtoColor color;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

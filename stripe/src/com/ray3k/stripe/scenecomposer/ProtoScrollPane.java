@@ -27,4 +27,5 @@ public class ProtoScrollPane extends ProtoActor implements SimSingleChild {
     public boolean smoothScrolling = true;
     public boolean variableSizeKnobs = true;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

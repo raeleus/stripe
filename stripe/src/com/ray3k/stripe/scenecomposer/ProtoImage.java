@@ -31,4 +31,5 @@ class ProtoImage extends ProtoActor {
     public ProtoDrawable drawable;
     public Scaling scaling = Scaling.stretch;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

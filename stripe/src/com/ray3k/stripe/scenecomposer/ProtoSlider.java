@@ -16,4 +16,5 @@ public class ProtoSlider extends ProtoActor {
     public boolean round = true;
     public Interpol visualInterpolation = Interpol.LINEAR;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

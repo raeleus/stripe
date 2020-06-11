@@ -42,4 +42,5 @@ class ProtoTextField extends ProtoActor {
     public int maxLength;
     public String messageText;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

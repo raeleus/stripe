@@ -43,4 +43,5 @@ class ProtoTextArea extends ProtoActor {
     public String messageText;
     public int preferredRows;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }
