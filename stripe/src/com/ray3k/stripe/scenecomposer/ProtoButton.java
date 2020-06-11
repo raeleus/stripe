@@ -36,4 +36,5 @@ class ProtoButton extends ProtoActor {
     public float padTop;
     public float padBottom;
     public Touchable touchable = Touchable.enabled;
+    public boolean visible = true;
 }

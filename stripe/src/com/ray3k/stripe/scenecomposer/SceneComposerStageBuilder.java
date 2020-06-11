@@ -186,6 +186,7 @@ public class SceneComposerStageBuilder {
             
             table.setName(protoTable.name);
             table.setTouchable(protoTable.touchable);
+            table.setVisible(protoTable.);
             
             if (protoTable.background != null) {
                 table.setBackground(skin.getDrawable(protoTable.background.name));
