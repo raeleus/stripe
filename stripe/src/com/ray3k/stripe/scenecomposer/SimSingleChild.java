@@ -23,5 +23,5 @@
  ******************************************************************************/
 package com.ray3k.stripe.scenecomposer;
 
-interface SimSingleChild {
+public interface SimSingleChild {
 }

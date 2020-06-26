@@ -25,7 +25,7 @@ package com.ray3k.stripe.scenecomposer;
 
 import com.badlogic.gdx.math.Interpolation;
 
-enum Interpol {
+public enum Interpol {
     LINEAR(Interpolation.linear, "Linear", "linear"), SMOOTH(Interpolation.smooth, "Smooth", "smooth"), SMOOTH2(
             Interpolation.smooth2, "Smooth 2", "smooth2"),
     SMOOTHER(Interpolation.smoother, "Smoother", "smoother"), FADE(Interpolation.fade, "Fade", "fade"), POW2(
