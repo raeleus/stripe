@@ -26,7 +26,7 @@ package com.ray3k.stripe.scenecomposer;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 
-class ProtoTree extends ProtoActor implements SimMultipleChildren {
+public class ProtoTree extends ProtoActor implements SimMultipleChildren {
     public String name;
     public ProtoStyle style;
     public Array<ProtoNode> children = new Array<ProtoNode>();

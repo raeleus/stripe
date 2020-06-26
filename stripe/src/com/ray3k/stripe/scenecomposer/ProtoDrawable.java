@@ -23,7 +23,7 @@
  ******************************************************************************/
 package com.ray3k.stripe.scenecomposer;
 
-class ProtoDrawable {
+public class ProtoDrawable {
     public String name;
     
     public ProtoDrawable(String name) {

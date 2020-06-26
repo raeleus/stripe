@@ -25,7 +25,7 @@ package com.ray3k.stripe.scenecomposer;
 
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
-class ProtoImageTextButton extends ProtoActor {
+public class ProtoImageTextButton extends ProtoActor {
     public String name;
     public String text;
     public ProtoStyle style;

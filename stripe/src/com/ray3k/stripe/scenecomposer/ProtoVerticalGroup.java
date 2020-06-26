@@ -27,7 +27,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 
-class ProtoVerticalGroup extends ProtoActor implements SimMultipleChildren {
+public class ProtoVerticalGroup extends ProtoActor implements SimMultipleChildren {
     public String name;
     public int alignment = Align.center;
     public boolean expand;

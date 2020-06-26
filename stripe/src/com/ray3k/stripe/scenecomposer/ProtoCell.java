@@ -25,7 +25,7 @@ package com.ray3k.stripe.scenecomposer;
 
 import com.badlogic.gdx.utils.Align;
 
-class ProtoCell extends ProtoActor implements SimSingleChild {
+public class ProtoCell extends ProtoActor implements SimSingleChild {
     public ProtoActor child;
     public int row;
     public int column;

@@ -26,7 +26,7 @@ package com.ray3k.stripe.scenecomposer;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 
-class ProtoTextArea extends ProtoActor {
+public class ProtoTextArea extends ProtoActor {
     public String name;
     public ProtoStyle style;
     public String text;

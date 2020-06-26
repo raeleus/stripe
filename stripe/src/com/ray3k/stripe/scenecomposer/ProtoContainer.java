@@ -26,7 +26,7 @@ package com.ray3k.stripe.scenecomposer;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Align;
 
-class ProtoContainer extends ProtoActor implements SimSingleChild {
+public class ProtoContainer extends ProtoActor implements SimSingleChild {
     public String name;
     public int alignment = Align.center;
     public ProtoDrawable background;

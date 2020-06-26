@@ -23,6 +23,6 @@
  ******************************************************************************/
 package com.ray3k.stripe.scenecomposer;
 
-class ProtoActor {
+public class ProtoActor {
 
 }

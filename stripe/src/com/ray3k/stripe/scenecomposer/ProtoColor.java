@@ -23,7 +23,7 @@
  ******************************************************************************/
 package com.ray3k.stripe.scenecomposer;
 
-class ProtoColor {
+public class ProtoColor {
     public String name;
     
     public ProtoColor(String name) {
