@@ -47,9 +47,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.JsonWriter;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import regexodus.Matcher;
+import regexodus.Pattern;
 
 /**
  * A class used to generate Scene2D widgets exported to JSON by Scene Composer. Scene Composer is a module from Skin
@@ -164,16 +163,31 @@ public class SceneComposerStageBuilder {
     }
     
     private String convertEscapedCharacters(String string) {
-        string = string.replaceAll("(?<!\\\\)\\\\n", "\n")
-                .replace("(?<!\\\\)\\\\t", "\t")
-                .replace("(?<!\\\\)\\\\r", "\r");
-        String result = string;
-        Pattern pattern = Pattern.compile("(?<!\\\\)(\\\\u[\\d,a-f,A-F]{4})");
+        Pattern pattern = new Pattern("(?<!\\\\)\\\\n");
         Matcher matcher = pattern.matcher(string);
+        string = matcher.replaceAll("\n");
+
+        pattern = new Pattern("(?<!\\\\)\\\\t");
+        matcher = pattern.matcher(string);
+        string = matcher.replaceAll("\t");
+
+        pattern = new Pattern("(?<!\\\\)\\\\r");
+        matcher = pattern.matcher(string);
+        string = matcher.replaceAll("\r");
+
+        String result = string;
+
+        pattern = new Pattern("(?<!\\\\)(\\\\u[\\d,a-f,A-F]{4})");
+        matcher = pattern.matcher(result);
         while (matcher.find()) {
-            result = result.replaceFirst("(?<!\\\\)(\\\\u[\\d,a-f,A-F]{4})", new String(Character.toChars(Integer.parseInt(matcher.group().substring(2), 16))));
+            result = matcher.replaceFirst(new String(Character.toChars(Integer.parseInt(matcher.group().substring(2), 16))));
         }
-        return result.replace("\\\\", "\\");
+
+        pattern = new Pattern("\\\\");
+        matcher = pattern.matcher(result);
+        result = matcher.replaceAll("\\");
+        
+        return string;
     }
     
     private Actor createWidget(ProtoActor protoActor, Skin skin) {
