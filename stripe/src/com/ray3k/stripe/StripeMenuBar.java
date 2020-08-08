@@ -23,6 +23,7 @@ import com.ray3k.stripe.PopTable.PopTableStyle;
 
 public class StripeMenuBar extends Table implements StripeMenu {
     private final TextButtonStyle itemStyle;
+    private final TextButtonStyle menuStyle;
     private final TextButtonStyle submenuStyle;
     private final PopTableStyle popTableStyle;
     private final LabelStyle shortcutLabelStyle;
@@ -58,6 +59,19 @@ public class StripeMenuBar extends Table implements StripeMenu {
         itemStyle.downFontColor = style.itemDownFontColor;
         itemStyle.checkedFontColor = style.itemOpenFontColor;
         itemStyle.disabledFontColor = style.itemDisabledFontColor;
+    
+        menuStyle = new TextButtonStyle();
+        menuStyle.up = style.menuUp == null ? style.itemUp : style.menuUp;
+        menuStyle.down = style.menuDown == null ? style.itemDown : style.menuDown;
+        menuStyle.over = style.menuOver == null ? style.itemOver : style.menuOver;
+        menuStyle.checked = style.menuOpen;
+        menuStyle.disabled = style.menuDisabled;
+        menuStyle.font = style.itemFont;
+        menuStyle.fontColor = style.itemFontColor;
+        menuStyle.overFontColor = style.itemOverFontColor;
+        menuStyle.downFontColor = style.itemDownFontColor;
+        menuStyle.checkedFontColor = style.itemOpenFontColor;
+        menuStyle.disabledFontColor = style.itemDisabledFontColor;
         
         submenuStyle = new TextButtonStyle();
         submenuStyle.up = style.submenuUp == null ? style.itemUp : style.submenuUp;
@@ -122,7 +136,7 @@ public class StripeMenuBar extends Table implements StripeMenu {
     
     @Override
     public StripeMenu menu(String name, EventListener... listeners) {
-        StripeMenuValue returnValue = createMenu(name, this, stripeMenuValues, Align.bottomLeft, Align.bottomRight, true, itemStyle, listeners);
+        StripeMenuValue returnValue = createMenu(name, this, stripeMenuValues, Align.bottomLeft, Align.bottomRight, true, menuStyle, listeners);
         add(returnValue.textButton);
         return returnValue;
     }
@@ -489,7 +503,7 @@ public class StripeMenuBar extends Table implements StripeMenu {
     public static class StripeMenuBarStyle {
         public BitmapFont itemFont;
         /*Optional*/
-        public Drawable menuBar, submenuBackground, itemUp, itemOver, itemDown, itemOpen, itemDisabled, submenuUp, submenuOver, submenuDown, submenuOpen, submenuDisabled;
+        public Drawable menuBar, submenuBackground, itemUp, itemOver, itemDown, itemOpen, itemDisabled, menuUp,  menuOver, menuDown, menuOpen,  menuDisabled, submenuUp, submenuOver, submenuDown, submenuOpen, submenuDisabled;
         public BitmapFont shortcutFont;
         public Color itemFontColor, itemOverFontColor, itemDownFontColor, itemOpenFontColor, itemDisabledFontColor, shortcutFontColor, shortcutOverFontColor, shortcutDownFontColor, shortcutOpenFontColor, shortcutDisabledFontColor;
         public float shortcutSpace;
@@ -507,6 +521,11 @@ public class StripeMenuBar extends Table implements StripeMenu {
             itemDown = style.itemDown;
             itemOpen = style.itemOpen;
             itemDisabled = style.itemDisabled;
+            menuUp = style.menuUp;
+            menuOver = style.menuOver;
+            menuDown = style.menuDown;
+            menuOpen = style.menuOpen;
+            menuDisabled = style.menuDisabled;
             submenuUp = style.submenuUp;
             submenuOver = style.submenuOver;
             submenuDown = style.submenuDown;
