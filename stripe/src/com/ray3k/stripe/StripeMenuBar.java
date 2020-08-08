@@ -122,7 +122,7 @@ public class StripeMenuBar extends Table implements StripeMenu {
     
     @Override
     public StripeMenu menu(String name, EventListener... listeners) {
-        StripeMenuValue returnValue = createMenu(name, this, stripeMenuValues, Align.bottomLeft, Align.bottomRight, true, listeners);
+        StripeMenuValue returnValue = createMenu(name, this, stripeMenuValues, Align.bottomLeft, Align.bottomRight, true, itemStyle, listeners);
         add(returnValue.textButton);
         return returnValue;
     }
@@ -161,7 +161,7 @@ public class StripeMenuBar extends Table implements StripeMenu {
     
         @Override
         public StripeMenu menu(String name, EventListener... listeners) {
-            StripeMenu returnValue = createMenu(name, this, stripeMenuValues, Align.topRight, Align.bottomRight, false, listeners);
+            StripeMenu returnValue = createMenu(name, this, stripeMenuValues, Align.topRight, Align.bottomRight, false, submenuStyle, listeners);
             add(returnValue.getParentButton());
             row();
             return returnValue;
@@ -224,8 +224,8 @@ public class StripeMenuBar extends Table implements StripeMenu {
         }
     }
     
-    private StripeMenuValue createMenu(String name, StripeMenu parent, Array<StripeMenuValue> stripeMenuValues, int edge, int align, boolean modal, EventListener... listeners) {
-        TextButton textButton = new TextButton(name, itemStyle);
+    private StripeMenuValue createMenu(String name, StripeMenu parent, Array<StripeMenuValue> stripeMenuValues, int edge, int align, boolean modal, TextButtonStyle style,  EventListener... listeners) {
+        TextButton textButton = new TextButton(name, style);
         textButton.setProgrammaticChangeEvents(false);
         textButton.getLabel().setAlignment(Align.left);
     
