@@ -162,6 +162,16 @@ public class StripeMenuBar extends Table implements StripeMenu {
         return null;
     }
     
+    @Override
+    public void setDisabled(boolean disabled) {
+    
+    }
+    
+    @Override
+    public boolean isDisabled() {
+        return false;
+    }
+    
     public class StripeMenuValue extends PopTable implements StripeMenu {
         private StripeMenu parent;
         private TextButton textButton;
@@ -236,6 +246,16 @@ public class StripeMenuBar extends Table implements StripeMenu {
             }
             return null;
         }
+    
+        @Override
+        public void setDisabled(boolean disabled) {
+            parent.setDisabled(disabled);
+        }
+    
+        @Override
+        public boolean isDisabled() {
+            return parent.isDisabled();
+        }
     }
     
     private StripeMenuValue createMenu(String name, StripeMenu parent, Array<StripeMenuValue> stripeMenuValues, int edge, int align, boolean modal, TextButtonStyle style,  EventListener... listeners) {
@@ -253,7 +273,7 @@ public class StripeMenuBar extends Table implements StripeMenu {
         menu.textButton = textButton;
         stripeMenuValues.add(menu);
         
-        ItemHoverListener listener = new ItemHoverListener(menu, stripeMenuValues);
+        ItemHoverListener listener = new ItemHoverListener(textButton, menu, stripeMenuValues);
         listener.modal = modal;
         listener.clickMode = modal;
         textButton.addListener(listener);
@@ -278,7 +298,7 @@ public class StripeMenuBar extends Table implements StripeMenu {
             }
         });
         
-        textButton.addListener(new ItemHoverListener(null, stripeMenuValues));
+        textButton.addListener(new ItemHoverListener(textButton, null, stripeMenuValues));
         
         if (keyboardShortcut != null) {
             Label label = new Label(keyboardShortcut.name, shortcutLabelStyle) {
@@ -438,12 +458,14 @@ public class StripeMenuBar extends Table implements StripeMenu {
     }
     
     private class ItemHoverListener extends ClickListener {
+        private TextButton textButton;
         private final Array<StripeMenuValue> stripeMenuValues;
         private final StripeMenuValue stripeMenuValue;
         private boolean modal;
         private boolean clickMode;
     
-        public ItemHoverListener(StripeMenuValue stripeMenuValue, Array<StripeMenuValue> stripeMenuValues) {
+        public ItemHoverListener(TextButton textButton, StripeMenuValue stripeMenuValue, Array<StripeMenuValue> stripeMenuValues) {
+            this.textButton = textButton;
             this.stripeMenuValue = stripeMenuValue;
             this.stripeMenuValues = stripeMenuValues;
         }
@@ -490,7 +512,7 @@ public class StripeMenuBar extends Table implements StripeMenu {
         }
         
         private void show() {
-            if (stripeMenuValue != null && stripeMenuValue.isHidden()) {
+            if (!textButton.isDisabled() && stripeMenuValue != null && stripeMenuValue.isHidden()) {
                 if (modal) stage.addActor(modalGroup);
                 stripeMenuValue.show(stage);
                 stripeMenuValue.attachToActor();

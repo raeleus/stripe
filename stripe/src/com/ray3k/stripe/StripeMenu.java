@@ -15,4 +15,6 @@ public interface StripeMenu {
     TextButton findButton(String name);
     StripeMenu findMenu(String name);
     Cell findCell(String name);
+    void setDisabled(boolean disabled);
+    boolean isDisabled();
 }
