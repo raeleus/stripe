@@ -64,7 +64,7 @@ public class StripeMenuBar extends Table implements StripeMenu {
         menuStyle.up = style.menuUp == null ? style.itemUp : style.menuUp;
         menuStyle.down = style.menuDown == null ? style.itemDown : style.menuDown;
         menuStyle.over = style.menuOver == null ? style.itemOver : style.menuOver;
-        menuStyle.checked = style.menuOpen;
+        menuStyle.checked = style.menuOpen == null ? style.itemOpen : style.menuOpen;
         menuStyle.disabled = style.menuDisabled;
         menuStyle.font = style.itemFont;
         menuStyle.fontColor = style.itemFontColor;
@@ -77,7 +77,7 @@ public class StripeMenuBar extends Table implements StripeMenu {
         submenuStyle.up = style.submenuUp == null ? style.itemUp : style.submenuUp;
         submenuStyle.down = style.submenuDown == null ? style.itemDown : style.submenuDown;
         submenuStyle.over = style.submenuOver == null ? style.itemOver : style.submenuOver;
-        submenuStyle.checked = style.submenuOpen;
+        submenuStyle.checked = style.submenuOpen == null ? style.itemOpen : style.submenuOpen;
         submenuStyle.disabled = style.submenuDisabled;
         submenuStyle.font = style.itemFont;
         submenuStyle.fontColor = style.itemFontColor;
