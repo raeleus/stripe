@@ -17,4 +17,5 @@ public interface StripeMenu {
     Cell findCell(String name);
     void setDisabled(boolean disabled);
     boolean isDisabled();
+    void clear();
 }
