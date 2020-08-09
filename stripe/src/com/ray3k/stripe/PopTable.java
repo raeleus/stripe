@@ -36,10 +36,12 @@ public class PopTable extends Table {
     
     public PopTable(Skin skin) {
         this(skin.get(PopTableStyle.class));
+        setSkin(skin);
     }
     
     public PopTable(Skin skin, String style) {
         this(skin.get(style, PopTableStyle.class));
+        setSkin(skin);
     }
     
     public PopTable(PopTableStyle style) {
