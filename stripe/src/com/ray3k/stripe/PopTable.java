@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.utils.Array;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 
@@ -29,6 +30,7 @@ public class PopTable extends Table {
     private boolean modal;
     private boolean hidden;
     private final PopTableStyle style;
+    private Array<InputListener> keyInputListeners;
     
     public PopTable() {
         this(new PopTableStyle());
@@ -62,6 +64,8 @@ public class PopTable extends Table {
         setHideOnUnfocus(false);
         hidden = true;
         this.style = style;
+        
+        keyInputListeners = new Array<InputListener>();
     }
     
     private void alignToActorEdge(Actor actor, int edge, int alignment) {
@@ -170,12 +174,18 @@ public class PopTable extends Table {
             stage.removeCaptureListener(hideListener);
             group.addAction(sequence(action, Actions.removeActor()));
             fire(new TableHiddenEvent());
+            for (InputListener inputListener : keyInputListeners) {
+                stage.removeListener(inputListener);
+            }
         }
     }
     
     public void show(Stage stage) {
         Action action = sequence(alpha(0), fadeIn(.2f));
         this.show(stage, action);
+        for (InputListener inputListener : keyInputListeners) {
+            stage.addListener(inputListener);
+        }
     }
     
     public void show(Stage stage, Action action) {
@@ -359,5 +369,22 @@ public class PopTable extends Table {
             resizeWindowWithinStage();
         }
         super.layout();
+    }
+    
+    public PopTable key(final int key, final KeyListener keyListener) {
+        keyInputListeners.add(new InputListener() {
+            @Override
+            public boolean keyDown(InputEvent event, int keycode) {
+                if (keycode == key) {
+                    keyListener.keyed();
+                    return true;
+                } else return super.keyDown(event, keycode);
+            }
+        });
+        return this;
+    }
+    
+    public interface KeyListener {
+        void keyed();
     }
 }
