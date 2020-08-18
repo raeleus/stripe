@@ -79,12 +79,11 @@ public class PopTable extends Table {
             private void focusChanged (FocusEvent event) {
                 if (modal && stage != null && stage.getRoot().getChildren().size > 0
                         && stage.getRoot().getChildren().peek() == group) { // PopTable is top most actor.
-                    System.out.println("top most");
+
                     Actor newFocusedActor = event.getRelatedActor();
                     if (newFocusedActor != null && !newFocusedActor.isDescendantOf(PopTable.this)
                             && !(newFocusedActor.equals(previousKeyboardFocus) || newFocusedActor.equals(previousScrollFocus))) {
                         event.cancel();
-                        System.out.println("hit");
                     }
                 }
             }
