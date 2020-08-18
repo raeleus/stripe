@@ -4,11 +4,9 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.FocusListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 
@@ -31,6 +29,8 @@ public class PopTable extends Table {
     private boolean hidden;
     private final PopTableStyle style;
     private Array<InputListener> keyInputListeners;
+    Actor previousKeyboardFocus, previousScrollFocus;
+    private FocusListener focusListener;
     
     public PopTable() {
         this(new PopTableStyle());
@@ -66,6 +66,29 @@ public class PopTable extends Table {
         this.style = style;
         
         keyInputListeners = new Array<InputListener>();
+        
+        focusListener = new FocusListener() {
+            public void keyboardFocusChanged (FocusEvent event, Actor actor, boolean focused) {
+                if (!focused) focusChanged(event);
+            }
+    
+            public void scrollFocusChanged (FocusEvent event, Actor actor, boolean focused) {
+                if (!focused) focusChanged(event);
+            }
+    
+            private void focusChanged (FocusEvent event) {
+                if (modal && stage != null && stage.getRoot().getChildren().size > 0
+                        && stage.getRoot().getChildren().peek() == group) { // PopTable is top most actor.
+                    System.out.println("top most");
+                    Actor newFocusedActor = event.getRelatedActor();
+                    if (newFocusedActor != null && !newFocusedActor.isDescendantOf(PopTable.this)
+                            && !(newFocusedActor.equals(previousKeyboardFocus) || newFocusedActor.equals(previousScrollFocus))) {
+                        event.cancel();
+                        System.out.println("hit");
+                    }
+                }
+            }
+        };
     }
     
     private void alignToActorEdge(Actor actor, int edge, int alignment) {
@@ -177,6 +200,15 @@ public class PopTable extends Table {
             for (InputListener inputListener : keyInputListeners) {
                 stage.removeListener(inputListener);
             }
+            
+            stage.removeListener(focusListener);
+            if (previousKeyboardFocus != null && previousKeyboardFocus.getStage() == null) previousKeyboardFocus = null;
+            Actor actor = stage.getKeyboardFocus();
+            if (actor == null || actor.isDescendantOf(this)) stage.setKeyboardFocus(previousKeyboardFocus);
+    
+            if (previousScrollFocus != null && previousScrollFocus.getStage() == null) previousScrollFocus = null;
+            actor = stage.getScrollFocus();
+            if (actor == null || actor.isDescendantOf(this)) stage.setScrollFocus(previousScrollFocus);
         }
     }
     
@@ -210,6 +242,15 @@ public class PopTable extends Table {
         
         group.addAction(action);
         fire(new TableShownEvent());
+    
+        previousKeyboardFocus = null;
+        Actor actor = stage.getKeyboardFocus();
+        if (actor != null && !actor.isDescendantOf(this)) previousKeyboardFocus = actor;
+    
+        previousScrollFocus = null;
+        actor = stage.getScrollFocus();
+        if (actor != null && !actor.isDescendantOf(this)) previousScrollFocus = actor;
+        stage.addListener(focusListener);
     }
     
     private class HideListener extends InputListener {
