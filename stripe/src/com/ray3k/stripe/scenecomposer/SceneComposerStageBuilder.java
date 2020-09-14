@@ -43,10 +43,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad.TouchpadStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Tree.TreeStyle;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Json;
-import com.badlogic.gdx.utils.JsonValue;
-import com.badlogic.gdx.utils.JsonWriter;
+import com.badlogic.gdx.utils.*;
 import regexodus.Matcher;
 import regexodus.Pattern;
 
@@ -360,7 +357,23 @@ public class SceneComposerStageBuilder {
                 image.setName(protoImage.name);
                 image.setTouchable(protoImage.touchable);
                 image.setVisible(protoImage.visible);
-                image.setScaling(protoImage.scaling);
+                if (protoImage.scaling.equals("none")) {
+                    image.setScaling(Scaling.none);
+                } else if (protoImage.scaling.equals("fill")) {
+                    image.setScaling(Scaling.fill);
+                } else if (protoImage.scaling.equals("fillX")) {
+                    image.setScaling(Scaling.fillX);
+                } else if (protoImage.scaling.equals("fillY")) {
+                    image.setScaling(Scaling.fillY);
+                } else if (protoImage.scaling.equals("fit")) {
+                    image.setScaling(Scaling.fit);
+                } else if (protoImage.scaling.equals("stretch")) {
+                    image.setScaling(Scaling.stretch);
+                } else if (protoImage.scaling.equals("stretchX")) {
+                    image.setScaling(Scaling.stretchX);
+                } else if (protoImage.scaling.equals("stretchY")) {
+                    image.setScaling(Scaling.stretchY);
+                }
                 actor = image;
             }
         } else if (protoActor instanceof ProtoLabel) {

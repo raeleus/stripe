@@ -29,7 +29,7 @@ import com.badlogic.gdx.utils.Scaling;
 public class ProtoImage extends ProtoActor {
     public String name;
     public ProtoDrawable drawable;
-    public Scaling scaling = Scaling.stretch;
+    public String scaling = "stretch";
     public Touchable touchable = Touchable.enabled;
     public boolean visible = true;
 }
