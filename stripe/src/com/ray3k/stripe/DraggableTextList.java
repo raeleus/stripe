@@ -19,7 +19,7 @@ public class DraggableTextList extends DraggableList {
     private final ButtonGroup<TextButton> buttonGroup;
     
     public DraggableTextList(boolean vertical, Skin skin) {
-        this(vertical, skin, null);
+        this(vertical, skin, vertical ? "default-vertical" : "default-horizontal");
     }
     
     public DraggableTextList(boolean vertical, Skin skin, String style) {
