@@ -11,12 +11,15 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 
 public class DraggableTextList extends DraggableList {
-    private final DraggableTextListStyle style;
+    private DraggableTextListStyle style;
     private final TextButtonStyle textButtonStyle;
     private final TextButtonStyle dragButtonStyle;
     private final TextButtonStyle validButtonStyle;
     private final TextButtonStyle invalidButtonStyle;
     private final ButtonGroup<TextButton> buttonGroup;
+    private final Array<TextButton> dragButtons;
+    private final Array<TextButton> validButtons;
+    private final Array<TextButton> invalidButtons;
     
     public DraggableTextList(boolean vertical, Skin skin) {
         this(vertical, skin, vertical ? "default-vertical" : "default-horizontal");
@@ -59,15 +62,69 @@ public class DraggableTextList extends DraggableList {
         invalidButtonStyle.fontColor = style.invalidFontColor != null ? style.invalidFontColor : dragButtonStyle.fontColor;
         
         buttonGroup = new ButtonGroup<TextButton>();
+        dragButtons = new Array<TextButton>();
+        validButtons = new Array<TextButton>();
+        invalidButtons = new Array<TextButton>();
+    }
+    
+    @Override
+    public void setStyle(DraggableListStyle style) {
+        if (style == null) throw new NullPointerException("style cannot be null");
+        if (!(style instanceof DraggableTextListStyle)) throw new IllegalArgumentException("style must be a DraggableTextListStyle.");
+        super.setStyle(style);
+        this.style = (DraggableTextListStyle) style;
+    
+        textButtonStyle.font = this.style.font;
+        textButtonStyle.up = this.style.textBackgroundUp;
+        textButtonStyle.over = this.style.textBackgroundOver;
+        textButtonStyle.down = this.style.textBackgroundDown;
+        textButtonStyle.checked = this.style.textBackgroundChecked;
+        textButtonStyle.checkedOver = this.style.textBackgroundCheckedOver;
+        textButtonStyle.fontColor = this.style.fontColor;
+        textButtonStyle.overFontColor = this.style.overFontColor;
+        textButtonStyle.downFontColor = this.style.downFontColor;
+        textButtonStyle.checkedFontColor = this.style.checkedFontColor;
+        textButtonStyle.checkedOverFontColor = this.style.checkedOverFontColor;
+        for (TextButton textButton : buttonGroup.getButtons()) {
+            textButton.setStyle(textButtonStyle);
+        }
+    
+        dragButtonStyle.font = this.style.font;
+        dragButtonStyle.up = this.style.dragBackgroundUp != null ? this.style.dragBackgroundUp : this.style.textBackgroundUp;
+        dragButtonStyle.fontColor = this.style.dragFontColor != null ? this.style.dragFontColor : this.style.fontColor;
+        for (TextButton textButton : dragButtons) {
+            textButton.setStyle(dragButtonStyle);
+        }
+    
+        validButtonStyle.font = this.style.font;
+        validButtonStyle.up = this.style.validBackgroundUp != null ? this.style.validBackgroundUp : dragButtonStyle.up;
+        validButtonStyle.fontColor = this.style.validFontColor != null ? this.style.validFontColor : dragButtonStyle.fontColor;
+        for (TextButton textButton : validButtons) {
+            textButton.setStyle(invalidButtonStyle);
+        }
+    
+        invalidButtonStyle.font = this.style.font;
+        invalidButtonStyle.up = this.style.invalidBackgroundUp != null ? this.style.invalidBackgroundUp : dragButtonStyle.up;
+        invalidButtonStyle.fontColor = this.style.invalidFontColor != null ? this.style.invalidFontColor : dragButtonStyle.fontColor;
+        for (TextButton textButton : invalidButtons) {
+            textButton.setStyle(invalidButtonStyle);
+        }
     }
     
     public void addText(String text) {
         TextButton actor = new TextButton(text, textButtonStyle);
         actor.setProgrammaticChangeEvents(false);
         buttonGroup.add(actor);
+        
         TextButton dragActor = new TextButton(text, dragButtonStyle);
+        dragButtons.add(dragActor);
+        
         TextButton validDragActor = new TextButton(text, validButtonStyle);
+        validButtons.add(validDragActor);
+        
         TextButton invalidDragActor = new TextButton(text, invalidButtonStyle);
+        invalidButtons.add(invalidDragActor);
+        
         super.add(actor, dragActor, validDragActor, invalidDragActor);
     }
     
@@ -140,6 +197,9 @@ public class DraggableTextList extends DraggableList {
     public void clearChildren() {
         super.clearChildren();
         buttonGroup.clear();
+        dragButtons.clear();
+        validButtons.clear();
+        invalidButtons.clear();
     }
     
     @Override
