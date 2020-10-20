@@ -17,7 +17,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 
 public class DraggableList extends WidgetGroup {
-    private final DraggableListStyle style;
+    private DraggableListStyle style;
     private final Table table;
     protected Array<Actor> actors;
     private final ObjectMap<Actor, Actor> dragActors;
@@ -59,6 +59,20 @@ public class DraggableList extends WidgetGroup {
         addActor(table);
         
         actors = new Array<Actor>();
+    }
+    
+    public void setStyle(DraggableListStyle style) {
+        if (style == null) throw new NullPointerException("style cannot be null");
+        this.style = style;
+        
+        dividerStyle.up = style.dividerUp;
+        dividerStyle.over = style.dividerOver;
+        dividerStyle.checked = style.dividerOver;
+        for (Button divider : dividers) {
+            divider.setStyle(dividerStyle);
+        }
+    
+        table.setBackground(style.background);
     }
     
     public void add(Actor actor) {
