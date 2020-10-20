@@ -4,7 +4,10 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.FocusListener;
 import com.badlogic.gdx.utils.Align;
@@ -27,7 +30,7 @@ public class PopTable extends Table {
     private final HideListener hideListener;
     private boolean modal;
     private boolean hidden;
-    private final PopTableStyle style;
+    private PopTableStyle style;
     private Array<InputListener> keyInputListeners;
     Actor previousKeyboardFocus, previousScrollFocus;
     private FocusListener focusListener;
@@ -88,6 +91,13 @@ public class PopTable extends Table {
                 }
             }
         };
+    }
+    
+    public void setStyle(PopTableStyle style) {
+        if (style == null) throw new NullPointerException("style cannot be null");
+        this.style = style;
+        setBackground(style.background);
+        stageBackground.setDrawable(style.stageBackground);
     }
     
     private void alignToActorEdge(Actor actor, int edge, int alignment) {
