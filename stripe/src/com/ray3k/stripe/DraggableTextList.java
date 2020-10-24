@@ -3,6 +3,7 @@ package com.ray3k.stripe;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -20,6 +21,7 @@ public class DraggableTextList extends DraggableList {
     private final Array<TextButton> dragButtons;
     private final Array<TextButton> validButtons;
     private final Array<TextButton> invalidButtons;
+    private int alignment;
     
     public DraggableTextList(boolean vertical, Skin skin) {
         this(vertical, skin, vertical ? "default-vertical" : "default-horizontal");
@@ -114,6 +116,7 @@ public class DraggableTextList extends DraggableList {
     public void addText(String text) {
         TextButton actor = new TextButton(text, textButtonStyle);
         actor.setProgrammaticChangeEvents(false);
+        actor.getLabel().setAlignment(alignment);
         buttonGroup.add(actor);
         
         TextButton dragActor = new TextButton(text, dragButtonStyle);
@@ -208,6 +211,13 @@ public class DraggableTextList extends DraggableList {
         buttonGroup.clear();
         for (Actor actor : actors) {
             buttonGroup.add((TextButton) actor);
+        }
+    }
+    
+    public void setAlignment(int alignment) {
+        this.alignment = alignment;
+        for (TextButton button : buttonGroup.getButtons()) {
+            button.getLabel().setAlignment(alignment);
         }
     }
     
