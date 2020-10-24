@@ -31,6 +31,7 @@ public class DraggableList extends WidgetGroup {
     private final Array<Button> dividers;
     private final boolean vertical;
     private boolean draggable;
+    private boolean allowRemoval = true;
     
     public DraggableList(boolean vertical, Skin skin) {
         this(vertical, skin, vertical ? "default-vertical" : "default-horizontal");
@@ -186,7 +187,7 @@ public class DraggableList extends WidgetGroup {
                         divider.setVisible(false);
                     }
                     
-                    if (target == null) {
+                    if (allowRemoval && target == null) {
                         Actor payloadActor = (Actor) payload.getObject();
                         actors.removeValue(payloadActor, true);
                         updateTable();
@@ -361,6 +362,14 @@ public class DraggableList extends WidgetGroup {
     public void setDraggable(boolean draggable) {
         this.draggable = draggable;
         updateTable();
+    }
+    
+    public boolean isAllowRemoval() {
+        return allowRemoval;
+    }
+    
+    public void setAllowRemoval(boolean allowRemoval) {
+        this.allowRemoval = allowRemoval;
     }
     
     public DraggableListStyle getStyle() {
