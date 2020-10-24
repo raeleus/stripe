@@ -1,6 +1,8 @@
 package com.ray3k.stripe;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
@@ -8,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
@@ -79,7 +82,13 @@ public class DraggableList extends WidgetGroup {
         add(actor, null, null, null);
     }
     
-    public void add(Actor actor, Actor dragActor, Actor validDragActor, Actor invalidDragActor) {
+    public void add(final Actor actor, Actor dragActor, Actor validDragActor, Actor invalidDragActor) {
+        actor.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                fire(new DraggableListSelectedEvent(actor));
+            }
+        });
         actors.add(actor);
         dragActors.put(actor, dragActor);
         validDragActors.put(actor, validDragActor);
@@ -93,7 +102,13 @@ public class DraggableList extends WidgetGroup {
     
     public void addAll(Array<Actor> actors, Array<Actor> dragActors, Array<Actor> validDragActors, Array<Actor> invalidDragActors) {
         for (int i = 0; i < actors.size; i++) {
-            Actor actor = actors.get(i);
+            final Actor actor = actors.get(i);
+            actor.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    fire(new DraggableListSelectedEvent(actor));
+                }
+            });
             Actor dragActor = null;
             Actor validDragActor = null;
             Actor invalidDragActor = null;
@@ -133,7 +148,7 @@ public class DraggableList extends WidgetGroup {
         table.clearChildren();
         for (final Actor actor : actors) {
             if (vertical) table.row();
-            table.add(actor);
+            table.add(actor).growX();
             if (draggable) dragAndDrop.addSource(new Source(actor) {
                 @Override
                 public Payload dragStart(InputEvent event, float x, float y, int pointer) {
@@ -176,6 +191,7 @@ public class DraggableList extends WidgetGroup {
                         actors.removeValue(payloadActor, true);
                         updateTable();
                         fire(new ChangeEvent());
+                        fire(new DraggableListRemovedEvent(payloadActor));
                     }
                 }
             });
@@ -208,6 +224,7 @@ public class DraggableList extends WidgetGroup {
                     actors.insert(Math.min(newIndex, actors.size), payloadActor);
                     updateTable();
                     fire(new ChangeEvent());
+                    fire(new DraggableListReorderedEvent(payloadActor));
                 }
             });
         }
@@ -348,6 +365,50 @@ public class DraggableList extends WidgetGroup {
     
     public DraggableListStyle getStyle() {
         return style;
+    }
+    
+    public static class DraggableListRemovedEvent extends Event {
+        public Actor actor;
+    
+        public DraggableListRemovedEvent(Actor actor) {
+            this.actor = actor;
+        }
+    }
+    
+    public static class DraggableListReorderedEvent extends Event {
+        public Actor actor;
+    
+        public DraggableListReorderedEvent(Actor actor) {
+            this.actor = actor;
+        }
+    }
+    
+    public static class DraggableListSelectedEvent extends Event {
+        public Actor actor;
+    
+        public DraggableListSelectedEvent(Actor actor) {
+            this.actor = actor;
+        }
+    }
+    
+    public abstract static class DraggableListListener implements EventListener {
+        @Override
+        public boolean handle(Event event) {
+            if (event instanceof DraggableListRemovedEvent) {
+                removed(((DraggableListRemovedEvent) event).actor);
+                return true;
+            } else if (event instanceof DraggableListReorderedEvent) {
+                reordered(((DraggableListReorderedEvent) event).actor);
+                return true;
+            } else if (event instanceof DraggableListSelectedEvent) {
+                selected(((DraggableListSelectedEvent) event).actor);
+                return true;
+            } else return false;
+        }
+        
+        public abstract void removed(Actor actor);
+        public abstract void reordered(Actor actor);
+        public abstract void selected(Actor actor);
     }
     
     public static class DraggableListStyle {
