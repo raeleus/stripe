@@ -247,13 +247,15 @@ public class DraggableList extends WidgetGroup {
     
                 @Override
                 public void drop(Source source, Payload payload, float x, float y, int pointer) {
-                    int newIndex = index;
+                    int indexAfter = index;
                     Actor payloadActor = (Actor) payload.getObject();
-                    int currentIndex = actors.indexOf(payloadActor, true);
-                    if (currentIndex < newIndex) newIndex--;
+                    int indexBefore = actors.indexOf(payloadActor, true);
+                    if (indexBefore < indexAfter) indexAfter--;
                     actors.removeValue(payloadActor, true);
-                    actors.insert(Math.min(newIndex, actors.size), payloadActor);
+                    actors.insert(Math.min(indexAfter, actors.size), payloadActor);
                     updateTable();
+                    fire(new ChangeEvent());
+                    fire(new DraggableListReorderedEvent(payloadActor, indexBefore, indexAfter));
                 }
             });
         }
