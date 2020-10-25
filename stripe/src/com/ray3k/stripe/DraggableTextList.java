@@ -114,7 +114,7 @@ public class DraggableTextList extends DraggableList {
     }
     
     public void addText(String text) {
-        TextButton actor = new TextButton(text, textButtonStyle);
+        TextButton actor = new TextButton(text, new TextButtonStyle(textButtonStyle));
         actor.setProgrammaticChangeEvents(false);
         actor.getLabel().setAlignment(alignment);
         buttonGroup.add(actor);
@@ -265,6 +265,22 @@ public class DraggableTextList extends DraggableList {
             dragFontColor = style.dragFontColor;
             validFontColor = style.validFontColor;
             invalidFontColor = style.invalidFontColor;
+        }
+    }
+    
+    @Override
+    protected void dragStart() {
+        super.dragStart();
+        for (TextButton textButton : buttonGroup.getButtons()) {
+            textButton.getStyle().over = null;
+        }
+    }
+    
+    @Override
+    protected void dragStop() {
+        super.dragStop();
+        for (TextButton textButton : buttonGroup.getButtons()) {
+            textButton.getStyle().over = style.textBackgroundOver;
         }
     }
 }

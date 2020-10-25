@@ -169,6 +169,8 @@ public class DraggableList extends WidgetGroup {
                     payload.setValidDragActor(validDragActors.get(actor));
                     payload.setInvalidDragActor(invalidDragActors.get(actor));
                     payload.setObject(actor);
+    
+                    DraggableList.this.dragStart();
                     return payload;
                 }
     
@@ -194,6 +196,8 @@ public class DraggableList extends WidgetGroup {
                         fire(new ChangeEvent());
                         fire(new DraggableListRemovedEvent(payloadActor));
                     }
+    
+                    DraggableList.this.dragStop();
                 }
             });
             dragAndDrop.addTarget(new Target(actor) {
@@ -377,6 +381,14 @@ public class DraggableList extends WidgetGroup {
     
     public DraggableListStyle getStyle() {
         return style;
+    }
+    
+    protected void dragStart() {
+    
+    }
+    
+    protected void dragStop() {
+    
     }
     
     public static class DraggableListRemovedEvent extends Event {
