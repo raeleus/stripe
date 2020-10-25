@@ -2,6 +2,8 @@ package com.ray3k.stripe;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.RemoveActorAction;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -72,6 +74,12 @@ public class DraggableSelectBox extends TextButton {
         
         scrollPane = new ScrollPane(draggableTextList, style.scrollPaneStyle);
         scrollPaneCell = popTable.add(scrollPane).growX();
+    }
+    
+    @Override
+    protected void setStage(Stage stage) {
+        super.setStage(stage);
+        if (stage == null) popTable.hide();
     }
     
     @Override
