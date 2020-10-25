@@ -215,17 +215,18 @@ public class DraggableList extends WidgetGroup {
                 @Override
                 public void drop(Source source, Payload payload, float x, float y, int pointer) {
                     Actor payloadActor = (Actor) payload.getObject();
+                    int indexBefore = actors.indexOf(payloadActor, true);
                     actors.removeValue(payloadActor, true);
-                    int newIndex = actors.indexOf(getActor(), true);
+                    int indexAfter = actors.indexOf(getActor(), true);
                     if (vertical) {
-                        if (y < getActor().getHeight() / 2) newIndex++;
+                        if (y < getActor().getHeight() / 2) indexAfter++;
                     } else {
-                        if (x > getActor().getWidth() / 2) newIndex++;
+                        if (x > getActor().getWidth() / 2) indexAfter++;
                     }
-                    actors.insert(Math.min(newIndex, actors.size), payloadActor);
+                    actors.insert(Math.min(indexAfter, actors.size), payloadActor);
                     updateTable();
                     fire(new ChangeEvent());
-                    fire(new DraggableListReorderedEvent(payloadActor));
+                    fire(new DraggableListReorderedEvent(payloadActor, indexBefore, indexAfter));
                 }
             });
         }
@@ -386,9 +387,13 @@ public class DraggableList extends WidgetGroup {
     
     public static class DraggableListReorderedEvent extends Event {
         public Actor actor;
+        public int indexBefore;
+        public int indexAfter;
     
-        public DraggableListReorderedEvent(Actor actor) {
+        public DraggableListReorderedEvent(Actor actor, int indexBefore, int indexAfter) {
             this.actor = actor;
+            this.indexBefore = indexBefore;
+            this.indexAfter = indexAfter;
         }
     }
     
@@ -407,7 +412,8 @@ public class DraggableList extends WidgetGroup {
                 removed(((DraggableListRemovedEvent) event).actor);
                 return true;
             } else if (event instanceof DraggableListReorderedEvent) {
-                reordered(((DraggableListReorderedEvent) event).actor);
+                DraggableListReorderedEvent reorderedEvent = (DraggableListReorderedEvent) event;
+                reordered(reorderedEvent.actor, reorderedEvent.indexBefore, reorderedEvent.indexAfter);
                 return true;
             } else if (event instanceof DraggableListSelectedEvent) {
                 selected(((DraggableListSelectedEvent) event).actor);
@@ -416,7 +422,7 @@ public class DraggableList extends WidgetGroup {
         }
         
         public abstract void removed(Actor actor);
-        public abstract void reordered(Actor actor);
+        public abstract void reordered(Actor actor, int indexBefore, int indexAfter);
         public abstract void selected(Actor actor);
     }
     

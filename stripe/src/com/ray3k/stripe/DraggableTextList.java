@@ -185,11 +185,23 @@ public class DraggableTextList extends DraggableList {
     }
     
     public void setSelected(String text) {
-        buttonGroup.setChecked(text);
+        for (int i = 0; i < buttonGroup.getButtons().size; i++) {
+            TextButton textButton = buttonGroup.getButtons().get(i);
+            if (textButton.getText().equals(text)) {
+                textButton.setProgrammaticChangeEvents(true);
+                textButton.setChecked(true);
+                fire(new DraggableListSelectedEvent(textButton));
+                textButton.setProgrammaticChangeEvents(false);
+            }
+        }
     }
     
     public void setSelected(int index) {
-        buttonGroup.getButtons().get(index).setChecked(true);
+        TextButton textButton = buttonGroup.getButtons().get(index);
+        textButton.setProgrammaticChangeEvents(true);
+        textButton.setChecked(true);
+        textButton.setProgrammaticChangeEvents(false);
+        fire(new DraggableListSelectedEvent(textButton));
     }
     
     public ButtonGroup getButtonGroup() {
