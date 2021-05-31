@@ -212,31 +212,31 @@ public class RangeSlider extends WidgetGroup implements Disableable {
         float innerHeight = MathUtils.clamp(getHeight() - padBottom - padTop, 0, getHeight());
     
         if (!vertical) {
-            progressKnob.setX(padLeft + visualValueBegin / (maximum - minimum) * innerWidth);
+            progressKnob.setX(padLeft + (visualValueBegin - minimum) / (maximum - minimum) * innerWidth);
             progressKnob.setY(padBottom + MathUtils.round(innerHeight / 2f - progressKnob.getPrefHeight() / 2f));
             progressKnob.setWidth(padLeft + (visualValueEnd - visualValueBegin) / (maximum - minimum) * innerWidth);
             
-            knobBegin.setX(padLeft + visualValueBegin / (maximum - minimum) * innerWidth - knobBegin.getPrefWidth() / 2f);
+            knobBegin.setX(padLeft + (visualValueBegin - minimum) / (maximum - minimum) * innerWidth - knobBegin.getPrefWidth() / 2f);
             knobBegin.setY(padBottom + innerHeight / 2f - knobBegin.getPrefHeight() / 2f);
             if (lockToIntegerPositions) knobBegin.setPosition(MathUtils.round(knobBegin.getX()),
                     MathUtils.round(knobBegin.getY()));
         
-            knobEnd.setX(padLeft + visualValueEnd / (maximum - minimum) * innerWidth - knobEnd.getPrefWidth() / 2f);
+            knobEnd.setX(padLeft + (visualValueEnd - minimum) / (maximum - minimum) * innerWidth - knobEnd.getPrefWidth() / 2f);
             knobEnd.setY(padBottom + innerHeight / 2f - knobEnd.getPrefHeight() / 2f);
             if (lockToIntegerPositions) knobEnd.setPosition(MathUtils.round(knobEnd.getX()),
                     MathUtils.round(knobEnd.getY()));
         } else {
             progressKnob.setX(padLeft + innerWidth / 2f - progressKnob.getPrefWidth() / 2f);
-            progressKnob.setY(padBottom + visualValueBegin / (maximum - minimum) * innerHeight - knobBegin.getPrefHeight() / 2f);
+            progressKnob.setY(padBottom + (visualValueBegin - minimum) / (maximum - minimum) * innerHeight - knobBegin.getPrefHeight() / 2f);
             progressKnob.setHeight(padBottom + (visualValueEnd - visualValueBegin) * innerHeight);
             
             knobBegin.setX(padLeft + innerWidth / 2f - knobBegin.getPrefWidth() / 2f);
-            knobBegin.setY(padBottom + visualValueBegin / (maximum - minimum) * innerHeight - knobBegin.getPrefHeight() / 2f);
+            knobBegin.setY(padBottom + (visualValueBegin - minimum) / (maximum - minimum) * innerHeight - knobBegin.getPrefHeight() / 2f);
             if (lockToIntegerPositions) knobBegin.setPosition(MathUtils.round(knobBegin.getX()),
                     MathUtils.round(knobBegin.getY()));
         
             knobEnd.setX(padLeft + innerWidth / 2f - knobEnd.getPrefWidth() / 2f);
-            knobEnd.setY(padBottom + visualValueEnd / (maximum - minimum) * innerHeight - knobEnd.getPrefHeight() / 2f);
+            knobEnd.setY(padBottom + (visualValueEnd - minimum) / (maximum - minimum) * innerHeight - knobEnd.getPrefHeight() / 2f);
             if (lockToIntegerPositions) knobEnd.setPosition(MathUtils.round(knobEnd.getX()),
                     MathUtils.round(knobEnd.getY()));
         }
