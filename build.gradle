@@ -15,7 +15,7 @@ buildscript {
 allprojects {
 
     group = 'com.github.raeleus'
-    version = 'master-SNAPSHOT'
+    version = '0.0.2'
 
     ext {
         appName = "stripe"
