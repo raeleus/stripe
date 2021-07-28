@@ -131,3 +131,5 @@ Thumbs.db
 
 ## custom
 /design/
+/stripe/out/
+/test/out/
