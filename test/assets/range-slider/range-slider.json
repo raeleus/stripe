@@ -5,11 +5,11 @@
 	}
 },
 "com.badlogic.gdx.graphics.Color": {
-	"semi": {
-		"r": 1,
-		"g": 1,
-		"b": 1,
-		"a": 0.46333334
+	"pressed": {
+		"r": 0.61333334,
+		"g": 0.61333334,
+		"b": 0.61333334,
+		"a": 1
 	},
 	"white": {
 		"r": 1,
@@ -26,10 +26,10 @@
 		"tiling": false,
 		"minWidth": 31,
 		"minHeight": 24,
-		"rightWidth": 0,
-		"leftWidth": 0,
-		"bottomHeight": 0,
-		"topHeight": 0,
+		"rightWidth": 7,
+		"leftWidth": 5,
+		"bottomHeight": 10,
+		"topHeight": 8,
 		"offsetX": 0,
 		"offsetY": 0,
 		"offsetXspeed": 0,
@@ -45,10 +45,10 @@
 		"tiling": false,
 		"minWidth": 31,
 		"minHeight": 24,
-		"rightWidth": 0,
-		"leftWidth": 0,
-		"bottomHeight": 0,
-		"topHeight": 0,
+		"rightWidth": 7,
+		"leftWidth": 5,
+		"bottomHeight": 10,
+		"topHeight": 8,
 		"offsetX": 0,
 		"offsetY": 0,
 		"offsetXspeed": 0,
@@ -57,9 +57,9 @@
 		"regions": [],
 		"playMode": 2
 	},
-	"range-slider-knob-semi": {
+	"range-slider-knob-pressed": {
 		"region": "range-slider-knob",
-		"color": "semi",
+		"color": "pressed",
 		"horizontalStretchAreas": [ 0, 25 ],
 		"verticalStretchAreas": [ 0, 25 ],
 		"tiling": false,
