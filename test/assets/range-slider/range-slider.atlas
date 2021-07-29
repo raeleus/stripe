@@ -1,0 +1,69 @@
+
+range-slider.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+range-slider-bg
+  rotate: false
+  xy: 1, 412
+  size: 31, 24
+  orig: 31, 24
+  offset: 0, 0
+  index: -1
+range-slider-bg-disabled
+  rotate: false
+  xy: 1, 386
+  size: 31, 24
+  orig: 31, 24
+  offset: 0, 0
+  index: -1
+range-slider-knob
+  rotate: false
+  xy: 34, 410
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+range-slider-knob-disabled
+  rotate: false
+  xy: 1, 358
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+range-slider-knob-over
+  rotate: false
+  xy: 62, 410
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+range-slider-knob-over-disabled
+  rotate: false
+  xy: 1, 330
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+range-slider-progress
+  rotate: false
+  xy: 508, 501
+  size: 1, 6
+  orig: 1, 6
+  offset: 0, 0
+  index: -1
+range-slider-progress-disabled
+  rotate: false
+  xy: 34, 402
+  size: 1, 6
+  orig: 1, 6
+  offset: 0, 0
+  index: -1
+scriptius32
+  rotate: false
+  xy: 1, 438
+  size: 505, 69
+  orig: 505, 69
+  offset: 0, 0
+  index: -1
