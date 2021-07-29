@@ -15,7 +15,7 @@ buildscript {
 allprojects {
 
     group = 'com.github.raeleus'
-    version = '0.0.2'
+    version = '0.0.3'
 
     ext {
         appName = "stripe"
@@ -33,6 +33,7 @@ allprojects {
         google()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -70,5 +71,6 @@ project(":test") {
         implementation project(":stripe")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        api 'com.github.raeleus.TenPatch:tenpatch:5.2.0'
     }
 }
