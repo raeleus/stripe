@@ -107,9 +107,9 @@ public class RangeSlider extends WidgetGroup implements Disableable {
                     background.screenToLocalCoordinates(temp);
     
                     if (!vertical) {
-                        valueBegin = MathUtils.clamp((temp.x - padLeft) / innerWidth * (maximum - minimum), minimum, valueEnd);
+                        valueBegin = MathUtils.clamp((temp.x - padLeft) / innerWidth * (maximum - minimum) + minimum, minimum, valueEnd);
                     } else {
-                        valueBegin = MathUtils.clamp((temp.y - padBottom) / innerHeight * (maximum - minimum), minimum, valueEnd);
+                        valueBegin = MathUtils.clamp((temp.y - padBottom) / innerHeight * (maximum - minimum) + minimum, minimum, valueEnd);
                     }
                     valueBegin = snap(valueBegin, increment);
                     visualValueBegin = valueBegin;
@@ -170,9 +170,9 @@ public class RangeSlider extends WidgetGroup implements Disableable {
                     background.screenToLocalCoordinates(temp);
     
                     if (!vertical) {
-                        valueEnd = MathUtils.clamp((temp.x - padLeft) / innerWidth * (maximum - minimum), valueBegin, maximum);
+                        valueEnd = MathUtils.clamp((temp.x - padLeft) / innerWidth * (maximum - minimum) + minimum, valueBegin, maximum);
                     } else {
-                        valueEnd = MathUtils.clamp((temp.y - padBottom) / innerHeight * (maximum - minimum), valueBegin, maximum);
+                        valueEnd = MathUtils.clamp((temp.y - padBottom) / innerHeight * (maximum - minimum) + minimum, valueBegin, maximum);
                     }
                     valueEnd = snap(valueEnd, increment);
                     visualValueEnd = valueEnd;
