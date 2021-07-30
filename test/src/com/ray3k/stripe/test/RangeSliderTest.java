@@ -35,6 +35,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.stripe.RangeSlider;
 import com.ray3k.stripe.RangeSlider.RangeSliderStyle;
@@ -55,18 +56,21 @@ public class RangeSliderTest extends ApplicationAdapter {
     
         Table root = new Table();
         root.setFillParent(true);
+        root.pad(50);
         stage.addActor(root);
     
         RangeSliderStyle style = new RangeSliderStyle();
-        style.background = skin.getDrawable("range-slider-bg-10");
-        style.backgroundDisabled = skin.getDrawable("range-slider-bg-disabled-10");
-        style.knobBeginUp = skin.getDrawable("range-slider-knob-semi");
+        style.background = skin.getDrawable("range-slider-bg");
+        style.backgroundDisabled = skin.getDrawable("range-slider-bg-disabled");
+        style.knobBeginUp = skin.getDrawable("range-slider-knob");
         style.knobBeginOver = skin.getDrawable("range-slider-knob-over");
+        style.knobBeginDown = skin.getDrawable("range-slider-knob-down");
         style.knobBeginDisabled = skin.getDrawable("range-slider-knob-disabled");
         style.progressKnob = skin.getDrawable("range-slider-progress");
         style.progressKnobDisabled = skin.getDrawable("range-slider-progress-disabled");
-        style.knobEndUp = skin.getDrawable("range-slider-knob-semi");
+        style.knobEndUp = skin.getDrawable("range-slider-knob");
         style.knobEndOver = skin.getDrawable("range-slider-knob-over");
+        style.knobEndDown = skin.getDrawable("range-slider-knob-down");
         style.knobEndDisabled = skin.getDrawable("range-slider-knob-disabled");
     
         final RangeSlider rangeSlider = new RangeSlider(style);
@@ -82,10 +86,12 @@ public class RangeSliderTest extends ApplicationAdapter {
         
         table.defaults().expand();
         final Label minimumLabel = new Label("", skin);
-        table.add(minimumLabel);
+        minimumLabel.setAlignment(Align.center);
+        table.add(minimumLabel).width(200);
         
         final Label maximumLabel = new Label("", skin);
-        table.add(maximumLabel);
+        maximumLabel.setAlignment(Align.center);
+        table.add(maximumLabel).width(200);
         rangeSlider.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -102,7 +108,7 @@ public class RangeSliderTest extends ApplicationAdapter {
     
     @Override
     public void render() {
-        Gdx.gl.glClearColor(.5f, .5f, .5f, 1);
+        Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
         stage.act();
