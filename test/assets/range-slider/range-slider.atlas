@@ -6,58 +6,62 @@ filter: Linear, Linear
 repeat: none
 range-slider-bg
   rotate: false
-  xy: 1, 412
-  size: 31, 24
-  orig: 31, 24
+  xy: 50, 383
+  size: 35, 15
+  split: 7, 7, 6, 6
+  pad: 1, 1, 0, 0
+  orig: 35, 15
   offset: 0, 0
   index: -1
 range-slider-bg-disabled
   rotate: false
-  xy: 1, 386
-  size: 31, 24
-  orig: 31, 24
+  xy: 99, 421
+  size: 35, 15
+  split: 7, 7, 6, 6
+  pad: 1, 1, 0, 0
+  orig: 35, 15
   offset: 0, 0
   index: -1
 range-slider-knob
   rotate: false
-  xy: 34, 410
-  size: 26, 26
-  orig: 26, 26
+  xy: 1, 400
+  size: 47, 36
+  orig: 47, 36
   offset: 0, 0
   index: -1
 range-slider-knob-disabled
   rotate: false
-  xy: 1, 358
-  size: 26, 26
-  orig: 26, 26
+  xy: 1, 362
+  size: 47, 36
+  orig: 47, 36
+  offset: 0, 0
+  index: -1
+range-slider-knob-down
+  rotate: false
+  xy: 1, 324
+  size: 47, 36
+  orig: 47, 36
   offset: 0, 0
   index: -1
 range-slider-knob-over
   rotate: false
-  xy: 62, 410
-  size: 26, 26
-  orig: 26, 26
-  offset: 0, 0
-  index: -1
-range-slider-knob-over-disabled
-  rotate: false
-  xy: 1, 330
-  size: 26, 26
-  orig: 26, 26
+  xy: 50, 400
+  size: 47, 36
+  orig: 47, 36
   offset: 0, 0
   index: -1
 range-slider-progress
   rotate: false
-  xy: 508, 501
-  size: 1, 6
-  orig: 1, 6
+  xy: 508, 492
+  size: 1, 15
+  orig: 1, 15
   offset: 0, 0
   index: -1
 range-slider-progress-disabled
   rotate: false
-  xy: 34, 402
-  size: 1, 6
-  orig: 1, 6
+  xy: 1, 307
+  size: 1, 15
+  orig: 1, 15
   offset: 0, 0
   index: -1
 scriptius32

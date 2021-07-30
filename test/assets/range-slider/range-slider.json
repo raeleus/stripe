@@ -18,66 +18,6 @@
 		"a": 1
 	}
 },
-"com.ray3k.tenpatch.TenPatchDrawable": {
-	"range-slider-bg-10": {
-		"region": "range-slider-bg",
-		"horizontalStretchAreas": [ 6, 23 ],
-		"verticalStretchAreas": [ 0, 23 ],
-		"tiling": false,
-		"minWidth": 31,
-		"minHeight": 24,
-		"rightWidth": 7,
-		"leftWidth": 5,
-		"bottomHeight": 10,
-		"topHeight": 8,
-		"offsetX": 0,
-		"offsetY": 0,
-		"offsetXspeed": 0,
-		"offsetYspeed": 0,
-		"frameDuration": 0.03,
-		"regions": [],
-		"playMode": 2
-	},
-	"range-slider-bg-disabled-10": {
-		"region": "range-slider-bg-disabled",
-		"horizontalStretchAreas": [ 6, 23 ],
-		"verticalStretchAreas": [ 0, 23 ],
-		"tiling": false,
-		"minWidth": 31,
-		"minHeight": 24,
-		"rightWidth": 7,
-		"leftWidth": 5,
-		"bottomHeight": 10,
-		"topHeight": 8,
-		"offsetX": 0,
-		"offsetY": 0,
-		"offsetXspeed": 0,
-		"offsetYspeed": 0,
-		"frameDuration": 0.03,
-		"regions": [],
-		"playMode": 2
-	},
-	"range-slider-knob-pressed": {
-		"region": "range-slider-knob",
-		"color": "pressed",
-		"horizontalStretchAreas": [ 0, 25 ],
-		"verticalStretchAreas": [ 0, 25 ],
-		"tiling": false,
-		"minWidth": 26,
-		"minHeight": 26,
-		"rightWidth": 0,
-		"leftWidth": 0,
-		"bottomHeight": 0,
-		"topHeight": 0,
-		"offsetX": 0,
-		"offsetY": 0,
-		"offsetXspeed": 0,
-		"offsetYspeed": 0,
-		"frameDuration": 0.03,
-		"regions": [],
-		"playMode": 2
-	}
-},
 "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
 	"default": {
 		"font": "scriptius32"

@@ -58,17 +58,17 @@ public class RangeSliderTest extends ApplicationAdapter {
         stage.addActor(root);
     
         RangeSliderStyle style = new RangeSliderStyle();
-        style.background = skin.getDrawable("range-slider-bg-10");
-        style.backgroundDisabled = skin.getDrawable("range-slider-bg-disabled-10");
+        style.background = skin.getDrawable("range-slider-bg");
+        style.backgroundDisabled = skin.getDrawable("range-slider-bg-disabled");
         style.knobBeginUp = skin.getDrawable("range-slider-knob");
         style.knobBeginOver = skin.getDrawable("range-slider-knob-over");
-        style.knobBeginDown = skin.getDrawable("range-slider-knob-pressed");
+        style.knobBeginDown = skin.getDrawable("range-slider-knob-down");
         style.knobBeginDisabled = skin.getDrawable("range-slider-knob-disabled");
         style.progressKnob = skin.getDrawable("range-slider-progress");
         style.progressKnobDisabled = skin.getDrawable("range-slider-progress-disabled");
         style.knobEndUp = skin.getDrawable("range-slider-knob");
         style.knobEndOver = skin.getDrawable("range-slider-knob-over");
-        style.knobEndDown = skin.getDrawable("range-slider-knob-pressed");
+        style.knobEndDown = skin.getDrawable("range-slider-knob-down");
         style.knobEndDisabled = skin.getDrawable("range-slider-knob-disabled");
     
         final RangeSlider rangeSlider = new RangeSlider(style);
