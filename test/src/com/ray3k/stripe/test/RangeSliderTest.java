@@ -35,6 +35,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.stripe.RangeSlider;
 import com.ray3k.stripe.RangeSlider.RangeSliderStyle;
@@ -55,6 +56,7 @@ public class RangeSliderTest extends ApplicationAdapter {
     
         Table root = new Table();
         root.setFillParent(true);
+        root.pad(50);
         stage.addActor(root);
     
         RangeSliderStyle style = new RangeSliderStyle();
@@ -84,10 +86,12 @@ public class RangeSliderTest extends ApplicationAdapter {
         
         table.defaults().expand();
         final Label minimumLabel = new Label("", skin);
-        table.add(minimumLabel);
+        minimumLabel.setAlignment(Align.center);
+        table.add(minimumLabel).width(200);
         
         final Label maximumLabel = new Label("", skin);
-        table.add(maximumLabel);
+        maximumLabel.setAlignment(Align.center);
+        table.add(maximumLabel).width(200);
         rangeSlider.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
