@@ -11,6 +11,12 @@
 		"b": 0.61333334,
 		"a": 1
 	},
+	"teal": {
+		"r": 0,
+		"g": 0.61960787,
+		"b": 0.6666667,
+		"a": 1
+	},
 	"white": {
 		"r": 1,
 		"g": 1,
@@ -20,7 +26,8 @@
 },
 "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
 	"default": {
-		"font": "scriptius32"
+		"font": "scriptius32",
+		"fontColor": "teal"
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {

@@ -108,7 +108,7 @@ public class RangeSliderTest extends ApplicationAdapter {
     
     @Override
     public void render() {
-        Gdx.gl.glClearColor(.5f, .5f, .5f, 1);
+        Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
         stage.act();
