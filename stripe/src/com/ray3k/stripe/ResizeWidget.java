@@ -40,7 +40,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 
 /**
- * @author Raymond
+ *
  */
 public class ResizeWidget extends Table {
     private ResizeWidgetStyle style;
@@ -51,6 +51,7 @@ public class ResizeWidget extends Table {
     private Image foreground;
     private float minWidth;
     private float minHeight;
+    private boolean allowDragging = true;
     
     public ResizeWidget(Actor actor, Skin skin) {
         this(actor, skin, "default");
@@ -655,6 +656,26 @@ public class ResizeWidget extends Table {
         if (leftHandle != null) leftHandle.setColor(1, 1, 1, 0);
         if (foreground != null) foreground.setColor(1, 1, 1, 0);
         
+        stack.addListener(new DragListener() {
+            float xStart;
+            float yStart;
+            boolean preventDrag;
+    
+            @Override
+            public void dragStart(InputEvent event, float x, float y, int pointer) {
+                xStart = x;
+                yStart = y;
+                preventDrag = !event.getTarget().equals(stack);
+            }
+    
+            @Override
+            public void drag(InputEvent event, float x, float y, int pointer) {
+                float xPos = stack.getX() + x - xStart;
+                float yPos = stack.getY() + y - yStart;
+    
+                if (!preventDrag && allowDragging) stack.setPosition(MathUtils.round(xPos), MathUtils.round(yPos));
+            }
+        });
         stack.addListener(new ClickListener() {
             @Override
             public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
