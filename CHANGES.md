@@ -1,3 +1,7 @@
+### 0.1.0
+* Added ViewportWidget
+* Added ResizeWidget
+
 ### 0.0.3
 * Fixed function of RangeSlider when using a minimum other than 0. 
 
