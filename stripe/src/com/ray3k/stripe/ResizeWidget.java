@@ -42,7 +42,7 @@ import com.badlogic.gdx.utils.Scaling;
 /**
  *
  */
-public class ResizeWidget extends Table {
+public class ResizeWidget extends WidgetGroup {
     private ResizeWidgetStyle style;
     private Button topLeftHandle, topHandle, topRightHandle, rightHandle, bottomRightHandle, bottomHandle, bottomLeftHandle, leftHandle;
     private Actor actor;
