@@ -32,7 +32,7 @@ public class ViewportWidgetTest extends ApplicationAdapter {
         ViewportWidget viewportWidget = new ViewportWidget(gameViewport);
         
         ResizeWidget resizeWidget = new ResizeWidget(viewportWidget, skin, "default");
-        resizeWidget.setResizeFromCenter(true);
+        resizeWidget.setResizingFromCenter(true);
         resizeWidget.setMinWidth(100);
         resizeWidget.setMinHeight(100);
         resizeWidget.setFillParent(true);

@@ -40,19 +40,21 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
 
 /**
- *
+ * This widget allows the user to free transform of a single child by providing resize handles and allowing dragging.
+ * The size and position of the child is restricted to the bounds of the ResizeWidget, so ensure that you set a
+ * sufficient size ahead of time.
  */
 public class ResizeWidget extends WidgetGroup {
     private ResizeWidgetStyle style;
     private Button topLeftHandle, topHandle, topRightHandle, rightHandle, bottomRightHandle, bottomHandle, bottomLeftHandle, leftHandle;
     private Actor actor;
-    private boolean resizeFromCenter;
     private Stack stack;
     private Image foreground;
     private float minWidth;
     private float minHeight;
-    private boolean allowDragging = true;
     private boolean preventDrag;
+    public boolean resizingFromCenter;
+    public boolean allowDragging = true;
     
     public ResizeWidget(Actor actor, Skin skin) {
         this(actor, skin, "default");
@@ -64,7 +66,7 @@ public class ResizeWidget extends WidgetGroup {
     
     public ResizeWidget(Actor actor, ResizeWidgetStyle style) {
         setTouchable(Touchable.enabled);
-        resizeFromCenter = false;
+        resizingFromCenter = false;
         this.actor = actor;
         
         if (style != null) {
@@ -115,7 +117,7 @@ public class ResizeWidget extends WidgetGroup {
                     float xPos = x - startX + stack.getX();
                     float yPos = stack.getY();
                     
-                    if (resizeFromCenter) {
+                    if (resizingFromCenter) {
                         width += startX - x;
                         height += y - startY;
                         
@@ -125,7 +127,7 @@ public class ResizeWidget extends WidgetGroup {
                     if (width < getMinWidth()) {
                         width = getMinWidth();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             xPos = stack.getX() + (stack.getWidth() - getMinWidth()) / 2.0f;
                         } else {
                             xPos = stack.getX() + stack.getWidth() - getMinWidth();
@@ -135,7 +137,7 @@ public class ResizeWidget extends WidgetGroup {
                     if (height < getMinHeight()) {
                         height = getMinHeight();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             yPos = stack.getY() + (stack.getHeight() - getMinHeight()) / 2.0f;
                         }
                     }
@@ -199,7 +201,7 @@ public class ResizeWidget extends WidgetGroup {
                     float xPos = stack.getX();
                     float yPos = stack.getY();
                     
-                    if (resizeFromCenter) {
+                    if (resizingFromCenter) {
                         width += x - startX;
                         height += y - startY;
                         
@@ -210,7 +212,7 @@ public class ResizeWidget extends WidgetGroup {
                     if (width < getMinWidth()) {
                         width = getMinWidth();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             xPos = stack.getX() + (stack.getWidth() - getMinWidth()) / 2.0f;
                         }
                     }
@@ -218,7 +220,7 @@ public class ResizeWidget extends WidgetGroup {
                     if (height < getMinHeight()) {
                         height = getMinHeight();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             yPos = stack.getY() + (stack.getHeight() - getMinHeight()) / 2.0f;
                         }
                     }
@@ -282,7 +284,7 @@ public class ResizeWidget extends WidgetGroup {
                     float xPos = stack.getX();
                     float yPos = y - startY + stack.getY();
                     
-                    if (resizeFromCenter) {
+                    if (resizingFromCenter) {
                         width += x - startX;
                         height += startY - y;
                         
@@ -292,7 +294,7 @@ public class ResizeWidget extends WidgetGroup {
                     if (width < getMinWidth()) {
                         width = getMinWidth();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             xPos = stack.getX() + (stack.getWidth() - getMinWidth()) / 2.0f;
                         }
                     }
@@ -300,7 +302,7 @@ public class ResizeWidget extends WidgetGroup {
                     if (height < getMinHeight()) {
                         height = getMinHeight();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             yPos = stack.getY() + (stack.getHeight() - getMinHeight()) / 2.0f;
                         } else {
                             yPos = stack.getY() + stack.getHeight() - getMinHeight();
@@ -366,7 +368,7 @@ public class ResizeWidget extends WidgetGroup {
                     float xPos = x - startX + stack.getX();
                     float yPos = y - startY + stack.getY();
                     
-                    if (resizeFromCenter) {
+                    if (resizingFromCenter) {
                         width += startX - x;
                         height += startY - y;
                     }
@@ -374,7 +376,7 @@ public class ResizeWidget extends WidgetGroup {
                     if (width < getMinWidth()) {
                         width = getMinWidth();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             xPos = stack.getX() + (stack.getWidth() - getMinWidth()) / 2.0f;
                         } else {
                             xPos = stack.getX() + stack.getWidth() - getMinWidth();
@@ -384,7 +386,7 @@ public class ResizeWidget extends WidgetGroup {
                     if (height < getMinHeight()) {
                         height = getMinHeight();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             yPos = stack.getY() + (stack.getHeight() - getMinHeight()) / 2.0f;
                         } else {
                             yPos = stack.getY() + stack.getHeight() - getMinHeight();
@@ -454,19 +456,19 @@ public class ResizeWidget extends WidgetGroup {
                 @Override
                 public void drag(InputEvent event, float x, float y, int pointer) {
                     float height = y - startY + stack.getHeight();
-                    if (resizeFromCenter) {
+                    if (resizingFromCenter) {
                         height += y - startY;
                     }
                     
                     float yPos = stack.getY();
-                    if (resizeFromCenter) {
+                    if (resizingFromCenter) {
                         yPos -= y - startY;
                     }
                     
                     if (height < getMinHeight()) {
                         height = getMinHeight();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             yPos = stack.getY() + (stack.getHeight() - getMinHeight()) / 2.0f;
                         }
                     }
@@ -519,18 +521,18 @@ public class ResizeWidget extends WidgetGroup {
                 @Override
                 public void drag(InputEvent event, float x, float y, int pointer) {
                     float width = x - startX + stack.getWidth();
-                    if (resizeFromCenter) {
+                    if (resizingFromCenter) {
                         width += x - startX;
                     }
                     float xPos = stack.getX();
-                    if (resizeFromCenter) {
+                    if (resizingFromCenter) {
                         xPos -= x - startX;
                     }
                     
                     if (width < getMinWidth()) {
                         width = getMinWidth();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             xPos = stack.getX() + (stack.getWidth() - getMinWidth()) / 2.0f;
                         }
                     }
@@ -583,7 +585,7 @@ public class ResizeWidget extends WidgetGroup {
                 @Override
                 public void drag(InputEvent event, float x, float y, int pointer) {
                     float height = startY - y + stack.getHeight();
-                    if (resizeFromCenter) {
+                    if (resizingFromCenter) {
                         height += startY - y;
                     }
                     
@@ -592,7 +594,7 @@ public class ResizeWidget extends WidgetGroup {
                     if (height < getMinHeight()) {
                         height = getMinHeight();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             yPos = stack.getY() + (stack.getHeight() - getMinHeight()) / 2.0f;
                         } else {
                             yPos = stack.getY() + stack.getHeight() - getMinHeight();
@@ -647,7 +649,7 @@ public class ResizeWidget extends WidgetGroup {
                 @Override
                 public void drag(InputEvent event, float x, float y, int pointer) {
                     float width = startX - x + stack.getWidth();
-                    if (resizeFromCenter) {
+                    if (resizingFromCenter) {
                         width += startX - x;
                     }
                     
@@ -656,7 +658,7 @@ public class ResizeWidget extends WidgetGroup {
                     if (width < getMinWidth()) {
                         width = getMinWidth();
                         
-                        if (resizeFromCenter) {
+                        if (resizingFromCenter) {
                             xPos = stack.getX() + (stack.getWidth() - getMinWidth()) / 2.0f;
                         } else {
                             xPos = stack.getX() + stack.getWidth() - getMinWidth();
@@ -938,9 +940,6 @@ public class ResizeWidget extends WidgetGroup {
         return leftHandle;
     }
     
-    public boolean isResizeFromCenter() {
-        return resizeFromCenter;
-    }
     
     public Stack getStack() {
         return stack;
@@ -950,7 +949,39 @@ public class ResizeWidget extends WidgetGroup {
         return foreground;
     }
     
-    public void setResizeFromCenter(boolean resizeFromCenter) {
-        this.resizeFromCenter = resizeFromCenter;
+    /**
+     * When the user scales the child using the provided resize handles, this setting controls whether the scaling will
+     * be from the edge or the center (maintaining the center position in the stage).
+     * @return
+     */
+    public boolean isResizingFromCenter() {
+        return resizingFromCenter;
+    }
+    
+    /**
+     * When the user scales the child using the provided resize handles, this setting controls whether the scaling will
+     * be from the edge or the center (maintaining the center position in the stage).
+     * @param resizingFromCenter
+     */
+    public void setResizingFromCenter(boolean resizingFromCenter) {
+        this.resizingFromCenter = resizingFromCenter;
+    }
+    
+    /**
+     * This setting controls if the user is allowed to drag the position of the child by initiating a click and drag
+     * from inside the child's bounds.
+     * @return
+     */
+    public boolean isAllowDragging() {
+        return allowDragging;
+    }
+    
+    /**
+     * This setting controls if the user is allowed to drag the position of the child by initiating a click and drag
+     * from inside the child's bounds.
+     * @param allowDragging
+     */
+    public void setAllowDragging(boolean allowDragging) {
+        this.allowDragging = allowDragging;
     }
 }
