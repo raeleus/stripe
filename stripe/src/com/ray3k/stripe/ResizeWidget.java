@@ -672,10 +672,14 @@ public class ResizeWidget extends WidgetGroup {
             public void drag(InputEvent event, float x, float y, int pointer) {
                 float xPos = stack.getX() + x - xStart;
                 float yPos = stack.getY() + y - yStart;
+                
+                xPos = MathUtils.clamp(xPos, 0, getWidth() - stack.getWidth());
+                yPos = MathUtils.clamp(yPos, 0, getHeight() - stack.getHeight());
     
                 if (!preventDrag && allowDragging) stack.setPosition(MathUtils.round(xPos), MathUtils.round(yPos));
             }
         });
+        
         stack.addListener(new ClickListener() {
             @Override
             public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
