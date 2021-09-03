@@ -52,6 +52,7 @@ public class ResizeWidget extends WidgetGroup {
     private float minWidth;
     private float minHeight;
     private boolean allowDragging = true;
+    private boolean preventDrag;
     
     public ResizeWidget(Actor actor, Skin skin) {
         this(actor, skin, "default");
@@ -104,6 +105,7 @@ public class ResizeWidget extends WidgetGroup {
                 public void dragStart(InputEvent event, float x, float y, int pointer) {
                     startX = x;
                     startY = y;
+                    preventDrag = true;
                 }
                 
                 @Override
@@ -153,6 +155,11 @@ public class ResizeWidget extends WidgetGroup {
                     
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(yPos));
                     stack.setSize(width, height);
+                }
+    
+                @Override
+                public void dragStop(InputEvent event, float x, float y, int pointer) {
+                    preventDrag = false;
                 }
             };
             dragListener.setTapSquareSize(0);
@@ -182,6 +189,7 @@ public class ResizeWidget extends WidgetGroup {
                 public void dragStart(InputEvent event, float x, float y, int pointer) {
                     startX = x;
                     startY = y;
+                    preventDrag = true;
                 }
                 
                 @Override
@@ -231,6 +239,11 @@ public class ResizeWidget extends WidgetGroup {
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(yPos));
                     stack.setSize(width, height);
                 }
+    
+                @Override
+                public void dragStop(InputEvent event, float x, float y, int pointer) {
+                    preventDrag = false;
+                }
             };
             dragListener.setTapSquareSize(0);
             topRightHandle.addListener(dragListener);
@@ -259,6 +272,7 @@ public class ResizeWidget extends WidgetGroup {
                 public void dragStart(InputEvent event, float x, float y, int pointer) {
                     startX = x;
                     startY = y;
+                    preventDrag = true;
                 }
                 
                 @Override
@@ -309,6 +323,11 @@ public class ResizeWidget extends WidgetGroup {
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(yPos));
                     stack.setSize(width, height);
                 }
+    
+                @Override
+                public void dragStop(InputEvent event, float x, float y, int pointer) {
+                    preventDrag = false;
+                }
             };
             dragListener.setTapSquareSize(0);
             bottomRightHandle.addListener(dragListener);
@@ -337,6 +356,7 @@ public class ResizeWidget extends WidgetGroup {
                 public void dragStart(InputEvent event, float x, float y, int pointer) {
                     startX = x;
                     startY = y;
+                    preventDrag = true;
                 }
                 
                 @Override
@@ -386,6 +406,11 @@ public class ResizeWidget extends WidgetGroup {
                     
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(yPos));
                     stack.setSize(width, height);
+                }
+    
+                @Override
+                public void dragStop(InputEvent event, float x, float y, int pointer) {
+                    preventDrag = false;
                 }
             };
             dragListener.setTapSquareSize(0);
@@ -423,6 +448,7 @@ public class ResizeWidget extends WidgetGroup {
                 @Override
                 public void dragStart(InputEvent event, float x, float y, int pointer) {
                     startY = y;
+                    preventDrag = true;
                 }
                 
                 @Override
@@ -455,6 +481,11 @@ public class ResizeWidget extends WidgetGroup {
                     stack.setPosition(MathUtils.round(stack.getX()), MathUtils.round(yPos));
                     stack.setSize(stack.getWidth(), height);
                 }
+    
+                @Override
+                public void dragStop(InputEvent event, float x, float y, int pointer) {
+                    preventDrag = false;
+                }
             };
             dragListener.setTapSquareSize(0);
             topHandle.addListener(dragListener);
@@ -482,6 +513,7 @@ public class ResizeWidget extends WidgetGroup {
                 @Override
                 public void dragStart(InputEvent event, float x, float y, int pointer) {
                     startX = x;
+                    preventDrag = true;
                 }
                 
                 @Override
@@ -513,6 +545,11 @@ public class ResizeWidget extends WidgetGroup {
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(stack.getY()));
                     stack.setSize(width, stack.getHeight());
                 }
+    
+                @Override
+                public void dragStop(InputEvent event, float x, float y, int pointer) {
+                    preventDrag = false;
+                }
             };
             dragListener.setTapSquareSize(0);
             rightHandle.addListener(dragListener);
@@ -540,6 +577,7 @@ public class ResizeWidget extends WidgetGroup {
                 @Override
                 public void dragStart(InputEvent event, float x, float y, int pointer) {
                     startY = y;
+                    preventDrag = true;
                 }
                 
                 @Override
@@ -571,6 +609,11 @@ public class ResizeWidget extends WidgetGroup {
                     stack.setPosition(MathUtils.round(stack.getX()), MathUtils.round(yPos));
                     stack.setSize(stack.getWidth(), height);
                 }
+    
+                @Override
+                public void dragStop(InputEvent event, float x, float y, int pointer) {
+                    preventDrag = false;
+                }
             };
             dragListener.setTapSquareSize(0);
             bottomHandle.addListener(dragListener);
@@ -598,6 +641,7 @@ public class ResizeWidget extends WidgetGroup {
                 @Override
                 public void dragStart(InputEvent event, float x, float y, int pointer) {
                     startX = x;
+                    preventDrag = true;
                 }
                 
                 @Override
@@ -629,6 +673,11 @@ public class ResizeWidget extends WidgetGroup {
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(stack.getY()));
                     stack.setSize(width, stack.getHeight());
                 }
+    
+                @Override
+                public void dragStop(InputEvent event, float x, float y, int pointer) {
+                    preventDrag = false;
+                }
             };
             dragListener.setTapSquareSize(0);
             leftHandle.addListener(dragListener);
@@ -659,13 +708,11 @@ public class ResizeWidget extends WidgetGroup {
         stack.addListener(new DragListener() {
             float xStart;
             float yStart;
-            boolean preventDrag;
     
             @Override
             public void dragStart(InputEvent event, float x, float y, int pointer) {
                 xStart = x;
                 yStart = y;
-                preventDrag = !event.getTarget().equals(stack);
             }
     
             @Override
