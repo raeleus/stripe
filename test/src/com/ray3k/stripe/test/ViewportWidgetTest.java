@@ -2,8 +2,8 @@ package com.ray3k.stripe.test;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -67,10 +67,8 @@ public class ViewportWidgetTest extends ApplicationAdapter {
     }
     
     public static void main(String[] args) {
-        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.forceExit = false;
-        config.width = 800;
-        config.height = 800;
-        new LwjglApplication(new ViewportWidgetTest(), config);
+        Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+        config.setWindowedMode(800, 800);
+        new Lwjgl3Application(new ViewportWidgetTest(), config);
     }
 }

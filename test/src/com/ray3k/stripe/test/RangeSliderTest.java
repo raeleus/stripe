@@ -25,21 +25,19 @@ package com.ray3k.stripe.test;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.stripe.RangeSlider;
 import com.ray3k.stripe.RangeSlider.RangeSliderStyle;
-import com.ray3k.stripe.scenecomposer.SceneComposerStageBuilder;
 
 /**
  * A basic example that demonstrates the use of a RangeSlider.
@@ -122,10 +120,8 @@ public class RangeSliderTest extends ApplicationAdapter {
     }
     
     public static void main(String[] args) {
-        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.forceExit = false;
-        config.width = 850;
-        config.height = 450;
-        new LwjglApplication(new RangeSliderTest(), config);
+        Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+        config.setWindowedMode(850, 450);
+        new Lwjgl3Application(new ViewportWidgetTest(), config);
     }
 }

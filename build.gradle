@@ -69,9 +69,8 @@ project(":test") {
 
     dependencies {
         implementation project(":stripe")
-        api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        api 'com.github.raeleus.TenPatch:tenpatch:5.2.0'
         api 'com.github.raeleus.TenPatch:tenpatch:5.2.2'
     }
 }
