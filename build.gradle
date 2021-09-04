@@ -72,5 +72,6 @@ project(":test") {
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api 'com.github.raeleus.TenPatch:tenpatch:5.2.0'
+        api 'com.github.raeleus.TenPatch:tenpatch:5.2.2'
     }
 }
