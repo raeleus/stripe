@@ -157,6 +157,7 @@ public class ResizeWidget extends WidgetGroup {
                     
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(yPos));
                     stack.setSize(width, height);
+                    stack.validate();
                 }
     
                 @Override
@@ -240,6 +241,7 @@ public class ResizeWidget extends WidgetGroup {
                     
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(yPos));
                     stack.setSize(width, height);
+                    stack.validate();
                 }
     
                 @Override
@@ -324,6 +326,7 @@ public class ResizeWidget extends WidgetGroup {
                     
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(yPos));
                     stack.setSize(width, height);
+                    stack.validate();
                 }
     
                 @Override
@@ -408,6 +411,7 @@ public class ResizeWidget extends WidgetGroup {
                     
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(yPos));
                     stack.setSize(width, height);
+                    stack.validate();
                 }
     
                 @Override
@@ -482,6 +486,7 @@ public class ResizeWidget extends WidgetGroup {
                     
                     stack.setPosition(MathUtils.round(stack.getX()), MathUtils.round(yPos));
                     stack.setSize(stack.getWidth(), height);
+                    stack.validate();
                 }
     
                 @Override
@@ -546,6 +551,7 @@ public class ResizeWidget extends WidgetGroup {
                     
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(stack.getY()));
                     stack.setSize(width, stack.getHeight());
+                    stack.validate();
                 }
     
                 @Override
@@ -610,6 +616,7 @@ public class ResizeWidget extends WidgetGroup {
                     
                     stack.setPosition(MathUtils.round(stack.getX()), MathUtils.round(yPos));
                     stack.setSize(stack.getWidth(), height);
+                    stack.validate();
                 }
     
                 @Override
@@ -674,6 +681,7 @@ public class ResizeWidget extends WidgetGroup {
                     
                     stack.setPosition(MathUtils.round(xPos), MathUtils.round(stack.getY()));
                     stack.setSize(width, stack.getHeight());
+                    stack.validate();
                 }
     
                 @Override
