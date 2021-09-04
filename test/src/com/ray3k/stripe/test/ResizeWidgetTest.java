@@ -37,7 +37,6 @@ public class ResizeWidgetTest extends ApplicationAdapter {
         resizeWidget.setResizingFromCenter(true);
         resizeWidget.setMinWidth(100);
         resizeWidget.setMinHeight(100);
-        resizeWidget.setFillParent(true);
         table.add(resizeWidget).grow();
     }
     
