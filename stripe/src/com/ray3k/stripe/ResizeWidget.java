@@ -816,8 +816,6 @@ public class ResizeWidget extends WidgetGroup {
     
     @Override
     public void layout() {
-        super.layout();
-        
         if (stack.getWidth() < getMinWidth()) {
             stack.setWidth(getMinWidth());
         }
