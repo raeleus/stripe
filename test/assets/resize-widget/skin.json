@@ -1,0 +1,14 @@
+{
+"com.ray3k.stripe.ResizeWidget$ResizeWidgetStyle": {
+"default": {
+"foreground": "resizer.foreground",
+"background": "resizer-background",
+"handle": "resizer-handle",
+"handleOver": "resizer-handle-over",
+"handlePressed": "resizer-handle-pressed",
+"minorHandle": "resizer-minor-handle",
+"minorHandleOver": "resizer-minor-handle-over",
+"minorHandlePressed": "resizer-minor-handle-pressed"
+}
+}
+}

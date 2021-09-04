@@ -1,0 +1,79 @@
+
+skin.png
+size: 1024, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+island
+  rotate: false
+  xy: 1, 144
+  size: 800, 800
+  orig: 800, 800
+  offset: 0, 0
+  index: -1
+rect
+  rotate: false
+  xy: 1, 42
+  size: 100, 100
+  split: 20, 20, 20, 20
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+resizer-background
+  rotate: false
+  xy: 1, 12
+  size: 30, 28
+  split: 5, 5, 5, 5
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+resizer-handle
+  rotate: false
+  xy: 103, 133
+  size: 9, 9
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+resizer-handle-over
+  rotate: false
+  xy: 803, 905
+  size: 9, 9
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+resizer-handle-pressed
+  rotate: false
+  xy: 835, 935
+  size: 9, 9
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+resizer-minor-handle
+  rotate: false
+  xy: 1, 1
+  size: 9, 9
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+resizer-minor-handle-over
+  rotate: false
+  xy: 33, 31
+  size: 9, 9
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+resizer-minor-handle-pressed
+  rotate: false
+  xy: 103, 122
+  size: 9, 9
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+resizer.foreground
+  rotate: false
+  xy: 803, 916
+  size: 30, 28
+  split: 5, 5, 5, 5
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
