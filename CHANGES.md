@@ -1,3 +1,4 @@
+### 0.1.1
 * Fixed ViewportWidget not updating the Viewport
 
 ### 0.1.0
