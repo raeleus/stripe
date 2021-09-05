@@ -30,6 +30,13 @@ public class ViewportWidget extends Widget {
     public void layout() {
         temp.set(0, 0);
         localToScreenCoordinates(temp);
+        Gdx.app.postRunnable(new Runnable() {
+            @Override
+            public void run() {
+                viewport.update(MathUtils.round(getWidth()), MathUtils.round(getHeight()));
+                viewport.setScreenPosition(MathUtils.round(temp.x), MathUtils.round(Gdx.graphics.getHeight() - temp.y));
+            }
+        });
         viewport.setScreenBounds(MathUtils.round(temp.x), MathUtils.round(Gdx.graphics.getHeight() - temp.y), MathUtils.round(getWidth()), MathUtils.round(getHeight()));
     }
 }

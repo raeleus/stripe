@@ -1,3 +1,5 @@
+* Fixed ViewportWidget not updating the Viewport
+
 ### 0.1.0
 * Added ViewportWidget
 * Added ResizeWidget
