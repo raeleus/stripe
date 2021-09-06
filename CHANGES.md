@@ -1,3 +1,5 @@
+* PopTable can no longer be clicked on while hiding. 
+
 ### 0.1.2
 * StripeMenu no longer closes when user clicks on the title of a submenu.
 

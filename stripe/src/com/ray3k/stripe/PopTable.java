@@ -202,6 +202,7 @@ public class PopTable extends Table {
     
     public void hide(Action action) {
         if (!hidden) {
+            group.setTouchable(Touchable.disabled);
             hidden = true;
             stage.removeCaptureListener(hideListener);
             group.addAction(sequence(action, Actions.removeActor()));
