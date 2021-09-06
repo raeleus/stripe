@@ -412,7 +412,7 @@ public class PopTable extends Table {
             setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
         }
         
-        if (attachToActor != null) {
+        if (attachToActor != null && attachToActor.getStage() != null) {
             alignToActorEdge(attachToActor, attachEdge, attachAlign);
         }
         
