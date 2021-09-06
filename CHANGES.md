@@ -1,4 +1,5 @@
-* PopTable can no longer be clicked on while hiding. 
+* Added ScrollFocusListener
+* PopTable can no longer be clicked on while hiding.
 * Fixed PopTable aligning to widgets removed from the Stage.
 * Fixed PopTableTooltipListener activating when removed from the Stage.
 * Fixed PopTableTooltipListener showing the tooltip in the incorrect position.
