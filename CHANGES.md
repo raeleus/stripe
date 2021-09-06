@@ -1,3 +1,4 @@
+### 0.1.2
 * StripeMenu no longer closes when user clicks on the title of a submenu.
 
 ### 0.1.1
