@@ -1,3 +1,4 @@
+### 0.2.0
 * Added ScrollFocusListener
 * PopTable can no longer be clicked on while hiding.
 * Fixed PopTable aligning to widgets removed from the Stage.
