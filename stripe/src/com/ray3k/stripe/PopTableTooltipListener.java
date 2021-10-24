@@ -10,23 +10,23 @@ import com.ray3k.stripe.PopTable.TableShowHideListener;
 
 public class PopTableTooltipListener extends InputListener {
     protected PopTable popTable;
-    private final int align;
+    private final int attachToMouseAlign;
     private final static Vector2 temp = new Vector2();
     
-    public PopTableTooltipListener(int align, Skin skin) {
-        this(align, skin.get(PopTableStyle.class));
+    public PopTableTooltipListener(int attachToMouseAlign, Skin skin) {
+        this(attachToMouseAlign, skin.get(PopTableStyle.class));
     }
     
-    public PopTableTooltipListener(int align, Skin skin, String style) {
-        this(align, skin.get(style, PopTableStyle.class));
+    public PopTableTooltipListener(int attachToMouseAlign, Skin skin, String style) {
+        this(attachToMouseAlign, skin.get(style, PopTableStyle.class));
     }
     
-    public PopTableTooltipListener(int align, PopTableStyle style) {
+    public PopTableTooltipListener(int attachToMouseAlign, PopTableStyle style) {
         popTable = new PopTable(style);
         popTable.setModal(false);
         popTable.setHideOnUnfocus(false);
         popTable.setTouchable(Touchable.disabled);
-        this.align = align;
+        this.attachToMouseAlign = attachToMouseAlign;
         popTable.addListener(new TableShowHideListener() {
             @Override
             public void tableShown(Event event) {
@@ -44,7 +44,7 @@ public class PopTableTooltipListener extends InputListener {
     public boolean mouseMoved(InputEvent event, float x, float y) {
         temp.set(x, y);
         event.getListenerActor().localToStageCoordinates(temp);
-        switch (align) {
+        switch (attachToMouseAlign) {
             case Align.bottomLeft:
             case Align.topLeft:
             case Align.left:
@@ -56,7 +56,7 @@ public class PopTableTooltipListener extends InputListener {
                 temp.x -= popTable.getWidth() / 2;
                 break;
         }
-        switch (align) {
+        switch (attachToMouseAlign) {
             case Align.bottomLeft:
             case Align.bottomRight:
             case Align.bottom:
@@ -74,7 +74,7 @@ public class PopTableTooltipListener extends InputListener {
 
     @Override
     public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-        if (fromActor == null || !event.getListenerActor().isAscendantOf(fromActor)) {
+        if (event.getListenerActor().getStage() != null && (fromActor == null || !event.getListenerActor().isAscendantOf(fromActor))) {
             Stage stage = event.getListenerActor().getStage();
             Actor actor = event.getListenerActor();
             
@@ -84,7 +84,7 @@ public class PopTableTooltipListener extends InputListener {
 
             temp.set(x, y);
             event.getListenerActor().localToStageCoordinates(temp);
-            switch (align) {
+            switch (attachToMouseAlign) {
                 case Align.bottomLeft:
                 case Align.topLeft:
                 case Align.left:
@@ -96,7 +96,7 @@ public class PopTableTooltipListener extends InputListener {
                     temp.x -= popTable.getWidth() / 2;
                     break;
             }
-            switch (align) {
+            switch (attachToMouseAlign) {
                 case Align.bottomLeft:
                 case Align.bottomRight:
                 case Align.bottom:
@@ -108,11 +108,10 @@ public class PopTableTooltipListener extends InputListener {
                     temp.y -= popTable.getHeight() / 2;
                     break;
             }
-            popTable.setPosition(temp.x, temp.y);
-            
             
             popTable.show(stage);
             popTable.moveToInsideStage();
+            popTable.setPosition(temp.x, temp.y);
         }
     }
     

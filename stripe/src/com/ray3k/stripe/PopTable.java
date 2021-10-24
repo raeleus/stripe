@@ -202,6 +202,7 @@ public class PopTable extends Table {
     
     public void hide(Action action) {
         if (!hidden) {
+            group.setTouchable(Touchable.disabled);
             hidden = true;
             stage.removeCaptureListener(hideListener);
             group.addAction(sequence(action, Actions.removeActor()));
@@ -411,7 +412,7 @@ public class PopTable extends Table {
             setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
         }
         
-        if (attachToActor != null) {
+        if (attachToActor != null && attachToActor.getStage() != null) {
             alignToActorEdge(attachToActor, attachEdge, attachAlign);
         }
         

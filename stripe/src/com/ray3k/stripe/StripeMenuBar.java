@@ -473,6 +473,9 @@ public class StripeMenuBar extends Table implements StripeMenu {
         @Override
         public boolean handle(Event event) {
             if (event instanceof ChangeEvent) {
+                if (stripeMenuValue == null) {
+                    hideEverything();
+                }
                 return true;
             }
             return super.handle(event);
