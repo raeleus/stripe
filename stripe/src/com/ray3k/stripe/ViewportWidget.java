@@ -13,7 +13,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
  */
 public class ViewportWidget extends Widget {
     public Viewport viewport;
-    private static Vector2 temp = new Vector2();
+    private final static Vector2 temp = new Vector2();
     
     public ViewportWidget(Viewport viewport) {
         this.viewport = viewport;
@@ -23,20 +23,16 @@ public class ViewportWidget extends Widget {
     public void act(float delta) {
         temp.set(0, 0);
         localToScreenCoordinates(temp);
-        viewport.setScreenPosition(MathUtils.round(temp.x), MathUtils.round(Gdx.graphics.getHeight() - temp.y));
+        viewport.setScreenPosition(viewportOriginalX + MathUtils.round(temp.x), viewportOriginalY + MathUtils.round(Gdx.graphics.getHeight() - temp.y));
     }
     
+    int viewportOriginalX, viewportOriginalY;
     @Override
     public void layout() {
         temp.set(0, 0);
         localToScreenCoordinates(temp);
-        Gdx.app.postRunnable(new Runnable() {
-            @Override
-            public void run() {
-                viewport.update(MathUtils.round(getWidth()), MathUtils.round(getHeight()));
-                viewport.setScreenPosition(MathUtils.round(temp.x), MathUtils.round(Gdx.graphics.getHeight() - temp.y));
-            }
-        });
-        viewport.setScreenBounds(MathUtils.round(temp.x), MathUtils.round(Gdx.graphics.getHeight() - temp.y), MathUtils.round(getWidth()), MathUtils.round(getHeight()));
+        viewport.update(MathUtils.round(getWidth()), MathUtils.round(getHeight()));
+        viewportOriginalX = viewport.getScreenX();
+        viewportOriginalY = viewport.getScreenY();
     }
 }
