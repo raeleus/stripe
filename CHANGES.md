@@ -1,3 +1,6 @@
+### 0.2.1
+* Fixed ViewportWidget not working with all viewports (fill, fit, etc.)
+
 ### 0.2.0
 * Added ScrollFocusListener
 * PopTable can no longer be clicked on while hiding.
