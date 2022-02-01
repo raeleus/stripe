@@ -28,7 +28,7 @@ dependencies {
     implementation 'com.github.raeleus:stripe:0.2.1'
 }
 ```
-If you are using the FreeType Skin Loader, ensure that you have FreeType implemented in your project. Please refer to the [libGDX wiki](https://github.com/libgdx/libgdx/wiki/Dependency-management-with-Gradle#freetypefont-gradle).
+If you are using the FreeType Skin Loader, ensure that you have FreeType implemented in your project. Please refer to the [libGDX wiki](https://libgdx.com/wiki/articles/dependency-management-with-gradle#freetypefont-gradle).
 ### HTML5 Dependency
 Add the dependency to your html project of your root build.gradle if you want HTML5/GWT support:
 ```groovy
