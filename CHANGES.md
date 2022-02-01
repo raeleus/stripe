@@ -1,3 +1,6 @@
+### 1.0.0
+* Moved FreeTypeSkin and FreeTypeSkinLoader to separate subproject.
+
 ### 0.2.1
 * Fixed ViewportWidget not working with all viewports (fill, fit, etc.)
 

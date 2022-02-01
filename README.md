@@ -25,7 +25,7 @@ Add the dependency to your core project:
 ```groovy
 dependencies {
     ...
-    implementation 'com.github.raeleus:stripe:0.2.1'
+    implementation 'com.github.raeleus:stripe:1.0.0'
 }
 ```
 If you are using the FreeType Skin Loader, ensure that you have FreeType implemented in your project. Please refer to the [libGDX wiki](https://github.com/libgdx/libgdx/wiki/Dependency-management-with-Gradle#freetypefont-gradle).
@@ -38,12 +38,12 @@ project(":html") {
 
     dependencies {
         ...
-        implementation 'com.github.raeleus:stripe:0.2.1:sources'
+        implementation 'com.github.raeleus:stripe:1.0.0:sources'
     }
 }
 ```
 
-Add the following inherits line to your GdxDefinition.gwt.xml in the html project:
+Add the following inherits line to your GdxDefinition.gwt.xml in the html project:  
 `
 <inherits name="com.ray3k.stripe" />
 `
