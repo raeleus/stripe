@@ -43,6 +43,32 @@ project(":stripe") {
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
+        api 'com.github.tommyettinger:regexodus:0.1.10'
+        api 'com.github.tommyettinger:regexodus:0.1.10:sources'
+    }
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }
+}
+
+project(":freetype") {
+    apply plugin: "java-library"
+    apply plugin: 'maven'
+
+    dependencies {
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         api 'com.github.tommyettinger:regexodus:0.1.10'
         api 'com.github.tommyettinger:regexodus:0.1.10:sources'
@@ -69,6 +95,7 @@ project(":test") {
 
     dependencies {
         implementation project(":stripe")
+        implementation project(":freetype")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api 'com.github.raeleus.TenPatch:tenpatch:5.2.2'
