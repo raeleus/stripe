@@ -1,5 +1,6 @@
 package com.ray3k.stripe;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
@@ -34,6 +35,8 @@ public class PopTable extends Table {
     private Array<InputListener> keyInputListeners;
     Actor previousKeyboardFocus, previousScrollFocus;
     private FocusListener focusListener;
+    private Actor highlightActor;
+    private float highlightAlpha;
     
     public PopTable() {
         this(new PopTableStyle());
@@ -391,6 +394,44 @@ public class PopTable extends Table {
         return hidden;
     }
     
+    /**
+     * Returns the actor to be highlighted when this PopTable is drawn. To see the effect, ensure that the style's
+     * stageBackground is set appropriately.
+     * @see PopTable#setHighlightAlpha(float)
+     * @return
+     */
+    public Actor getHighlightActor() {
+        return highlightActor;
+    }
+    
+    /**
+     * Sets the actor to be highlighted when this PopTable is drawn. To see the effect, ensure that the style's
+     * stageBackground is set appropriately.
+     * @param highlightActor
+     * @see PopTable#setHighlightAlpha(float)
+     */
+    public void setHighlightActor(Actor highlightActor) {
+        this.highlightActor = highlightActor;
+    }
+    
+    /**
+     * Returns the alpha of the highlighted actor.
+     * @see PopTable#setHighlightActor(Actor)
+     * @return
+     */
+    public float getHighlightAlpha() {
+        return highlightAlpha;
+    }
+    
+    /**
+     * Sets the alpha of the highlighted actor.
+     * @see PopTable#setHighlightActor(Actor)
+     * @param highlightAlpha
+     */
+    public void setHighlightAlpha(float highlightAlpha) {
+        this.highlightAlpha = highlightAlpha;
+    }
+    
     public PopTableStyle getStyle() {
         return style;
     }
@@ -420,6 +461,14 @@ public class PopTable extends Table {
             resizeWindowWithinStage();
         }
         super.layout();
+    }
+    
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        if (highlightActor != null) {
+            highlightActor.draw(batch, parentAlpha * highlightAlpha);
+        }
+        super.draw(batch, parentAlpha);
     }
     
     public PopTable key(final int key, final KeyListener keyListener) {
