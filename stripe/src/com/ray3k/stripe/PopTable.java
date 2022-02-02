@@ -38,6 +38,7 @@ public class PopTable extends Table {
     private FocusListener focusListener;
     private Actor highlightActor;
     private float highlightAlpha;
+    private float highlightAlpha = 1f;
     
     public PopTable() {
         this(new PopTableStyle());
