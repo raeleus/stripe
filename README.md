@@ -6,7 +6,7 @@ A collection of custom Scene2D widgets and utilities for libGDX.
 
 Stripe is a companion to [Skin Composer](https://github.com/raeleus/skin-composer), the renowned UI Skin editor and visual layout utility. This library provides new Scene2D widgets, the capability of loading FreeType fonts from JSON, and the Scene Composer Stage Builder. Please see the [wiki](https://github.com/raeleus/stripe/wiki) for documentation. 
 
-## How to Include in your Project
+## How to Include Stripe Widgets in your Project
 
 Typical of most libGDX projects, Stripe requires the Gradle setup to be included your project.
 
@@ -25,10 +25,10 @@ Add the dependency to your core project:
 ```groovy
 dependencies {
     ...
-    implementation 'com.github.raeleus:stripe:1.0.0'
+    implementation 'com.github.raeleus.stripe:stripe:1.0.0'
 }
 ```
-If you are using the FreeType Skin Loader, ensure that you have FreeType implemented in your project. Please refer to the [libGDX wiki](https://libgdx.com/wiki/articles/dependency-management-with-gradle#freetypefont-gradle).
+
 ### HTML5 Dependency
 Add the dependency to your html project of your root build.gradle if you want HTML5/GWT support:
 ```groovy
@@ -38,7 +38,7 @@ project(":html") {
 
     dependencies {
         ...
-        implementation 'com.github.raeleus:stripe:1.0.0:sources'
+        implementation 'com.github.raeleus.stripe:stripe:1.0.0:sources'
     }
 }
 ```
@@ -48,7 +48,50 @@ Add the following inherits line to your GdxDefinition.gwt.xml in the html projec
 <inherits name="com.ray3k.stripe" />
 `
 
-If you are using FreeType on HTML5, please follow the instructions to activate [gdx-freetype-gwt](https://github.com/intrigus/gdx-freetype-gwt).
+## How to Include FreeTypeSkin in your Project
+
+FreeTypeSkin has been moved into a separate project to allow users to use the Stripe Widgets without forcing them to import the GDX FreeType classes.
+
+### Core Dependency
+Add the following to your root build.gradle:
+```groovy
+allprojects {
+    repositories {
+	...
+	maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+Add the dependency to your core project:
+```groovy
+dependencies {
+    ...
+    implementation 'com.github.raeleus.stripe:freetype:1.0.0'
+}
+```
+Ensure that you have FreeType implemented in your project. Please refer to the [libGDX wiki](https://libgdx.com/wiki/articles/dependency-management-with-gradle#freetypefont-gradle).
+
+### HTML5 Dependency
+Add the dependency to your html project of your root build.gradle if you want HTML5/GWT support:
+```groovy
+project(":html") {
+    apply plugin: "gwt"
+    apply plugin: "war"
+
+    dependencies {
+        ...
+        implementation 'com.github.raeleus.stripe:freetype:1.0.0:sources'
+    }
+}
+```
+
+Add the following inherits line to your GdxDefinition.gwt.xml in the html project:  
+`
+<inherits name="com.ray3k.stripe" />
+`
+
+Then follow the instructions to activate [gdx-freetype-gwt](https://github.com/intrigus/gdx-freetype-gwt).
 
 ## How to use
 Stripe meets a variety of needs, so its implementation is dependent on what utilities you plan to use. Please refer to the wiki:
