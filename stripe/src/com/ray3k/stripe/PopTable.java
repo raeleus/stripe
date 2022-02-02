@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
+import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.FocusListener;
 import com.badlogic.gdx.utils.Align;
@@ -287,6 +288,11 @@ public class PopTable extends Table {
         }
         
         public PopTableStyle(PopTableStyle style) {
+            background = style.background;
+            stageBackground = style.stageBackground;
+        }
+        
+        public PopTableStyle(WindowStyle style) {
             background = style.background;
             stageBackground = style.stageBackground;
         }
