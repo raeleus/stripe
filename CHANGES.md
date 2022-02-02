@@ -1,7 +1,8 @@
-### 1.0.1
+### 1.1.0
 * Added AspectRatioContainer.
 * Added highlightActor to PopTable to draw widgets above the stageBackground drawable for demonstrations.
 * Added constructor to PopTableStyle to derive the fields from an existing WindowStyle.
+* Added draggable setting to PopTable.
 
 ### 1.0.0
 * Moved FreeTypeSkin and FreeTypeSkinLoader to separate subproject.

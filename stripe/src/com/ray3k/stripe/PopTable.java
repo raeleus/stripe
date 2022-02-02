@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.FocusListener;
 import com.badlogic.gdx.utils.Align;
@@ -36,9 +37,10 @@ public class PopTable extends Table {
     private Array<InputListener> keyInputListeners;
     Actor previousKeyboardFocus, previousScrollFocus;
     private FocusListener focusListener;
+    private DragListener dragListener;
     private Actor highlightActor;
-    private float highlightAlpha;
     private float highlightAlpha = 1f;
+    private boolean draggable;
     
     public PopTable() {
         this(new PopTableStyle());
@@ -96,6 +98,36 @@ public class PopTable extends Table {
                 }
             }
         };
+        
+        dragListener = new DragListener() {
+            float startX, startY;
+            float offsetX, offsetY;
+            boolean canDrag;
+            {
+                setTapSquareSize(0);
+            }
+            
+            @Override
+            public void dragStart(InputEvent event, float x, float y, int pointer) {
+                if (draggable) {
+                    startX = PopTable.this.getX();
+                    startY = PopTable.this.getY();
+                    offsetX = x;
+                    offsetY = y;
+                    canDrag = event.getTarget() == PopTable.this;
+                }
+            }
+    
+            @Override
+            public void drag(InputEvent event, float x, float y, int pointer) {
+                if (canDrag) {
+                    setPosition(startX + x - offsetX, startY + y - offsetY);
+                    startX = PopTable.this.getX();
+                    startY = PopTable.this.getY();
+                }
+            }
+        };
+        addListener(dragListener);
     }
     
     public void setStyle(PopTableStyle style) {
@@ -437,6 +469,18 @@ public class PopTable extends Table {
      */
     public void setHighlightAlpha(float highlightAlpha) {
         this.highlightAlpha = highlightAlpha;
+    }
+    
+    public boolean isDraggable() {
+        return draggable;
+    }
+    
+    /**
+     * Allows the PopTable to be dragged by clicking/dragging directly on the widget.
+     * @param draggable
+     */
+    public void setDraggable(boolean draggable) {
+        this.draggable = draggable;
     }
     
     public PopTableStyle getStyle() {
