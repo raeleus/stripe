@@ -1,5 +1,5 @@
 ### 1.0.1
-
+* Added AspectRatioContainer.
 
 ### 1.0.0
 * Moved FreeTypeSkin and FreeTypeSkinLoader to separate subproject.
