@@ -5,6 +5,13 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Layout;
 
+/**
+ * A container class that allows for one child widget that will be forced to keep its aspect ratio as it's resized. Set
+ * the child actor and ratio, then add it to your layout. If bindToWidth is true, set the width of the container to the
+ * desired size and the prefHeight will automatically adjust according to the ratio. If bindToWidth is false, set the
+ * height instead.
+ * @param <T>
+ */
 public class AspectRatioContainer<T extends Actor> extends WidgetGroup {
     private boolean prefSizeInvalid;
     private float prefWidth;
