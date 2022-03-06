@@ -30,6 +30,8 @@ public class PopTable extends Table {
     private boolean automaticallyResized;
     private boolean keepCenteredInWindow;
     private Actor attachToActor;
+    private float attachOffsetX;
+    private float attachOffsetY;
     private final HideListener hideListener;
     private boolean modal;
     private boolean hidden;
@@ -137,7 +139,11 @@ public class PopTable extends Table {
         stageBackground.setDrawable(style.stageBackground);
     }
     
-    private void alignToActorEdge(Actor actor, int edge, int alignment) {
+    private void alignToActorEdge(Actor actor,  int edge, int alignment) {
+        alignToActorEdge(actor, edge, alignment, 0, 0);
+    }
+    
+    private void alignToActorEdge(Actor actor, int edge, int alignment, float offsetX, float offsetY) {
         float widgetX;
         switch (edge) {
             case Align.left:
@@ -199,6 +205,9 @@ public class PopTable extends Table {
                 widgetY -= getHeight();
                 break;
         }
+        
+        widgetX += offsetX;
+        widgetY += offsetY;
     
         temp.set(widgetX, widgetY);
         actor.localToStageCoordinates(temp);
@@ -373,6 +382,22 @@ public class PopTable extends Table {
         return attachAlign;
     }
     
+    public float getAttachOffsetX() {
+        return attachOffsetX;
+    }
+    
+    public void setAttachOffsetX(float attachOffsetX) {
+        this.attachOffsetX = attachOffsetX;
+    }
+    
+    public float getAttachOffsetY() {
+        return attachOffsetY;
+    }
+    
+    public void setAttachOffsetY(float attachOffsetY) {
+        this.attachOffsetY = attachOffsetY;
+    }
+    
     public boolean isKeepSizedWithinStage() {
         return keepSizedWithinStage;
     }
@@ -402,18 +427,24 @@ public class PopTable extends Table {
     }
     
     public void attachToActor() {
-        attachToActor(attachToActor, attachEdge, attachAlign);
+        attachToActor(attachToActor, attachEdge, attachAlign, attachOffsetX, attachOffsetY);
     }
     
     public void attachToActor(Actor attachToActor) {
-        attachToActor(attachToActor, attachEdge, attachAlign);
+        attachToActor(attachToActor, attachEdge, attachAlign, attachOffsetX, attachOffsetY);
     }
     
     public void attachToActor(Actor attachToActor, int edge, int align) {
-        alignToActorEdge(attachToActor, edge, align);
+        attachToActor(attachToActor, edge, align, attachOffsetX, attachOffsetY);
+    }
+    
+    public void attachToActor(Actor attachToActor, int edge, int align, float offsetX, float offsetY) {
+        alignToActorEdge(attachToActor, edge, align, offsetX, offsetY);
         this.attachToActor = attachToActor;
         this.attachEdge = edge;
         this.attachAlign = align;
+        attachOffsetX = offsetX;
+        attachOffsetY = offsetY;
     }
     
     public void removeAttachToActor() {
@@ -505,7 +536,7 @@ public class PopTable extends Table {
         }
         
         if (attachToActor != null && attachToActor.getStage() != null) {
-            alignToActorEdge(attachToActor, attachEdge, attachAlign);
+            alignToActorEdge(attachToActor, attachEdge, attachAlign, attachOffsetX, attachOffsetY);
         }
         
         if (keepSizedWithinStage) {
