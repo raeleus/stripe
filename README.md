@@ -25,7 +25,7 @@ Add the dependency to your core project:
 ```groovy
 dependencies {
     ...
-    implementation 'com.github.raeleus.stripe:stripe:1.1.0'
+    implementation 'com.github.raeleus.stripe:stripe:1.2.0'
 }
 ```
 
@@ -38,7 +38,7 @@ project(":html") {
 
     dependencies {
         ...
-        implementation 'com.github.raeleus.stripe:stripe:1.1.0:sources'
+        implementation 'com.github.raeleus.stripe:stripe:1.2.0:sources'
     }
 }
 ```
