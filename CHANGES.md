@@ -1,3 +1,6 @@
+### 1.2.0
+* PopTable's position can be offset by a specified pixel value when attached to an actor.
+
 ### 1.1.0
 * Added GridDrawable.
 * Added AspectRatioContainer.
