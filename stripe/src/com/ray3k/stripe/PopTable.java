@@ -525,36 +525,36 @@ public class PopTable extends Table {
     
     @Override
     public void validate() {
-        if (!fillParent && automaticallyResized) {
-            float centerX = getX(Align.center);
-            float centerY = getY(Align.center);
-            setSize(getPrefWidth(), getPrefHeight());
-            super.validate();
-            setSize(getPrefWidth(), getPrefHeight());
-            setPosition(centerX, centerY, Align.center);
-            setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
-        }
+        if (fillParent) {
+            setPosition(0, 0);
+        } else {
+            if (automaticallyResized) {
+                float centerX = getX(Align.center);
+                float centerY = getY(Align.center);
+                setSize(getPrefWidth(), getPrefHeight());
+                super.validate();
+                setSize(getPrefWidth(), getPrefHeight());
+                setPosition(centerX, centerY, Align.center);
+                setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
+            }
     
-        if (keepSizedWithinStage) {
-            resizeWindowWithinStage();
+            if (keepCenteredInWindow) {
+                float x = getStage().getWidth() / 2f;
+                float y = getStage().getHeight() / 2f;
+                setPosition(x, y, Align.center);
+                setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
+            }
+    
+            if (attachToActor != null && attachToActor.getStage() != null) {
+                alignToActorEdge(attachToActor, attachEdge, attachAlign, attachOffsetX, attachOffsetY);
+            }
+    
+            if (keepSizedWithinStage) {
+                resizeWindowWithinStage();
+            }
         }
         
         super.validate();
-    }
-    
-    @Override
-    public void layout() {
-        if (keepCenteredInWindow) {
-            float x = getStage().getWidth() / 2f;
-            float y = getStage().getHeight() / 2f;
-            setPosition(x, y, Align.center);
-            setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
-        }
-
-        if (attachToActor != null && attachToActor.getStage() != null) {
-            alignToActorEdge(attachToActor, attachEdge, attachAlign, attachOffsetX, attachOffsetY);
-        }
-        super.layout();
     }
     
     @Override
