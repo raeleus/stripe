@@ -221,8 +221,6 @@ public class PopTable extends Table {
     
     public void moveToInsideStage() {
         if (getStage() != null) {
-            System.out.println("getX() = " + getX());
-            System.out.println("getY() = " + getY());
             if (getX() < 0) setX(0);
             else if (getX() + getWidth() > getStage().getWidth()) setX(getStage().getWidth() - getWidth());
             
@@ -546,7 +544,6 @@ public class PopTable extends Table {
     
     @Override
     public void layout() {
-        System.out.println("layout");
         if (keepCenteredInWindow) {
             float x = getStage().getWidth() / 2f;
             float y = getStage().getHeight() / 2f;
