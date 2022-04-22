@@ -1,3 +1,5 @@
+### 1.2.1
+
 ### 1.2.0
 * PopTable's position can be offset by a specified pixel value when attached to an actor.
 
