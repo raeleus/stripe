@@ -14,7 +14,7 @@ buildscript {
 
 allprojects {
 
-    group = 'com.github.raeleus'
+    group = 'com.github.raeleus.stripe'
     version = '1.2.1'
 
     ext {
