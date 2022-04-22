@@ -58,6 +58,10 @@ public class PopTable extends Table {
         setSkin(skin);
     }
     
+    public PopTable(WindowStyle style) {
+        this(new PopTableStyle(style));
+    }
+    
     public PopTable(PopTableStyle style) {
         setTouchable(Touchable.enabled);
         hideListener = new HideListener();
