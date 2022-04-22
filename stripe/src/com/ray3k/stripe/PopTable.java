@@ -221,6 +221,8 @@ public class PopTable extends Table {
     
     public void moveToInsideStage() {
         if (getStage() != null) {
+            System.out.println("getX() = " + getX());
+            System.out.println("getY() = " + getY());
             if (getX() < 0) setX(0);
             else if (getX() + getWidth() > getStage().getWidth()) setX(getStage().getWidth() - getWidth());
             
@@ -232,13 +234,13 @@ public class PopTable extends Table {
     private void resizeWindowWithinStage() {
         if (getWidth() > stage.getWidth()) {
             setWidth(stage.getWidth());
+            invalidateHierarchy();
         }
     
         if (getHeight() > stage.getHeight()) {
             setHeight(stage.getHeight());
+            invalidateHierarchy();
         }
-
-        invalidateHierarchy();
         
         moveToInsideStage();
     }
@@ -534,25 +536,26 @@ public class PopTable extends Table {
             setPosition(centerX, centerY, Align.center);
             setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
         }
+    
+        if (keepSizedWithinStage) {
+            resizeWindowWithinStage();
+        }
         
         super.validate();
     }
     
     @Override
     public void layout() {
+        System.out.println("layout");
         if (keepCenteredInWindow) {
             float x = getStage().getWidth() / 2f;
             float y = getStage().getHeight() / 2f;
             setPosition(x, y, Align.center);
             setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
         }
-    
+
         if (attachToActor != null && attachToActor.getStage() != null) {
             alignToActorEdge(attachToActor, attachEdge, attachAlign, attachOffsetX, attachOffsetY);
-        }
-    
-        if (keepSizedWithinStage) {
-            resizeWindowWithinStage();
         }
         super.layout();
     }
