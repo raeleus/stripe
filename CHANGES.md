@@ -1,5 +1,6 @@
 ### 1.3.0
 * Added PopTable constructor that accepts a WindowStyle.
+* Prevent PopTable from crashing when setFillParent(true) is called.
 
 ### 1.2.0
 * PopTable's position can be offset by a specified pixel value when attached to an actor.

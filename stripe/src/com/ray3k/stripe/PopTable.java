@@ -29,6 +29,7 @@ public class PopTable extends Table {
     private boolean keepSizedWithinStage;
     private boolean automaticallyResized;
     private boolean keepCenteredInWindow;
+    private boolean fillParent;
     private Actor attachToActor;
     private float attachOffsetX;
     private float attachOffsetY;
@@ -523,6 +524,21 @@ public class PopTable extends Table {
     }
     
     @Override
+    public void validate() {
+        if (!fillParent && automaticallyResized) {
+            float centerX = getX(Align.center);
+            float centerY = getY(Align.center);
+            setSize(getPrefWidth(), getPrefHeight());
+            super.validate();
+            setSize(getPrefWidth(), getPrefHeight());
+            setPosition(centerX, centerY, Align.center);
+            setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
+        }
+        
+        super.validate();
+    }
+    
+    @Override
     public void layout() {
         if (keepCenteredInWindow) {
             float x = getStage().getWidth() / 2f;
@@ -530,23 +546,21 @@ public class PopTable extends Table {
             setPosition(x, y, Align.center);
             setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
         }
-        
-        if (automaticallyResized) {
-            float centerX = getX(Align.center);
-            float centerY = getY(Align.center);
-            pack();
-            setPosition(centerX, centerY, Align.center);
-            setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
-        }
-        
+    
         if (attachToActor != null && attachToActor.getStage() != null) {
             alignToActorEdge(attachToActor, attachEdge, attachAlign, attachOffsetX, attachOffsetY);
         }
-        
+    
         if (keepSizedWithinStage) {
             resizeWindowWithinStage();
         }
         super.layout();
+    }
+    
+    @Override
+    public void setFillParent(boolean fillParent) {
+        super.setFillParent(fillParent);
+        this.fillParent = fillParent;
     }
     
     @Override
