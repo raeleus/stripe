@@ -1,3 +1,5 @@
+### 1.3.1
+
 ### 1.3.0
 * Added PopTable constructor that accepts a WindowStyle.
 * Prevent PopTable from crashing when setFillParent(true) is called.
