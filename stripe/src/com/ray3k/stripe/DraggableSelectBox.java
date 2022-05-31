@@ -62,6 +62,7 @@ public class DraggableSelectBox extends TextButton {
             @Override
             public void tableShown(Event event) {
                 scrollPaneCell.minWidth(DraggableSelectBox.this.getWidth());
+                getStage().setScrollFocus(scrollPane);
             }
     
             @Override
