@@ -1,0 +1,149 @@
+{
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"font": {
+		"file": "font.fnt"
+	}
+},
+"com.badlogic.gdx.graphics.Color": {
+	"button": {
+		"r": 0.27450982,
+		"g": 0.54901963,
+		"b": 0.49411765,
+		"a": 1
+	},
+	"clear": {
+		"r": 1,
+		"g": 1,
+		"b": 1,
+		"a": 0
+	},
+	"pressed": {
+		"r": 0.07450981,
+		"g": 0.24705882,
+		"b": 0.21960784,
+		"a": 1
+	},
+	"white": {
+		"r": 1,
+		"g": 1,
+		"b": 1,
+		"a": 1
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
+	"list-invisible": {
+		"name": "list",
+		"color": "clear"
+	},
+	"pressed": {
+		"name": "white-pixel",
+		"color": "pressed"
+	}
+},
+"com.ray3k.tenpatch.TenPatchDrawable": {
+	"draggable-list-divider-over-10": {
+		"region": "draggable-list-divider-over",
+		"horizontalStretchAreas": [ 1, 14 ],
+		"verticalStretchAreas": [ 1, 2 ],
+		"tiling": false,
+		"minWidth": 16,
+		"minHeight": 4,
+		"rightWidth": 0,
+		"leftWidth": 0,
+		"bottomHeight": 0,
+		"topHeight": 0,
+		"offsetX": 0,
+		"offsetY": 0,
+		"offsetXspeed": 0,
+		"offsetYspeed": 0,
+		"frameDuration": 0.03,
+		"regions": [],
+		"playMode": 2,
+		"crushMode": 0
+	},
+	"draggable-list-divider-up-10": {
+		"region": "draggable-list-divider-up",
+		"horizontalStretchAreas": [ 1, 14 ],
+		"verticalStretchAreas": [ 0, 0, 3, 3 ],
+		"tiling": false,
+		"minWidth": 16,
+		"minHeight": 4,
+		"rightWidth": 0,
+		"leftWidth": 0,
+		"bottomHeight": 0,
+		"topHeight": 0,
+		"offsetX": 0,
+		"offsetY": 0,
+		"offsetXspeed": 0,
+		"offsetYspeed": 0,
+		"frameDuration": 0.03,
+		"regions": [],
+		"playMode": 2,
+		"crushMode": 0
+	},
+	"draggable-list-drag-background-10": {
+		"region": "draggable-list-drag-background",
+		"horizontalStretchAreas": [ 3, 13 ],
+		"verticalStretchAreas": [ 3, 13 ],
+		"tiling": false,
+		"minWidth": 18,
+		"minHeight": 18,
+		"rightWidth": 0,
+		"leftWidth": 0,
+		"bottomHeight": 0,
+		"topHeight": 0,
+		"offsetX": 0,
+		"offsetY": 0,
+		"offsetXspeed": 0,
+		"offsetYspeed": 0,
+		"frameDuration": 0.03,
+		"regions": [],
+		"playMode": 2,
+		"crushMode": 0
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
+	"default": {
+		"hScroll": "scrollpane",
+		"hScrollKnob": "scrollpane-knob",
+		"vScroll": "scrollpane",
+		"vScrollKnob": "scrollpane-knob"
+	}
+},
+"com.ray3k.stripe.PopTable$PopTableStyle": {
+	"default": {
+		"background": "list"
+	}
+},
+"com.ray3k.stripe.DraggableTextList$DraggableTextListStyle": {
+	"default": {
+		"background": "list-invisible",
+		"dividerUp": "draggable-list-divider-up-10",
+		"dividerOver": "draggable-list-divider-over-10",
+		"font": "font",
+		"textBackgroundOver": "pressed",
+		"dragBackgroundUp": "draggable-list-drag-background-10"
+	}
+},
+"com.ray3k.stripe.DraggableSelectBox$DraggableSelectBoxStyle": {
+	"default": {
+		"popTableStyle": "default",
+		"draggableTextListStyle": "default",
+		"scrollPaneStyle": "default",
+		"font": "font",
+		"fontColor": "button",
+		"downFontColor": "button",
+		"overFontColor": "button",
+		"up": "selectbox",
+		"over": "selectbox-over",
+		"checked": "selectbox-pressed",
+		"disabled": "selectbox",
+		"pressedOffsetX": 0,
+		"pressedOffsetY": 0,
+		"unpressedOffsetX": 0,
+		"unpressedOffsetY": 0,
+		"checkedOffsetX": 0,
+		"checkedOffsetY": 0
+	}
+}
+}

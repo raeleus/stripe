@@ -1,0 +1,91 @@
+
+draggable-select-box.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+white-pixel
+  rotate: false
+  xy: 509, 507
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+draggable-list-divider-over
+  rotate: false
+  xy: 58, 411
+  size: 16, 4
+  orig: 16, 4
+  offset: 0, 0
+  index: -1
+draggable-list-divider-up
+  rotate: false
+  xy: 115, 440
+  size: 16, 4
+  orig: 16, 4
+  offset: 0, 0
+  index: -1
+draggable-list-drag-background
+  rotate: false
+  xy: 1, 368
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+font
+  rotate: false
+  xy: 1, 446
+  size: 506, 62
+  orig: 506, 62
+  offset: 0, 0
+  index: -1
+list
+  rotate: false
+  xy: 1, 352
+  size: 14, 14
+  split: 2, 2, 2, 2
+  pad: 3, 3, 3, 3
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+scrollpane
+  rotate: false
+  xy: 58, 395
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+scrollpane-knob
+  rotate: false
+  xy: 21, 372
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+selectbox
+  rotate: false
+  xy: 58, 417
+  size: 55, 27
+  split: 5, 23, 11, 11
+  pad: 3, 25, 3, 3
+  orig: 55, 27
+  offset: 0, 0
+  index: -1
+selectbox-over
+  rotate: false
+  xy: 1, 417
+  size: 55, 27
+  split: 5, 23, 11, 11
+  pad: 3, 25, 3, 3
+  orig: 55, 27
+  offset: 0, 0
+  index: -1
+selectbox-pressed
+  rotate: false
+  xy: 1, 388
+  size: 55, 27
+  split: 5, 23, 11, 11
+  pad: 3, 25, 3, 3
+  orig: 55, 27
+  offset: 0, 0
+  index: -1

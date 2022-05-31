@@ -98,6 +98,6 @@ project(":test") {
         implementation project(":freetype")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        api 'com.github.raeleus.TenPatch:tenpatch:5.2.2'
+        api 'com.github.raeleus.TenPatch:tenpatch:5.2.3'
     }
 }
