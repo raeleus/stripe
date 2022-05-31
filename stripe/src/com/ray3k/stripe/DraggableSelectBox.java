@@ -3,10 +3,10 @@ package com.ray3k.stripe;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.RemoveActorAction;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.ray3k.stripe.DraggableList.DraggableListListener;
@@ -20,7 +20,6 @@ public class DraggableSelectBox extends TextButton {
     private final DraggableTextList draggableTextList;
     private final PopTable popTable;
     private final ScrollPane scrollPane;
-    private final Cell<ScrollPane> scrollPaneCell;
     private DraggableSelectBoxStyle style;
     
     public DraggableSelectBox(Skin skin) {
@@ -76,7 +75,7 @@ public class DraggableSelectBox extends TextButton {
         
         scrollPane = new ScrollPane(draggableTextList, style.scrollPaneStyle);
         scrollPane.setFadeScrollBars(false);
-        scrollPaneCell = popTable.add(scrollPane).growX();
+        popTable.add(scrollPane).growX();
     }
     
     @Override
