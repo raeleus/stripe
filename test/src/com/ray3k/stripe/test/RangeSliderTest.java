@@ -122,6 +122,6 @@ public class RangeSliderTest extends ApplicationAdapter {
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setWindowedMode(850, 450);
-        new Lwjgl3Application(new ViewportWidgetTest(), config);
+        new Lwjgl3Application(new RangeSliderTest(), config);
     }
 }
