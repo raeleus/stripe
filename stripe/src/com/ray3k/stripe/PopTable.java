@@ -531,9 +531,11 @@ public class PopTable extends Table {
             if (automaticallyResized) {
                 float centerX = getX(Align.center);
                 float centerY = getY(Align.center);
-                setSize(getPrefWidth(), getPrefHeight());
+                if (isKeepSizedWithinStage()) setSize(Math.min(getPrefWidth(), stage.getWidth()), Math.min(getPrefHeight(), stage.getHeight()));
+                else setSize(getPrefWidth(), getPrefHeight());
                 super.validate();
-                setSize(getPrefWidth(), getPrefHeight());
+                if (isKeepSizedWithinStage()) setSize(Math.min(getPrefWidth(), stage.getWidth()), Math.min(getPrefHeight(), stage.getHeight()));
+                else setSize(getPrefWidth(), getPrefHeight());
                 setPosition(centerX, centerY, Align.center);
                 setPosition(MathUtils.floor(getX()), MathUtils.floor(getY()));
             }

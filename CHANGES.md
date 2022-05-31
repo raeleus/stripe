@@ -1,4 +1,5 @@
 ### 1.3.1
+* Fixed PopTable from calling layout in an endless loop when automaticallyResized and keepSizedWithinStage are both selected.
 
 ### 1.3.0
 * Added PopTable constructor that accepts a WindowStyle.
