@@ -61,7 +61,7 @@ public class DraggableSelectBox extends TextButton {
         PopTableClickListener popTableClickListener = new PopTableClickListener(Align.bottom, Align.bottom, style.popTableStyle){
             @Override
             public void tableShown(Event event) {
-                scrollPaneCell.minWidth(DraggableSelectBox.this.getWidth());
+                popTable.setWidth(DraggableSelectBox.this.getWidth());
                 getStage().setScrollFocus(scrollPane);
             }
     
@@ -71,9 +71,11 @@ public class DraggableSelectBox extends TextButton {
             }
         };
         popTable = popTableClickListener.popTable;
+        popTable.setAutomaticallyResized(false);
         addListener(popTableClickListener);
         
         scrollPane = new ScrollPane(draggableTextList, style.scrollPaneStyle);
+        scrollPane.setFadeScrollBars(false);
         scrollPaneCell = popTable.add(scrollPane).growX();
     }
     

@@ -61,7 +61,7 @@ public class DraggableSelectBoxTest extends ApplicationAdapter {
         stage.addActor(root);
 
         DraggableSelectBox selectBox = new DraggableSelectBox(skin);
-        selectBox.setItems(new Array<String>(new String[] {"hello", "there", "pardner", "how", "are", "you", "tonight", "I", "am", "well", "sir", "hello", "there", "pardner", "how", "are", "you", "tonight", "I", "am", "well", "sir", "hello", "there", "pardner", "how", "are", "you", "tonight", "I", "am", "well", "sir", "hello", "there", "pardner", "how", "are", "you", "tonight", "I", "am", "well", "sir"}));
+        selectBox.setItems(new Array<String>(new String[] {"hello this is a long sentence that is supposed to defeat the minwidth of the pop table, sir!", "there", "pardner", "how", "are", "you", "tonight", "I", "am", "well", "sir", "hello", "there", "pardner", "how", "are", "you", "tonight", "I", "am", "well", "sir", "hello", "there", "pardner", "how", "are", "you", "tonight", "I", "am", "well", "sir", "hello", "there", "pardner", "how", "are", "you", "tonight", "I", "am", "well", "sir"}));
         root.add(selectBox);
     }
     
