@@ -67,7 +67,7 @@ Add the dependency to your core project:
 ```groovy
 dependencies {
     ...
-    implementation 'com.github.raeleus.stripe:freetype:1.1.0'
+    implementation 'com.github.raeleus.stripe:freetype:1.3.1'
 }
 ```
 Ensure that you have FreeType implemented in your project. Please refer to the [libGDX wiki](https://libgdx.com/wiki/articles/dependency-management-with-gradle#freetypefont-gradle).
@@ -81,7 +81,7 @@ project(":html") {
 
     dependencies {
         ...
-        implementation 'com.github.raeleus.stripe:freetype:1.1.0:sources'
+        implementation 'com.github.raeleus.stripe:freetype:1.3.1:sources'
     }
 }
 ```
