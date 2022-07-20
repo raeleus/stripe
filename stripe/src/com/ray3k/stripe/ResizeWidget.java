@@ -55,6 +55,7 @@ public class ResizeWidget extends WidgetGroup {
     private boolean preventDrag;
     public boolean resizingFromCenter;
     public boolean allowDragging = true;
+    public boolean centerOnLayout = true;
     
     public ResizeWidget(Actor actor, Skin skin) {
         this(actor, skin, "default");
@@ -844,7 +845,7 @@ public class ResizeWidget extends WidgetGroup {
             stack.setHeight((int) (getHeight() - stack.getY()));
         }
         
-        stack.setPosition(getWidth() / 2.0f, getHeight() / 2.0f, Align.center);
+        if (centerOnLayout) stack.setPosition(getWidth() / 2.0f, getHeight() / 2.0f, Align.center);
         stack.setPosition(MathUtils.round(stack.getX()), MathUtils.round(stack.getY()));
     }
     
@@ -989,5 +990,13 @@ public class ResizeWidget extends WidgetGroup {
      */
     public void setAllowDragging(boolean allowDragging) {
         this.allowDragging = allowDragging;
+    }
+    
+    public boolean isCenterOnLayout() {
+        return centerOnLayout;
+    }
+    
+    public void setCenterOnLayout(boolean centerOnLayout) {
+        this.centerOnLayout = centerOnLayout;
     }
 }
