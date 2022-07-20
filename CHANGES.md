@@ -2,6 +2,7 @@
 * Added ColorPicker widget.
 * Added ability to supress key listeners in PopTable.
 * Added option to disable centering when layout is called in ResizeWidget.
+* PopTable#toFront() and PopTable#toBack() also affect the hidden group it belongs to.
 
 ### 1.3.1
 * Fixed PopTable from calling layout in an endless loop when automaticallyResized and keepSizedWithinStage are both selected.

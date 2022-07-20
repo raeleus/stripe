@@ -574,6 +574,18 @@ public class PopTable extends Table {
         super.draw(batch, parentAlpha);
     }
     
+    @Override
+    public void toFront() {
+        group.toFront();
+        super.toFront();
+    }
+    
+    @Override
+    public void toBack() {
+        group.toBack();
+        super.toBack();
+    }
+    
     public void suppressKeyInputListeners(boolean suppress) {
         suppressKeyInputListeners = suppress;
         if (getStage() != null) for (InputListener keyListener : keyInputListeners) {
