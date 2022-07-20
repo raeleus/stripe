@@ -135,3 +135,5 @@ Thumbs.db
 /test/out/
 /freetype/build/
 /freetype/out/
+/colorpicker/build/
+/colorpicker/out/

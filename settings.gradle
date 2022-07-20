@@ -1,2 +1,2 @@
-include 'test', 'stripe', 'freetype'
+include 'test', 'stripe', 'freetype', 'colorpicker'
 rootProject.name = 'stripe'

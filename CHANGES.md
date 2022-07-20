@@ -1,4 +1,5 @@
 ### 1.4.0
+* Added ColorPicker widget.
 * Added ability to supress key listeners in PopTable.
 
 ### 1.3.1
