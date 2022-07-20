@@ -44,6 +44,7 @@ public class PopTable extends Table {
     private Actor highlightActor;
     private float highlightAlpha = 1f;
     private boolean draggable;
+    private boolean suppressKeyInputListeners;
     
     public PopTable() {
         this(new PopTableStyle());
@@ -276,7 +277,7 @@ public class PopTable extends Table {
     public void show(Stage stage) {
         Action action = sequence(alpha(0), fadeIn(.2f));
         this.show(stage, action);
-        for (InputListener inputListener : keyInputListeners) {
+        if (!suppressKeyInputListeners) for (InputListener inputListener : keyInputListeners) {
             stage.addListener(inputListener);
         }
     }
@@ -573,8 +574,16 @@ public class PopTable extends Table {
         super.draw(batch, parentAlpha);
     }
     
+    public void suppressKeyInputListeners(boolean suppress) {
+        suppressKeyInputListeners = suppress;
+        if (getStage() != null) for (InputListener keyListener : keyInputListeners) {
+            if (suppress) getStage().removeListener(keyListener);
+            else getStage().addListener(keyListener);
+        }
+    }
+    
     public PopTable key(final int key, final KeyListener keyListener) {
-        keyInputListeners.add(new InputListener() {
+        InputListener keyInputListener = new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
                 if (keycode == key) {
@@ -582,7 +591,9 @@ public class PopTable extends Table {
                     return true;
                 } else return super.keyDown(event, keycode);
             }
-        });
+        };
+        keyInputListeners.add(keyInputListener);
+        if (getStage() != null && !suppressKeyInputListeners) getStage().addListener(keyInputListener);
         return this;
     }
     
