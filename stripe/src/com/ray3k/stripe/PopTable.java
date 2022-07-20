@@ -582,6 +582,15 @@ public class PopTable extends Table {
         super.draw(batch, parentAlpha);
     }
     
+    /**
+     * Returns the parent Group that this PopTable belongs to. This Group contains the stage background and is necessary
+     * to capture unfocus clicks and to enable modal dialogs.
+     * @return
+     */
+    public Group getParentGroup() {
+        return group;
+    }
+    
     @Override
     public void toFront() {
         group.toFront();

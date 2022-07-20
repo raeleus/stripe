@@ -3,7 +3,8 @@
 * Added option to disable centering when layout is called in ResizeWidget.
 * Added ability to supress key listeners in PopTable.
 * Added methods to set/get the stage background for PopTable.
-* PopTable#toFront() and PopTable#toBack() also affect the hidden group it belongs to.
+* Added method to get the parent group that PopTable belongs to.
+* PopTable#toFront() and PopTable#toBack() also affect the parent group it belongs to.
 
 ### 1.3.1
 * Fixed PopTable from calling layout in an endless loop when automaticallyResized and keepSizedWithinStage are both selected.
