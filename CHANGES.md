@@ -4,6 +4,7 @@
 * Added ability to supress key listeners in PopTable.
 * Added methods to set/get the stage background for PopTable.
 * Added method to get the parent group that PopTable belongs to.
+* Added no-argument constructor for PopTableClickListener.
 
 ### 1.3.1
 * Fixed PopTable from calling layout in an endless loop when automaticallyResized and keepSizedWithinStage are both selected.
