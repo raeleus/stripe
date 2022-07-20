@@ -591,18 +591,6 @@ public class PopTable extends Table {
         return group;
     }
     
-    @Override
-    public void toFront() {
-        group.toFront();
-        super.toFront();
-    }
-    
-    @Override
-    public void toBack() {
-        group.toBack();
-        super.toBack();
-    }
-    
     public void suppressKeyInputListeners(boolean suppress) {
         suppressKeyInputListeners = suppress;
         if (getStage() != null) for (InputListener keyListener : keyInputListeners) {
