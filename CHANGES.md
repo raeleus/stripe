@@ -1,6 +1,7 @@
 ### 1.4.0
 * Added ColorPicker widget.
 * Added option to disable centering when layout is called in ResizeWidget.
+* Added option to attach a PopTable to the position of the mouse.
 * Added ability to supress key listeners in PopTable.
 * Added methods to set/get the stage background for PopTable.
 * Added method to get the parent group that PopTable belongs to.

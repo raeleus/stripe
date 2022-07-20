@@ -1,5 +1,6 @@
 package com.ray3k.stripe;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -45,6 +46,8 @@ public class PopTable extends Table {
     private float highlightAlpha = 1f;
     private boolean draggable;
     private boolean suppressKeyInputListeners;
+    private boolean attachToMouse;
+    private int attachToMouseAlignment;
     
     public PopTable() {
         this(new PopTableStyle());
@@ -528,6 +531,19 @@ public class PopTable extends Table {
         this.draggable = draggable;
     }
     
+    public boolean isAttachToMouse() {
+        return attachToMouse;
+    }
+    
+    public void setAttachToMouse(boolean attachToMouse) {
+        setAttachToMouse(attachToMouse, Align.bottomLeft);
+    }
+    
+    public void setAttachToMouse(boolean attachToMouse, int alignment) {
+        this.attachToMouse = attachToMouse;
+        attachToMouseAlignment = alignment;
+    }
+    
     public PopTableStyle getStyle() {
         return style;
     }
@@ -572,6 +588,17 @@ public class PopTable extends Table {
     public void setFillParent(boolean fillParent) {
         super.setFillParent(fillParent);
         this.fillParent = fillParent;
+    }
+    
+    private static final Vector2 mousePosition = new Vector2();
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        if (attachToMouse) {
+            mousePosition.set(Gdx.input.getX(), Gdx.input.getY());
+            group.screenToLocalCoordinates(mousePosition);
+            setPosition(mousePosition.x, mousePosition.y, attachToMouseAlignment);
+        }
     }
     
     @Override
