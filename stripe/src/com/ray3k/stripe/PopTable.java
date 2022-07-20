@@ -145,6 +145,14 @@ public class PopTable extends Table {
         stageBackground.setDrawable(style.stageBackground);
     }
     
+    public void setStageBackground(Drawable drawable) {
+        stageBackground.setDrawable(drawable);
+    }
+    
+    public Drawable getStageBackground() {
+        return stageBackground.getDrawable();
+    }
+    
     private void alignToActorEdge(Actor actor,  int edge, int alignment) {
         alignToActorEdge(actor, edge, alignment, 0, 0);
     }
