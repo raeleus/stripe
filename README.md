@@ -48,6 +48,48 @@ Add the following inherits line to your GdxDefinition.gwt.xml in the html projec
 <inherits name="com.ray3k.stripe" />
 `
 
+## How to Include PopColorPicker in your Project
+
+PopColorPicker has been moved into a separate project to allow users to use the Stripe Widgets without forcing them to import the [TenPatchDrawable class](https://github.com/raeleus/TenPatch).
+
+### Core Dependency
+Add the following to your root build.gradle:
+```groovy
+allprojects {
+    repositories {
+	...
+	maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+Add the dependency to your core project:
+```groovy
+dependencies {
+    ...
+    implementation 'com.github.raeleus.stripe:colorpicker:1.4.0'
+}
+```
+
+### HTML5 Dependency
+Add the dependency to your html project of your root build.gradle if you want HTML5/GWT support:
+```groovy
+project(":html") {
+    apply plugin: "gwt"
+    apply plugin: "war"
+
+    dependencies {
+        ...
+        implementation 'com.github.raeleus.stripe:colorpicker:1.4.0:sources'
+    }
+}
+```
+
+Add the following inherits line to your GdxDefinition.gwt.xml in the html project:  
+`
+<inherits name="com.ray3k.stripe" />
+`
+
 ## How to Include FreeTypeSkin in your Project
 
 FreeTypeSkin has been moved into a separate project to allow users to use the Stripe Widgets without forcing them to import the GDX FreeType classes.
@@ -67,7 +109,7 @@ Add the dependency to your core project:
 ```groovy
 dependencies {
     ...
-    implementation 'com.github.raeleus.stripe:freetype:1.3.1'
+    implementation 'com.github.raeleus.stripe:freetype:1.4.0'
 }
 ```
 Ensure that you have FreeType implemented in your project. Please refer to the [libGDX wiki](https://libgdx.com/wiki/articles/dependency-management-with-gradle#freetypefont-gradle).
@@ -81,7 +123,7 @@ project(":html") {
 
     dependencies {
         ...
-        implementation 'com.github.raeleus.stripe:freetype:1.3.1:sources'
+        implementation 'com.github.raeleus.stripe:freetype:1.4.0:sources'
     }
 }
 ```
