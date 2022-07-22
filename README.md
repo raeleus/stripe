@@ -50,7 +50,7 @@ Add the following inherits line to your GdxDefinition.gwt.xml in the html projec
 
 ## How to Include PopColorPicker in your Project
 
-PopColorPicker has been moved into a separate project to allow users to use the Stripe Widgets without forcing them to import the [TenPatchDrawable class](https://github.com/raeleus/TenPatch).
+PopColorPicker has been moved into a separate project to allow users to use the core Stripe Widgets without forcing them to import the [TenPatchDrawable class](https://github.com/raeleus/TenPatch).
 
 ### Core Dependency
 Add the following to your root build.gradle:
