@@ -1,3 +1,6 @@
+### 1.4.1
+* 
+
 ### 1.4.0
 * Added ColorPicker widget.
 * Added option to disable centering when layout is called in ResizeWidget.
