@@ -50,7 +50,7 @@ Add the following inherits line to your GdxDefinition.gwt.xml in the html projec
 
 ## How to Include PopColorPicker in your Project
 
-PopColorPicker has been moved into a separate project to allow users to use the core Stripe Widgets without forcing them to import the [TenPatchDrawable class](https://github.com/raeleus/TenPatch).
+PopColorPicker has been moved into a separate project to allow users to use the core Stripe Widgets without forcing them to import the [TenPatchDrawable class](https://github.com/raeleus/TenPatch) and [TextraTypist](https://github.com/tommyettinger/textratypist).
 
 ### Core Dependency
 Add the following to your root build.gradle:
@@ -81,6 +81,8 @@ project(":html") {
     dependencies {
         ...
         implementation 'com.github.raeleus.stripe:colorpicker:1.4.1:sources'
+        implementation "com.github.tommyettinger:textratypist:0.6.3:sources"
+        implementation "com.github.tommyettinger:regexodus:0.1.13:sources"
     }
 }
 ```
