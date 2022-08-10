@@ -1,5 +1,5 @@
 ### 1.4.1
-* 
+* Included TextraTypist in ColorPicker project. Eliminated local copy of ColorUtils
 
 ### 1.4.0
 * Added ColorPicker widget.
