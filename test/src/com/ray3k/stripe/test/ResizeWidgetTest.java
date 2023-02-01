@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ray3k.stripe.ResizeWidget;
+import com.ray3k.stripe.ResizeWidget.ResizeWidgetStyle;
 
 public class ResizeWidgetTest extends ApplicationAdapter {
     private Skin skin;
@@ -33,6 +34,9 @@ public class ResizeWidgetTest extends ApplicationAdapter {
         resizeWidget.setMinWidth(100);
         resizeWidget.setMinHeight(100);
         table.add(resizeWidget).grow();
+    
+        //test creating a ResizeWidget with a null style
+        resizeWidget = new ResizeWidget(new Table(), (ResizeWidgetStyle) null);
     }
     
     @Override
@@ -57,6 +61,6 @@ public class ResizeWidgetTest extends ApplicationAdapter {
     public static void main(String[] args) {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setWindowedMode(800, 800);
-        new Lwjgl3Application(new ViewportWidgetTest(), config);
+        new Lwjgl3Application(new ResizeWidgetTest(), config);
     }
 }

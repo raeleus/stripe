@@ -74,6 +74,7 @@ public class ResizeWidget extends WidgetGroup {
             this.style = style;
         } else {
             this.style = new ResizeWidgetStyle();
+            style = this.style;
         }
         
         if (style.handle != null || style.handleOver != null || style.handlePressed != null) {
