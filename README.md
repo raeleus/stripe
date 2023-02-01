@@ -25,7 +25,7 @@ Add the dependency to your core project:
 ```groovy
 dependencies {
     ...
-    implementation 'com.github.raeleus.stripe:stripe:1.4.1'
+    implementation 'com.github.raeleus.stripe:stripe:1.4.2'
 }
 ```
 
@@ -38,7 +38,7 @@ project(":html") {
 
     dependencies {
         ...
-        implementation 'com.github.raeleus.stripe:stripe:1.4.1:sources'
+        implementation 'com.github.raeleus.stripe:stripe:1.4.2:sources'
     }
 }
 ```
@@ -67,7 +67,7 @@ Add the dependency to your core project:
 ```groovy
 dependencies {
     ...
-    implementation 'com.github.raeleus.stripe:colorpicker:1.4.1'
+    implementation 'com.github.raeleus.stripe:colorpicker:1.4.2'
 }
 ```
 
@@ -80,7 +80,7 @@ project(":html") {
 
     dependencies {
         ...
-        implementation 'com.github.raeleus.stripe:colorpicker:1.4.1:sources'
+        implementation 'com.github.raeleus.stripe:colorpicker:1.4.2:sources'
         implementation "com.github.tommyettinger:textratypist:0.6.3:sources"
         implementation "com.github.tommyettinger:regexodus:0.1.13:sources"
     }
@@ -111,7 +111,7 @@ Add the dependency to your core project:
 ```groovy
 dependencies {
     ...
-    implementation 'com.github.raeleus.stripe:freetype:1.4.1'
+    implementation 'com.github.raeleus.stripe:freetype:1.4.2'
 }
 ```
 Ensure that you have FreeType implemented in your project. Please refer to the [libGDX wiki](https://libgdx.com/wiki/articles/dependency-management-with-gradle#freetypefont-gradle).
@@ -125,7 +125,7 @@ project(":html") {
 
     dependencies {
         ...
-        implementation 'com.github.raeleus.stripe:freetype:1.4.1:sources'
+        implementation 'com.github.raeleus.stripe:freetype:1.4.2:sources'
     }
 }
 ```

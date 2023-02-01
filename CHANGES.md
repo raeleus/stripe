@@ -1,4 +1,4 @@
-### 1.4.2
+### 1.4.2 
 * Fixed creating ResizeWidget with a null style causes an NPE. Resolves #6
 
 ### 1.4.1
