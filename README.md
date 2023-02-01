@@ -81,7 +81,7 @@ project(":html") {
     dependencies {
         ...
         implementation 'com.github.raeleus.stripe:colorpicker:1.4.2:sources'
-        implementation "com.github.tommyettinger:textratypist:0.6.3:sources"
+        implementation "com.github.tommyettinger:textratypist:0.7.5:sources"
         implementation "com.github.tommyettinger:regexodus:0.1.13:sources"
     }
 }

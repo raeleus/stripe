@@ -98,7 +98,7 @@ project(":colorpicker") {
         implementation project(":stripe")
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api 'com.github.raeleus.TenPatch:tenpatch:5.2.3'
-        api "com.github.tommyettinger:textratypist:0.6.3"
+        api "com.github.tommyettinger:textratypist:0.7.5"
     }
 
     task sourcesJar(type: Jar, dependsOn: classes) {
