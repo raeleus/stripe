@@ -1,5 +1,6 @@
 ### 1.4.2 
 * Fixed creating ResizeWidget with a null style causes an NPE. Resolves #6
+* Updated TextraTypist version in PopColorPicker
 
 ### 1.4.1
 * Included TextraTypist in ColorPicker project. Eliminated local copy of ColorUtils
