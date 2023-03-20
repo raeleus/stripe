@@ -35,6 +35,19 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
         maven { url 'https://jitpack.io' }
     }
+
+// Disable JDK 8's doclint
+// http://blog.joda.org/2014/02/turning-off-doclint-in-jdk-8-javadoc.html
+    if (JavaVersion.current().isJava8Compatible()) {
+        allprojects {
+            tasks.withType(Javadoc) {
+                // The -quiet is because of some sort of weird JDK JavaCompiler bug:
+                // https://discuss.gradle.org/t/passing-arguments-to-compiler-and-javadoc/1661
+                options.addStringOption('Xdoclint:none,-missing', '-quiet')
+            }
+        }
+    }
+
 }
 
 project(":stripe") {
@@ -44,7 +57,6 @@ project(":stripe") {
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api 'com.github.tommyettinger:regexodus:0.1.15'
-        api 'com.github.tommyettinger:regexodus:0.1.15:sources'
     }
 
     task sourcesJar(type: Jar, dependsOn: classes) {
@@ -71,7 +83,6 @@ project(":freetype") {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         api 'com.github.tommyettinger:regexodus:0.1.15'
-        api 'com.github.tommyettinger:regexodus:0.1.15:sources'
     }
 
     task sourcesJar(type: Jar, dependsOn: classes) {
