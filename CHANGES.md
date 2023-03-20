@@ -1,3 +1,7 @@
+### 1.4.3
+* Updated Regexodus to 0.1.5.
+* Updated Textratypist to 0.8.0.
+
 ### 1.4.2 
 * Fixed creating ResizeWidget with a null style causes an NPE. Resolves #6
 * Updated TextraTypist version in PopColorPicker

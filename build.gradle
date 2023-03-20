@@ -43,8 +43,8 @@ project(":stripe") {
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
-        api 'com.github.tommyettinger:regexodus:0.1.10'
-        api 'com.github.tommyettinger:regexodus:0.1.10:sources'
+        api 'com.github.tommyettinger:regexodus:0.1.15'
+        api 'com.github.tommyettinger:regexodus:0.1.15:sources'
     }
 
     task sourcesJar(type: Jar, dependsOn: classes) {
@@ -70,8 +70,8 @@ project(":freetype") {
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-        api 'com.github.tommyettinger:regexodus:0.1.10'
-        api 'com.github.tommyettinger:regexodus:0.1.10:sources'
+        api 'com.github.tommyettinger:regexodus:0.1.15'
+        api 'com.github.tommyettinger:regexodus:0.1.15:sources'
     }
 
     task sourcesJar(type: Jar, dependsOn: classes) {
@@ -98,7 +98,7 @@ project(":colorpicker") {
         implementation project(":stripe")
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api 'com.github.raeleus.TenPatch:tenpatch:5.2.3'
-        api "com.github.tommyettinger:textratypist:0.7.5"
+        api "com.github.tommyettinger:textratypist:0.8.0"
     }
 
     task sourcesJar(type: Jar, dependsOn: classes) {
