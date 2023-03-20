@@ -4,7 +4,7 @@
 <module>
     <source path=""/>
     <inherits name="com.badlogic.gdx.backends.gdx_backends_gwt" />
-    <inherits name="regexodus"/>
+    <inherits name="regexodus.regexodus"/>
     <extend-configuration-property name="gdx.reflect.include" value="com.ray3k.stripe"/>
     <extend-configuration-property name="gdx.reflect.include" value="com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator"/>
     <extend-configuration-property name="gdx.reflect.include" value="com.badlogic.gdx.graphics.g2d.PixmapPacker"/>
