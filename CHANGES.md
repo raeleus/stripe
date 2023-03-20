@@ -1,3 +1,6 @@
+### 1.4.4
+* Fixed javadoc build. Thanks TEttinger!
+
 ### 1.4.3
 * Updated Regexodus to 0.1.5.
 * Updated Textratypist to 0.8.0.
