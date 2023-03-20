@@ -6,6 +6,6 @@
     <inherits name="com.badlogic.gdx.backends.gdx_backends_gwt" />
     <inherits name="com.ray3k.tenpatch.tenpatch"/>
     <inherits name="regexodus.regexodus" />
-    <inherits name="textratypist" />
+    <inherits name="com.github.tommyettinger.textratypist" />
     <extend-configuration-property name="gdx.reflect.include" value="com.ray3k.stripe"/>
 </module>

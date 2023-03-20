@@ -1,3 +1,6 @@
+### 1.4.5
+* Fixed TextraTypist GWT tag.
+
 ### 1.4.4
 * Fixed javadoc build. Thanks TEttinger!
 
