@@ -26,7 +26,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Scaling;
-import com.github.tommyettinger.textra.utils.ColorUtils;
 import com.ray3k.tenpatch.TenPatchDrawable;
 
 import java.util.Locale;
