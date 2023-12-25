@@ -128,6 +128,7 @@ Thumbs.db
 *.jar
 *.zip
 *.gif
+!/gradle/wrapper/gradle-wrapper.jar
 
 ## custom
 /design/
