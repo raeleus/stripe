@@ -1,3 +1,6 @@
+### 1.4.6 (in development)
+* PopColorPicker no longer depends on TextraTypist as a whole, since it only needed one file from it.
+
 ### 1.4.5
 * Fixed TextraTypist GWT tag.
 
