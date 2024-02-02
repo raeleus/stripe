@@ -1,2 +1,11 @@
 include 'test', 'stripe', 'freetype', 'colorpicker'
 rootProject.name = 'stripe'
+include 'untitled'
+include 'filechooser'
+include 'filechooser:filechooser-desktop'
+findProject(':filechooser:filechooser-desktop')?.name = 'filechooser-desktop'
+include 'filechooser:desktop'
+findProject(':filechooser:desktop')?.name = 'desktop'
+include 'filechooser:dummy'
+findProject(':filechooser:dummy')?.name = 'dummy'
+
