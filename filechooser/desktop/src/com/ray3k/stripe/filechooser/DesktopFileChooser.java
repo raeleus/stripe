@@ -15,6 +15,10 @@ import static org.lwjgl.system.MemoryStack.stackPush;
 import static org.lwjgl.system.MemoryUtil.NULL;
 import static org.lwjgl.util.nfd.NativeFileDialog.*;
 
+/**
+ * The DesktopFileChooser class implements the FileChooser interface and provides functionality to choose files
+ * using the native file chooser dialog on desktop platforms.
+ */
 public final class DesktopFileChooser implements FileChooser {
 
     @Override
