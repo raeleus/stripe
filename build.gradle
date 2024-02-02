@@ -14,15 +14,16 @@ buildscript {
 allprojects {
 
     group = 'com.github.raeleus.stripe'
-    version = '1.4.5'
+    version = '1.4.6'
 
     ext {
         appName = "stripe"
-        gdxVersion = '1.9.11'
+        gdxVersion = '1.12.1'
         roboVMVersion = '2.3.7'
-        box2DLightsVersion = '1.4'
+        box2DLightsVersion = '1.5'
         ashleyVersion = '1.7.0'
         aiVersion = '1.8.0'
+        lwjglVersion = "3.3.3"
     }
 
     repositories {
@@ -50,32 +51,24 @@ allprojects {
 
 project(":stripe") {
     apply plugin: "java-library"
-    apply plugin: 'maven'
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
         api 'com.github.tommyettinger:regexodus:0.1.15'
     }
 
-    task sourcesJar(type: Jar, dependsOn: classes) {
-        classifier = 'sources'
-        from sourceSets.main.allSource
-    }
-
-    task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
+    tasks.register('javadocJar', Jar) {
+        dependsOn javadoc
         from javadoc.destinationDir
     }
 
     artifacts {
-        archives sourcesJar
         archives javadocJar
     }
 }
 
 project(":freetype") {
     apply plugin: "java-library"
-    apply plugin: 'maven'
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
@@ -83,25 +76,18 @@ project(":freetype") {
         api 'com.github.tommyettinger:regexodus:0.1.15'
     }
 
-    task sourcesJar(type: Jar, dependsOn: classes) {
-        classifier = 'sources'
-        from sourceSets.main.allSource
-    }
-
-    task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
+    tasks.register('javadocJar', Jar) {
+        dependsOn javadoc
         from javadoc.destinationDir
     }
 
     artifacts {
-        archives sourcesJar
         archives javadocJar
     }
 }
 
 project(":colorpicker") {
     apply plugin: "java-library"
-    apply plugin: 'maven'
 
     dependencies {
         implementation project(":stripe")
@@ -109,21 +95,81 @@ project(":colorpicker") {
         api 'com.github.raeleus.TenPatch:tenpatch:5.2.3'
     }
 
-    task sourcesJar(type: Jar, dependsOn: classes) {
-        classifier = 'sources'
-        from sourceSets.main.allSource
-    }
-
-    task javadocJar(type: Jar, dependsOn: javadoc) {
-        classifier = 'javadoc'
+    tasks.register('javadocJar', Jar) {
+        dependsOn javadoc
         from javadoc.destinationDir
     }
 
     artifacts {
-        archives sourcesJar
         archives javadocJar
     }
 }
+project(":filechooser") {
+    apply plugin: "java-library"
+
+    dependencies {
+        implementation project(":stripe")
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+
+    tasks.register('javadocJar', Jar) {
+        dependsOn javadoc
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives javadocJar
+    }
+
+}
+project(":filechooser:desktop") {
+    apply plugin: "java-library"
+
+    dependencies {
+        implementation project(":stripe")
+        implementation project(":filechooser")
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+
+        api "org.lwjgl:lwjgl-nfd:${lwjglVersion}"
+        api "org.lwjgl:lwjgl-nfd:${lwjglVersion}:natives-linux"
+        api "org.lwjgl:lwjgl-nfd:${lwjglVersion}:natives-linux-arm32"
+        api "org.lwjgl:lwjgl-nfd:${lwjglVersion}:natives-linux-arm64"
+        api "org.lwjgl:lwjgl-nfd:${lwjglVersion}:natives-macos"
+        api "org.lwjgl:lwjgl-nfd:${lwjglVersion}:natives-macos-arm64"
+        api "org.lwjgl:lwjgl-nfd:${lwjglVersion}:natives-windows"
+        api "org.lwjgl:lwjgl-nfd:${lwjglVersion}:natives-windows-arm64"
+        api "org.lwjgl:lwjgl-nfd:${lwjglVersion}:natives-windows-x86"
+    }
+
+    tasks.register('javadocJar', Jar) {
+        dependsOn javadoc
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives javadocJar
+    }
+
+}project(":filechooser:dummy") {
+    apply plugin: "java-library"
+
+    dependencies {
+        implementation project(":stripe")
+        implementation project(":filechooser")
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+
+    tasks.register('javadocJar', Jar) {
+        dependsOn javadoc
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives javadocJar
+    }
+
+}
+
 
 project(":test") {
     apply plugin: "java-library"
@@ -131,6 +177,8 @@ project(":test") {
     dependencies {
         implementation project(":stripe")
         implementation project(":freetype")
+        implementation project(":filechooser")
+        implementation project(":filechooser:desktop")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         api 'com.github.raeleus.TenPatch:tenpatch:5.2.3'
