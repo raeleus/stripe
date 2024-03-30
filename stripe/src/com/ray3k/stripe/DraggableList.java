@@ -212,7 +212,7 @@ public class DraggableList extends WidgetGroup {
 
                     if (allowRemoval && target == null) {
                         Actor payloadActor = (Actor) payload.getObject();
-                        var index = actors.indexOf(payloadActor, true);
+                        int index = actors.indexOf(payloadActor, true);
                         actors.removeValue(payloadActor, true);
                         updateTable();
                         fire(new ChangeEvent());

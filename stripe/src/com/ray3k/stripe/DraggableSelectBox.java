@@ -40,8 +40,8 @@ public class DraggableSelectBox extends TextButton {
         draggableTextList = new DraggableTextList(true, draggableTextListStyle);
         draggableTextList.addListener(new DraggableListListener() {
             @Override
-            public void removed(Actor actor) {
-                fire(new DraggableListRemovedEvent(actor));
+            public void removed(Actor actor, int index) {
+                fire(new DraggableListRemovedEvent(actor, index));
             }
     
             @Override

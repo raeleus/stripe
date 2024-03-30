@@ -19,10 +19,10 @@ public class ScrollFocusListener extends InputListener {
 
     @Override
     public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-        var scrollFocus = stage.getScrollFocus();
-        var actor = event.getListenerActor();
+        Actor scrollFocus = stage.getScrollFocus();
+        Actor actor = event.getListenerActor();
         if (actor instanceof ScrollPane) {
-            var scrollPane = (ScrollPane) actor;
+            ScrollPane scrollPane = (ScrollPane) actor;
             if (!scrollPane.isScrollY() && !scrollPane.isScrollX()) return;
         }
         if (scrollFocus == null || scrollFocus != actor && !scrollFocus.isDescendantOf(actor)) {
@@ -32,7 +32,7 @@ public class ScrollFocusListener extends InputListener {
 
     @Override
     public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-        var actor = event.getListenerActor();
+        Actor actor = event.getListenerActor();
         if (stage.getScrollFocus() == actor &&  (toActor == null || !toActor.isDescendantOf(actor))) {
             stage.setScrollFocus(null);
         }
