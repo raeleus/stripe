@@ -8,6 +8,7 @@
 * Fixed issues with holding buttons in Spinner
 * Added minor UI improvements and event handling to PopColorPicker
 * Added DraggableList improvements to events and selecting Actors
+* The ViewportWidget must now be manually updated via ViewportWidget#updateViewport() before drawing. This resolves incorrect rendering issues.
 * PopColorPicker no longer depends on TextraTypist as a whole, since it only needed one file from it.
 
 ### 1.4.5

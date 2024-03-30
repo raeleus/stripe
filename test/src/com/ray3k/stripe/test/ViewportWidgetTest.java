@@ -20,6 +20,7 @@ public class ViewportWidgetTest extends ApplicationAdapter {
     private Stage stage;
     private Viewport gameViewport;
     private SpriteBatch spriteBatch;
+    private ViewportWidget viewportWidget;
     
     @Override
     public void create() {
@@ -29,7 +30,7 @@ public class ViewportWidgetTest extends ApplicationAdapter {
         Gdx.input.setInputProcessor(stage);
     
         gameViewport = new StretchViewport(800, 800);
-        ViewportWidget viewportWidget = new ViewportWidget(gameViewport);
+        viewportWidget = new ViewportWidget(gameViewport);
         
         ResizeWidget resizeWidget = new ResizeWidget(viewportWidget, skin, "default");
         resizeWidget.setResizingFromCenter(true);
@@ -45,7 +46,7 @@ public class ViewportWidgetTest extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
         stage.act();
-        gameViewport.apply(true);
+        viewportWidget.updateViewport(true);
         spriteBatch.setProjectionMatrix(gameViewport.getCamera().combined);
         TextureRegion textureRegion = skin.getRegion("island");
         spriteBatch.begin();

@@ -14,25 +14,27 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 public class ViewportWidget extends Widget {
     public Viewport viewport;
     private final static Vector2 temp = new Vector2();
-    
+
     public ViewportWidget(Viewport viewport) {
         this.viewport = viewport;
     }
-    
-    @Override
-    public void act(float delta) {
+
+    /**
+     * Updates the viewport's bounds to match the size and position of the widget. Applies the viewport. Call before
+     * drawing to the viewport.
+     * @param centerCamera
+     */
+    public void updateViewport(boolean centerCamera) {
+        temp.set(MathUtils.round(getWidth()), MathUtils.round(getHeight()));
+        if (getStage() != null) getStage().getViewport().project(temp);
+
+        viewport.update(MathUtils.round(temp.x), MathUtils.round(temp.y), centerCamera);
+
+        int viewportOriginalX = viewport.getScreenX();
+        int viewportOriginalY = viewport.getScreenY();
         temp.set(0, 0);
         localToScreenCoordinates(temp);
         viewport.setScreenPosition(viewportOriginalX + MathUtils.round(temp.x), viewportOriginalY + MathUtils.round(Gdx.graphics.getHeight() - temp.y));
-    }
-    
-    int viewportOriginalX, viewportOriginalY;
-    @Override
-    public void layout() {
-        temp.set(0, 0);
-        localToScreenCoordinates(temp);
-        viewport.update(MathUtils.round(getWidth()), MathUtils.round(getHeight()));
-        viewportOriginalX = viewport.getScreenX();
-        viewportOriginalY = viewport.getScreenY();
+        viewport.apply(centerCamera);
     }
 }
