@@ -1,5 +1,6 @@
 ### 1.4.6
 * Updated to libGDX 1.12.1
+* Added minor UI improvements and event handling to PopColorPicker
 * Added DraggableList improvements to events and selecting Actors
 * PopColorPicker no longer depends on TextraTypist as a whole, since it only needed one file from it.
 
