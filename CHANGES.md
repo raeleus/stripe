@@ -1,6 +1,7 @@
 ### 1.4.6
 * Updated to libGDX 1.12.1
 * Updated source compatibility to Java 8
+* Added CollapsibleGroup
 * Fixed KeepSizedWithinStage in PopTable
 * Fixed issues with PopTable focus
 * Other minor PopTable bug fixes
