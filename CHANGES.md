@@ -1,3 +1,6 @@
+### 1.4.7
+* 
+
 ### 1.4.6
 * Updated to libGDX 1.12.1
 * Updated source compatibility to Java 8
