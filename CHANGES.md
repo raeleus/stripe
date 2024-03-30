@@ -3,6 +3,7 @@
 * Fixed KeepSizedWithinStage in PopTable
 * Fixed issues with PopTable focus
 * Other minor PopTable bug fixes
+* ScrollFocusListener now sets focus on the correct child
 * Added minor UI improvements and event handling to PopColorPicker
 * Added DraggableList improvements to events and selecting Actors
 * PopColorPicker no longer depends on TextraTypist as a whole, since it only needed one file from it.
