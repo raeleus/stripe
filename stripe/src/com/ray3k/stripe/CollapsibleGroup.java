@@ -203,7 +203,7 @@ public class CollapsibleGroup extends WidgetGroup {
             if (horizontal) actorLength = actor instanceof Layout ? ((Layout) actor).getMinWidth() : actor.getWidth();
             else actorLength = actor instanceof Layout ? ((Layout) actor).getMinHeight() : actor.getHeight();
 
-            if (actorLength < maxLength && actorLength > largestLength) {
+            if (actorLength <= maxLength && actorLength > largestLength) {
                 largestLength = actorLength;
                 largest = actor;
             }

@@ -1,5 +1,5 @@
 ### 1.4.7
-* 
+* Fixed CollapsibleGroup not matching the largest available size 
 
 ### 1.4.6
 * Updated to libGDX 1.12.1
