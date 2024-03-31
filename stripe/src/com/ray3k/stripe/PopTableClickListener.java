@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Disableable;
 import com.badlogic.gdx.utils.Align;
@@ -21,19 +22,19 @@ public class PopTableClickListener extends ClickListener {
     }
     
     public PopTableClickListener(Skin skin) {
-        this(Align.bottom, Align.bottom, skin.get(PopTableStyle.class));
+        this(Align.bottom, Align.bottom, findStyleInSkin(skin));
     }
     
     public PopTableClickListener(Skin skin, String style) {
-        this(Align.bottom, Align.bottom, skin.get(style, PopTableStyle.class));
+        this(Align.bottom, Align.bottom, findStyleInSkin(skin, style));
     }
     
     public PopTableClickListener(int edge, int align, Skin skin) {
-        this(edge, align, skin.get(PopTableStyle.class));
+        this(edge, align, findStyleInSkin(skin));
     }
     
     public PopTableClickListener(int edge, int align, Skin skin, String style) {
-        this(edge, align, skin.get(style, PopTableStyle.class));
+        this(edge, align, findStyleInSkin(skin, style));
     }
     
     public PopTableClickListener(int edge, int align, PopTableStyle style) {
@@ -53,6 +54,16 @@ public class PopTableClickListener extends ClickListener {
                 PopTableClickListener.this.tableHidden(event);
             }
         });
+    }
+    
+    private static PopTableStyle findStyleInSkin(Skin skin) {
+        return findStyleInSkin(skin, "default");
+    }
+    
+    private static PopTableStyle findStyleInSkin(Skin skin, String style) {
+        if (skin.has(style, PopTableStyle.class)) return skin.get(style, PopTableStyle.class);
+        else if (skin.has(style, WindowStyle.class)) return new PopTableStyle(skin.get(style, WindowStyle.class));
+        else return new PopTableStyle();
     }
     
     @Override
