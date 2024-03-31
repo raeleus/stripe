@@ -3,6 +3,7 @@ package com.ray3k.stripe;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Disableable;
 import com.badlogic.gdx.utils.Align;
 import com.ray3k.stripe.PopTable.PopTableStyle;
@@ -14,11 +15,11 @@ public class PopTableTooltipListener extends InputListener {
     private final static Vector2 temp = new Vector2();
     
     public PopTableTooltipListener(int attachToMouseAlign, Skin skin) {
-        this(attachToMouseAlign, skin.get(PopTableStyle.class));
+        this(attachToMouseAlign, findStyleInSkin(skin));
     }
     
     public PopTableTooltipListener(int attachToMouseAlign, Skin skin, String style) {
-        this(attachToMouseAlign, skin.get(style, PopTableStyle.class));
+        this(attachToMouseAlign, findStyleInSkin(skin, style));
     }
     
     public PopTableTooltipListener(int attachToMouseAlign, PopTableStyle style) {
@@ -38,6 +39,16 @@ public class PopTableTooltipListener extends InputListener {
                 PopTableTooltipListener.this.tableHidden(event);
             }
         });
+    }
+    
+    private static PopTableStyle findStyleInSkin(Skin skin) {
+        return findStyleInSkin(skin, "default");
+    }
+    
+    private static PopTableStyle findStyleInSkin(Skin skin, String style) {
+        if (skin.has(style, PopTableStyle.class)) return skin.get(style, PopTableStyle.class);
+        else if (skin.has(style, WindowStyle.class)) return new PopTableStyle(skin.get(style, WindowStyle.class));
+        else return new PopTableStyle();
     }
 
     @Override
