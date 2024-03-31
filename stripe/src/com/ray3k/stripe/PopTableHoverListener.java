@@ -1,5 +1,7 @@
 package com.ray3k.stripe;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.scenes.scene2d.*;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -11,8 +13,10 @@ import com.ray3k.stripe.PopTable.TableShowHideListener;
 public class PopTableHoverListener extends InputListener {
     protected PopTable popTable;
     public boolean hideOnExit;
+    public float delay;
     private final int align;
     private final int edge;
+    private Action showTableAction;
     
     public PopTableHoverListener(int edge, int align, Skin skin) {
         this(edge, align, findStyleInSkin(skin));
@@ -24,6 +28,7 @@ public class PopTableHoverListener extends InputListener {
     
     public PopTableHoverListener(int edge, int align, PopTableStyle style) {
         hideOnExit = true;
+        delay = .5f;
         popTable = new PopTable(style);
         popTable.setModal(false);
         popTable.setHideOnUnfocus(true);
@@ -55,31 +60,39 @@ public class PopTableHoverListener extends InputListener {
     
     @Override
     public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-        if (popTable.isHidden()) {
-            if (fromActor == null || !event.getListenerActor().isAscendantOf(fromActor)) {
-                Stage stage = event.getListenerActor().getStage();
-                Actor actor = event.getListenerActor();
-                
-                if (actor instanceof Disableable) {
-                    if (((Disableable) actor).isDisabled()) return;
-                }
-                
+        Stage stage = event.getListenerActor().getStage();
+        Actor actor = event.getListenerActor();
+        
+        if (Gdx.input.isButtonPressed(Buttons.LEFT) || Gdx.input.isButtonPressed(Buttons.RIGHT) || Gdx.input.isButtonPressed(Buttons.MIDDLE)) return;
+        if (pointer != -1 || !popTable.isHidden()) return;
+        if (fromActor != null && actor.isAscendantOf(fromActor)) return;
+        if (actor instanceof Disableable && ((Disableable) actor).isDisabled()) return;
+        
+        if (showTableAction == null) {
+            showTableAction = Actions.delay(delay, Actions.run(() -> {
                 popTable.show(stage);
                 popTable.toFront();
                 popTable.getParentGroup().setTouchable(Touchable.disabled);
                 popTable.attachToActor(actor, edge, align);
-                
-                popTable.moveToInsideStage();
-            }
+                showTableAction = null;
+            }));
+            actor.addAction(showTableAction);
         }
+        
+        popTable.moveToInsideStage();
     }
     
     @Override
     public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-        if (!hideOnExit || popTable.isHidden()) return;
+        if (pointer != -1 || !hideOnExit) return;
         if (toActor != null && event.getListenerActor().isAscendantOf(toActor)) return;
+        Actor actor = event.getListenerActor();
         
-        popTable.hide();
+        if (!popTable.isHidden()) popTable.hide();
+        if (showTableAction != null) {
+            actor.removeAction(showTableAction);
+            showTableAction = null;
+        }
     }
     
     public PopTable getPopTable() {
