@@ -1,7 +1,9 @@
 ### 1.4.7
 * Added SystemCursorListener
 * Added SplitPaneSystemCursorListener
-* Fixed CollapsibleGroup not matching the largest available size 
+* Fixed CollapsibleGroup not matching the largest available size
+* PopTableHoverListener no longer fails to find a style if the provided style is a WindowStyle
+* Prevent endless loop of enter and exit in PopTableHoverListener
 
 ### 1.4.6
 * Updated to libGDX 1.12.1
