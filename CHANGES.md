@@ -1,4 +1,5 @@
 ### 1.4.7
+* Added SystemCursorListener
 * Fixed CollapsibleGroup not matching the largest available size 
 
 ### 1.4.6
