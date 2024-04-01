@@ -5,7 +5,8 @@
 * PopTable hover/click/tooltip no longer fails to find a style if the provided style is a WindowStyle
 * PopTableHoverListener now has a configurable delay
 * Prevent endless loop of enter and exit in PopTableHoverListener
-* Clicking now hides the PopTable of the PopTableHoverListener 
+* Clicking now hides the PopTable of the PopTableHoverListener
+* PopTableHoverListener can attach the PopTable to an Actor that is different than the Listener Actor
 
 ### 1.4.6
 * Updated to libGDX 1.12.1
