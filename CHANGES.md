@@ -1,6 +1,7 @@
 ### 1.4.7
 * Added SystemCursorListener
 * Added SplitPaneSystemCursorListener
+* Added PopTable#setStyle(WindowStyle style)
 * Fixed CollapsibleGroup not matching the largest available size
 * PopTable hover/click/tooltip no longer fails to find a style if the provided style is a WindowStyle
 * PopTableHoverListener now has a configurable delay
