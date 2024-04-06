@@ -16,6 +16,7 @@ public class PopTableClickListener extends ClickListener {
     protected PopTable popTable;
     private final int edge;
     private final int align;
+    public Actor attachedActor;
     
     public PopTableClickListener() {
         this (Align.bottom, Align.bottom, new PopTableStyle());
@@ -39,7 +40,6 @@ public class PopTableClickListener extends ClickListener {
     
     public PopTableClickListener(int edge, int align, PopTableStyle style) {
         popTable = new PopTable(style);
-        popTable.setModal(true);
         popTable.setHideOnUnfocus(true);
         this.edge = edge;
         this.align = align;
@@ -78,7 +78,7 @@ public class PopTableClickListener extends ClickListener {
         
         popTable.show(stage);
         
-        popTable.attachToActor(actor, edge, align);
+        popTable.attachToActor(attachedActor != null ? attachedActor : actor, edge, align);
         
         popTable.moveToInsideStage();
     }
