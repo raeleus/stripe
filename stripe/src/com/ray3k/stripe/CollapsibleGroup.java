@@ -1,6 +1,7 @@
 package com.ray3k.stripe;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.Layout;
 
@@ -26,7 +27,9 @@ public class CollapsibleGroup extends WidgetGroup {
     @Override
     public void layout() {
         super.layout();
-
+        
+        setTouchable(Touchable.childrenOnly);
+        
         for (Actor child : getChildren()) {
             child.setVisible(false);
             child.setPosition(0, 0);
