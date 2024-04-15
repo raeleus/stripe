@@ -4,6 +4,7 @@
 * Added PopTableTextHoverListener
 * Added PopTable#setStyle(WindowStyle style)
 * Added SmashGroup
+* Added DualCollapsibleGroup
 * Fixed CollapsibleGroup not matching the largest available size
 * CollapsibleGroup now defaults to Touchable.childrenOnly
 * PopTable hover/click/tooltip no longer fails to find a style if the provided style is a WindowStyle
