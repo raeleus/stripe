@@ -20,24 +20,22 @@ import com.badlogic.gdx.utils.Scaling;
  */
 public class ScaleContainer extends WidgetGroup {
     private Actor actor;
-    private Value prefWidth;
-    private Value prefHeight;
+    private Value prefWidth = Value.prefWidth;
+    private Value prefHeight = Value.prefHeight;
     private Scaling scaling;
     private int align = Align.center;
     private boolean clip;
     
-    public ScaleContainer(float prefWidth, float prefHeight) {
-        this(prefWidth, prefHeight, null);
+    public ScaleContainer() {
+        this(null);
     }
     
-    public ScaleContainer(float prefWidth, float prefHeight, Actor actor) {
-        this(prefWidth, prefHeight, Scaling.stretch, actor);
+    public ScaleContainer(Actor actor) {
+        this(Scaling.stretch, actor);
     }
     
-    public ScaleContainer(float prefWidth, float prefHeight, Scaling scaling, Actor actor) {
+    public ScaleContainer(Scaling scaling, Actor actor) {
         this.scaling = scaling;
-        setPrefWidth(prefWidth);
-        setPrefHeight(prefHeight);
         setActor(actor);
     }
     
