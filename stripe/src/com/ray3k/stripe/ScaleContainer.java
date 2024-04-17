@@ -5,6 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Value;
+import com.badlogic.gdx.scenes.scene2d.ui.Value.Fixed;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Null;
@@ -18,38 +20,40 @@ import com.badlogic.gdx.utils.Scaling;
  */
 public class ScaleContainer extends WidgetGroup {
     private Actor actor;
-    private float prefWidth;
-    private float prefHeight;
+    private Value prefWidth;
+    private Value prefHeight;
     private Scaling scaling;
     private int align = Align.center;
     private boolean clip;
-
+    
     public ScaleContainer(float prefWidth, float prefHeight) {
         this(prefWidth, prefHeight, null);
     }
-
+    
     public ScaleContainer(float prefWidth, float prefHeight, Actor actor) {
         this(prefWidth, prefHeight, Scaling.stretch, actor);
     }
-
+    
     public ScaleContainer(float prefWidth, float prefHeight, Scaling scaling, Actor actor) {
         this.scaling = scaling;
         setPrefWidth(prefWidth);
         setPrefHeight(prefHeight);
         setActor(actor);
     }
-
+    
     @Override
     public void layout() {
         if (actor == null) return;
         if (actor instanceof Group) ((Group) actor).setTransform(true);
-
-        actor.setSize(prefWidth, prefHeight);
+        
+        float pWidth = prefWidth.get(actor), pHeight = prefHeight.get(actor);
+        
+        actor.setSize(pWidth, pHeight);
         float width = getWidth();
         float height = getHeight();
-        Vector2 size = scaling.apply(prefWidth, prefHeight, getWidth(), getHeight());
+        Vector2 size = scaling.apply(pWidth, pHeight, getWidth(), getHeight());
         actor.setScale(size.x / actor.getWidth(), size.y / actor.getHeight());
-
+        
         float alignX, alignY;
         if ((align & Align.left) != 0)
             alignX = 0;
@@ -57,7 +61,7 @@ public class ScaleContainer extends WidgetGroup {
             alignX = (int)(width - size.x);
         else
             alignX = (int)(width / 2 - size.x / 2);
-
+        
         if ((align & Align.top) != 0)
             alignY = (int)(height - size.y);
         else if ((align & Align.bottom) != 0)
@@ -66,7 +70,7 @@ public class ScaleContainer extends WidgetGroup {
             alignY = (int)(height / 2 - size.y / 2);
         actor.setPosition(alignX, alignY);
     }
-
+    
     @Override
     public void draw(Batch batch, float parentAlpha) {
         if (clip) {
@@ -80,7 +84,7 @@ public class ScaleContainer extends WidgetGroup {
             super.draw(batch, parentAlpha);
         }
     }
-
+    
     public @Null Actor hit (float x, float y, boolean touchable) {
         if (clip) {
             if (touchable && getTouchable() == Touchable.disabled) return null;
@@ -88,98 +92,116 @@ public class ScaleContainer extends WidgetGroup {
         }
         return super.hit(x, y, touchable);
     }
-
+    
     @Override
     public float getMinWidth() {
         return 0;
     }
-
+    
     @Override
     public float getMinHeight() {
         return 0;
     }
-
-    public void setPrefWidth(float prefWidth) {
+    
+    public void setPrefWidth(Value prefWidth) {
         this.prefWidth = prefWidth;
     }
-
-    public void setPrefHeight(float prefHeight) {
+    
+    public void setPrefHeight(Value prefHeight) {
         this.prefHeight = prefHeight;
     }
-
-    public void setPrefSize(float prefWidth, float prefHeight) {
+    
+    public void setPrefSize(Value prefWidth, Value prefHeight) {
         this.prefWidth = prefWidth;
         this.prefHeight = prefHeight;
     }
-
-    public void setPrefSize(float prefSize) {
+    
+    public void setPrefSize(Value prefSize) {
         this.prefWidth = prefSize;
         this.prefHeight = prefSize;
     }
-
+    
+    public void setPrefWidth(float prefWidth) {
+        this.prefWidth = Fixed.valueOf(prefWidth);
+    }
+    
+    public void setPrefHeight(float prefHeight) {
+        this.prefHeight = Fixed.valueOf(prefHeight);
+    }
+    
+    public void setPrefSize(float prefWidth, float prefHeight) {
+        this.prefWidth = Fixed.valueOf(prefWidth);
+        this.prefHeight = Fixed.valueOf(prefHeight);
+    }
+    
+    public void setPrefSize(float prefSize) {
+        this.prefWidth = Fixed.valueOf(prefSize);
+        this.prefHeight = Fixed.valueOf(prefSize);
+    }
+    
     @Override
     public float getPrefWidth() {
-        return prefWidth;
+        return prefWidth.get(actor);
     }
-
+    
     @Override
     public float getPrefHeight() {
-        return prefHeight;
+        return prefHeight.get(actor);
     }
-
+    
     public Actor getActor() {
         return actor;
     }
-
+    
     public void setActor(Actor actor) {
         if (this.actor != null) this.actor.remove();
-
+        
         this.actor = actor;
         addActor(actor);
     }
-
+    
     public Scaling getScaling() {
         return scaling;
     }
-
+    
     public void setScaling(Scaling scaling) {
         this.scaling = scaling;
     }
-
+    
     public int getAlign() {
         return align;
     }
-
+    
     public void setAlign(int align) {
         this.align = align;
     }
-
+    
     public boolean isClip() {
         return clip;
     }
-
+    
     public void setClip(boolean clip) {
         this.clip = clip;
     }
-
+    
     @Override
     @Deprecated
     public void addActor(Actor actor) {
         super.addActor(actor);
     }
-
+    
     @Override
     @Deprecated
     public void addActorAfter(Actor actorAfter, Actor actor) {
         super.addActorAfter(actorAfter, actor);
     }
-
+    
     @Override
     @Deprecated
     public void addActorAt(int index, Actor actor) {
         super.addActorAt(index, actor);
     }
-
+    
     @Override
     @Deprecated
     public void addActorBefore(Actor actorBefore, Actor actor) {
