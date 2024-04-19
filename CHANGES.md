@@ -1,4 +1,4 @@
-### 1.4.7
+### 2.0.0
 * Added SystemCursorListener
 * Added SplitPaneSystemCursorListener
 * Added PopTableTextHoverListener
